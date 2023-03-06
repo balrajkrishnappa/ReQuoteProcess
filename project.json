@@ -3,9 +3,6 @@
   "description": "Robotic Enterprise Framework",
   "main": "Main.xaml",
   "dependencies": {
-    "JsonApiSerializer": "[1.7.4]",
-    "LBT.Newtonsoft.Json": "[12.0.3.23910]",
-    "Newtonsoft.Json": "[13.0.3-beta1]",
     "UiPath.Database.Activities": "1.7.1",
     "UiPath.Excel.Activities": "2.17.0-preview",
     "UiPath.Form.Activities": "[2.0.3]",
