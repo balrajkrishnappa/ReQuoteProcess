@@ -8,7 +8,7 @@
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1240,2089</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1054,2089</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ProcessTransaction_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="44">
@@ -210,56 +210,28 @@
       </sap:WorkflowViewStateService.ViewState>
       <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Workflows\Barcode_Generation.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="364,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_3" UnSafe="False" WorkflowFileName="Workflows\Barcode_Generation.xaml">
         <ui:InvokeWorkflowFile.Arguments>
-          <OutArgument x:TypeArguments="x:String" x:Key="out_BarcodeNumber">
-            <VisualBasicReference x:TypeArguments="x:String" ExpressionText="BarcodeNumber" />
-          </OutArgument>
-          <InArgument x:TypeArguments="ui:QueueItem" x:Key="in_TransactionItem">
-            <VisualBasicValue x:TypeArguments="ui:QueueItem" ExpressionText="in_TransactionItem" />
-          </InArgument>
-          <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">
-            <VisualBasicValue x:TypeArguments="scg:Dictionary(x:String, x:Object)" ExpressionText="in_Config" />
-          </InArgument>
-          <InArgument x:TypeArguments="x:String" x:Key="in_EmailDate">
-            <VisualBasicValue x:TypeArguments="x:String" ExpressionText="mailDateAndTime" />
-          </InArgument>
-          <InArgument x:TypeArguments="x:String" x:Key="in_EmailText">
-            <VisualBasicValue x:TypeArguments="x:String" ExpressionText="emailbody" />
-          </InArgument>
-          <InArgument x:TypeArguments="x:String" x:Key="in_EmailFrom">
-            <VisualBasicValue x:TypeArguments="x:String" ExpressionText="senderEmail" />
-          </InArgument>
-          <InArgument x:TypeArguments="x:String" x:Key="in_EmailSubject">
-            <VisualBasicValue x:TypeArguments="x:String" ExpressionText="emailsubject" />
-          </InArgument>
+          <OutArgument x:TypeArguments="x:String" x:Key="out_BarcodeNumber">[BarcodeNumber]</OutArgument>
+          <InArgument x:TypeArguments="ui:QueueItem" x:Key="in_TransactionItem">[in_TransactionItem]</InArgument>
+          <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[in_Config]</InArgument>
+          <InArgument x:TypeArguments="x:String" x:Key="in_EmailDate">[mailDateAndTime]</InArgument>
+          <InArgument x:TypeArguments="x:String" x:Key="in_EmailText">[emailbody]</InArgument>
+          <InArgument x:TypeArguments="x:String" x:Key="in_EmailFrom">[senderEmail]</InArgument>
+          <InArgument x:TypeArguments="x:String" x:Key="in_EmailSubject">[emailsubject]</InArgument>
         </ui:InvokeWorkflowFile.Arguments>
       </ui:InvokeWorkflowFile>
     </Sequence>
     <ui:Comment DisplayName="Comment (placeholder)" sap:VirtualizedContainerService.HintSize="496,56" sap2010:WorkflowViewState.IdRef="Comment_1" Text="//  Invoke steps of the process" />
-    <If Condition="[Not (Barcode =&quot;&quot;)]" sap:VirtualizedContainerService.HintSize="496,389" sap2010:WorkflowViewState.IdRef="If_1">
+    <If Condition="[Not (Barcode.Trim =&quot;&quot;)]" sap:VirtualizedContainerService.HintSize="496,389" sap2010:WorkflowViewState.IdRef="If_1">
       <If.Then>
         <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Workflows\ReQuote_Process.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="349,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" UnSafe="False" WorkflowFileName="Workflows\ReQuote_Process.xaml">
           <ui:InvokeWorkflowFile.Arguments>
-            <InArgument x:TypeArguments="ui:QueueItem" x:Key="in_TransactionItem">
-              <VisualBasicValue x:TypeArguments="ui:QueueItem" ExpressionText="in_TransactionItem" />
-            </InArgument>
-            <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">
-              <VisualBasicValue x:TypeArguments="scg:Dictionary(x:String, x:Object)" ExpressionText="in_Config" />
-            </InArgument>
-            <OutArgument x:TypeArguments="x:String" x:Key="ClassifierOutput">
-              <VisualBasicReference x:TypeArguments="x:String" ExpressionText="ClassifierOutput" />
-            </OutArgument>
-            <OutArgument x:TypeArguments="x:String" x:Key="out_Str_EmailRequestType">
-              <VisualBasicReference x:TypeArguments="x:String" ExpressionText="Str_EmailRequestType" />
-            </OutArgument>
-            <OutArgument x:TypeArguments="x:String" x:Key="out_Str_ClassifierConfidence">
-              <VisualBasicReference x:TypeArguments="x:String" ExpressionText="ClassifierConfidence" />
-            </OutArgument>
-            <OutArgument x:TypeArguments="x:String" x:Key="out_Str_ExtractorConfidence">
-              <VisualBasicReference x:TypeArguments="x:String" ExpressionText="ExtractorConfidence" />
-            </OutArgument>
-            <OutArgument x:TypeArguments="x:Boolean" x:Key="out_bool_FoundAllrequiredData">
-              <VisualBasicReference x:TypeArguments="x:Boolean" ExpressionText="boolFoundAllrequiredData" />
-            </OutArgument>
+            <InArgument x:TypeArguments="ui:QueueItem" x:Key="in_TransactionItem">[in_TransactionItem]</InArgument>
+            <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[in_Config]</InArgument>
+            <OutArgument x:TypeArguments="x:String" x:Key="ClassifierOutput">[ClassifierOutput]</OutArgument>
+            <OutArgument x:TypeArguments="x:String" x:Key="out_Str_EmailRequestType">[Str_EmailRequestType]</OutArgument>
+            <OutArgument x:TypeArguments="x:String" x:Key="out_Str_ClassifierConfidence">[ClassifierConfidence]</OutArgument>
+            <OutArgument x:TypeArguments="x:String" x:Key="out_Str_ExtractorConfidence">[ExtractorConfidence]</OutArgument>
+            <OutArgument x:TypeArguments="x:Boolean" x:Key="out_bool_FoundAllrequiredData">[boolFoundAllrequiredData]</OutArgument>
           </ui:InvokeWorkflowFile.Arguments>
         </ui:InvokeWorkflowFile>
       </If.Then>
@@ -272,16 +244,13 @@
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <uma:MLSkills ApiKey="{x:Null}" ContinueOnError="{x:Null}" DelayAfter="{x:Null}" DelayBefore="{x:Null}" Name="{x:Null}" NumberOfRetries="{x:Null}" ResponseHeaders="{x:Null}" Result="{x:Null}" SkillURL="{x:Null}" StatusCode="{x:Null}" TimeOutMs="{x:Null}" Connection="Robot" DisplayName="MLSkill" ExternApiFileType="JSON" sap:VirtualizedContainerService.HintSize="350,52" sap2010:WorkflowViewState.IdRef="MLSkills_1" Item="[Input_Text]" JsonResponse="[ClassifierOutput]" NextPageNum="2" RefreshList="False" TotalCount="2">
+          <uma:MLSkills ApiKey="{x:Null}" ContinueOnError="{x:Null}" DelayAfter="{x:Null}" DelayBefore="{x:Null}" Name="{x:Null}" NumberOfRetries="{x:Null}" ResponseHeaders="{x:Null}" Result="{x:Null}" SelectedMLSkill="{x:Reference __ReferenceID0}" SkillURL="{x:Null}" StatusCode="{x:Null}" TimeOutMs="{x:Null}" Connection="Robot" DisplayName="MLSkill" ExternApiFileType="JSON" sap:VirtualizedContainerService.HintSize="350,52" sap2010:WorkflowViewState.IdRef="MLSkills_1" Item="[Input_Text]" JsonResponse="[ClassifierOutput]" NextPageNum="2" RefreshList="False" TotalCount="2">
             <uma:MLSkills.MLSkillList>
               <scg:List x:TypeArguments="um:MLSkill" Capacity="4">
-                <x:Reference>__ReferenceID0</x:Reference>
+                <um:MLSkill x:Name="__ReferenceID0" AccessUri="https://ai-uipath-eus.deskover.com/mlskills/1819e321-faa5-4405-a3c4-ed5f18929e2e/87d62cf7-c77b-45d9-805f-b1d7c3b46577/email-text-classification" AccountId="1819e321-faa5-4405-a3c4-ed5f18929e2e" Description="" Id="522f9db5-380d-4d74-b6aa-390aea72d990" InputDescription="Text that would be classified." InputType="JSON" Name="Email_Text_Classification" OutputDescription="A JSON with predicted class name, associated confidence on that class prediction (between 0-1)." ProjectId="5a09da82-b8fd-476c-84de-a835289804b6" TenantId="87d62cf7-c77b-45d9-805f-b1d7c3b46577" />
                 <um:MLSkill AccessUri="https://ai-uipath-eus.deskover.com/mlskills/1819e321-faa5-4405-a3c4-ed5f18929e2e/87d62cf7-c77b-45d9-805f-b1d7c3b46577/email-text-extraction" AccountId="1819e321-faa5-4405-a3c4-ed5f18929e2e" Description="for extraction and labeling" Id="665014e2-82fb-4ec4-8158-c273ff3c74f8" InputDescription="Text in one of the 100 languages here (https://docs.uipath.com/ai-fabric/v0/docs/aic-cloud-custom-named-entity-recognition#languages) from which entities will be extracted." InputType="JSON" Name="Email_Text_Extraction" OutputDescription="A Json Response with list of named entities in the text. Each element in the list has the following items in the prediction: 1. Text that was recognized; 2. Starting and ending positions of the text, character-wise; 3. Type of the named entity; 4.Confidence." ProjectId="5a09da82-b8fd-476c-84de-a835289804b6" TenantId="87d62cf7-c77b-45d9-805f-b1d7c3b46577" />
               </scg:List>
             </uma:MLSkills.MLSkillList>
-            <uma:MLSkills.SelectedMLSkill>
-              <um:MLSkill x:Name="__ReferenceID0" AccessUri="https://ai-uipath-eus.deskover.com/mlskills/1819e321-faa5-4405-a3c4-ed5f18929e2e/87d62cf7-c77b-45d9-805f-b1d7c3b46577/email-text-classification" AccountId="1819e321-faa5-4405-a3c4-ed5f18929e2e" Description="" Id="522f9db5-380d-4d74-b6aa-390aea72d990" InputDescription="Text that would be classified." InputType="JSON" Name="Email_Text_Classification" OutputDescription="A JSON with predicted class name, associated confidence on that class prediction (between 0-1)." ProjectId="5a09da82-b8fd-476c-84de-a835289804b6" TenantId="87d62cf7-c77b-45d9-805f-b1d7c3b46577" />
-            </uma:MLSkills.SelectedMLSkill>
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">False</x:Boolean>
