@@ -255,7 +255,7 @@
                       <av:PointCollection x:Key="ConnectorLocation">270,629.5 270,671</av:PointCollection>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
-                  <Sequence DisplayName="ExtractingDetailsofMail" sap:VirtualizedContainerService.HintSize="498,2678" sap2010:WorkflowViewState.IdRef="Sequence_5">
+                  <Sequence DisplayName="ExtractingDetailsofMail" sap:VirtualizedContainerService.HintSize="498,3022" sap2010:WorkflowViewState.IdRef="Sequence_5">
                     <Sequence.Variables>
                       <Variable x:TypeArguments="scg:Dictionary(x:String, x:String)" Name="Json_Headers" />
                       <Variable x:TypeArguments="njl:JArray" Name="json_Array" />
@@ -340,36 +340,44 @@
                     </ui:CommentOut>
                     <ui:WriteTextFile File="{x:Null}" DisplayName="Write Text File" FileName="test.json" sap:VirtualizedContainerService.HintSize="436,142" sap2010:WorkflowViewState.IdRef="WriteTextFile_1" Text="[ExtractorOutput]" />
                     <ui:DeserializeJson x:TypeArguments="njl:JObject" DisplayName="Deserialize JSON" sap:VirtualizedContainerService.HintSize="436,69" sap2010:WorkflowViewState.IdRef="DeserializeJson`1_5" JsonObject="[jobjecttest]" JsonString="[ExtractorOutput]" />
-                    <ui:DeserializeJsonArray DisplayName="Deserialize JSON Array" sap:VirtualizedContainerService.HintSize="436,69" sap2010:WorkflowViewState.IdRef="DeserializeJsonArray_2" JsonArray="[Jarray]" JsonString="[ExtractorOutput]" />
-                    <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="436,335" sap2010:WorkflowViewState.IdRef="CommentOut_6">
+                    <ui:DeserializeJsonArray DisplayName="Deserialize JSON Array" sap:VirtualizedContainerService.HintSize="436,69" sap2010:WorkflowViewState.IdRef="DeserializeJsonArray_2" JsonArray="[Jarray]" JsonString="[jobjecttest.Item(&quot;response&quot;).ToString]" />
+                    <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="436,201" sap2010:WorkflowViewState.IdRef="CommentOut_6">
                       <ui:CommentOut.Body>
-                        <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="400,247" sap2010:WorkflowViewState.IdRef="Sequence_14">
+                        <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="400,113" sap2010:WorkflowViewState.IdRef="Sequence_14">
                           <sap:WorkflowViewStateService.ViewState>
                             <scg:Dictionary x:TypeArguments="x:String, x:Object">
                               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                             </scg:Dictionary>
                           </sap:WorkflowViewStateService.ViewState>
-                          <ui:WriteRange StartingCell="{x:Null}" AddHeaders="False" DataTable="[out_dt_MLoutput]" DisplayName="Write Range Workbook" sap:VirtualizedContainerService.HintSize="338,125" sap2010:WorkflowViewState.IdRef="WriteRange_2" SheetName="Sheet1" WorkbookPath="Test.xlsx" />
                         </Sequence>
                       </ui:CommentOut.Body>
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
                     </ui:CommentOut>
                     <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="436,101" sap2010:WorkflowViewState.IdRef="LogMessage_6" Message="[Jarray]" />
-                    <ui:ForEach x:TypeArguments="njl:JToken" CurrentIndex="{x:Null}" DisplayName="For Each" sap:VirtualizedContainerService.HintSize="436,247" sap2010:WorkflowViewState.IdRef="ForEach`1_4" Values="[Jarray]">
+                    <ui:BuildDataTable DataTable="[out_dt_MLoutput]" DisplayName="Build Data Table" sap:VirtualizedContainerService.HintSize="436,69" sap2010:WorkflowViewState.IdRef="BuildDataTable_2" TableInfo="&lt;NewDataSet&gt;&#xD;&#xA;  &lt;xs:schema id=&quot;NewDataSet&quot; xmlns=&quot;&quot; xmlns:xs=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:msdata=&quot;urn:schemas-microsoft-com:xml-msdata&quot;&gt;&#xD;&#xA;    &lt;xs:element name=&quot;NewDataSet&quot; msdata:IsDataSet=&quot;true&quot; msdata:MainDataTable=&quot;TableName&quot; msdata:UseCurrentLocale=&quot;true&quot;&gt;&#xD;&#xA;      &lt;xs:complexType&gt;&#xD;&#xA;        &lt;xs:choice minOccurs=&quot;0&quot; maxOccurs=&quot;unbounded&quot;&gt;&#xD;&#xA;          &lt;xs:element name=&quot;TableName&quot;&gt;&#xD;&#xA;            &lt;xs:complexType&gt;&#xD;&#xA;              &lt;xs:sequence&gt;&#xD;&#xA;                &lt;xs:element name=&quot;entity&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xD;&#xA;                &lt;xs:element name=&quot;value&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xD;&#xA;                &lt;xs:element name=&quot;confidence&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xD;&#xA;              &lt;/xs:sequence&gt;&#xD;&#xA;            &lt;/xs:complexType&gt;&#xD;&#xA;          &lt;/xs:element&gt;&#xD;&#xA;        &lt;/xs:choice&gt;&#xD;&#xA;      &lt;/xs:complexType&gt;&#xD;&#xA;    &lt;/xs:element&gt;&#xD;&#xA;  &lt;/xs:schema&gt;&#xD;&#xA;&lt;/NewDataSet&gt;" />
+                    <ui:ForEach x:TypeArguments="njl:JToken" CurrentIndex="{x:Null}" DisplayName="For Each" sap:VirtualizedContainerService.HintSize="436,451" sap2010:WorkflowViewState.IdRef="ForEach`1_4" Values="[Jarray]">
                       <ui:ForEach.Body>
                         <ActivityAction x:TypeArguments="njl:JToken">
                           <ActivityAction.Argument>
                             <DelegateInArgument x:TypeArguments="njl:JToken" Name="item" />
                           </ActivityAction.Argument>
-                          <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="400,113" sap2010:WorkflowViewState.IdRef="Sequence_13">
+                          <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="400,317" sap2010:WorkflowViewState.IdRef="Sequence_13">
                             <sap:WorkflowViewStateService.ViewState>
                               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                               </scg:Dictionary>
                             </sap:WorkflowViewStateService.ViewState>
+                            <ui:AddDataRow DataRow="{x:Null}" ArrayRow="[{item(&quot;entity&quot;).ToString,item(&quot;value&quot;).ToString,item(&quot;confidence&quot;).ToString}]" DataTable="[out_dt_MLoutput]" DisplayName="Add Data Row" sap:VirtualizedContainerService.HintSize="338,195" sap2010:WorkflowViewState.IdRef="AddDataRow_1" />
                           </Sequence>
                         </ActivityAction>
                       </ui:ForEach.Body>
                     </ui:ForEach>
+                    <ui:WriteRange StartingCell="{x:Null}" AddHeaders="True" DataTable="[out_dt_MLoutput]" DisplayName="Write Range Workbook" sap:VirtualizedContainerService.HintSize="436,125" sap2010:WorkflowViewState.IdRef="WriteRange_2" SheetName="Sheet1" WorkbookPath="Test.xlsx" />
                     <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="436,110" sap2010:WorkflowViewState.IdRef="MultipleAssign_2">
                       <ui:MultipleAssign.AssignOperations>
                         <scg:List x:TypeArguments="ui:AssignOperation" Capacity="4">
@@ -394,7 +402,7 @@
                     </Assign>
                     <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="436,61" sap2010:WorkflowViewState.IdRef="CommentOut_1">
                       <ui:CommentOut.Body>
-                        <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="594,618" sap2010:WorkflowViewState.IdRef="Sequence_8">
+                        <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="594,658" sap2010:WorkflowViewState.IdRef="Sequence_8">
                           <sap:WorkflowViewStateService.ViewState>
                             <scg:Dictionary x:TypeArguments="x:String, x:Object">
                               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
