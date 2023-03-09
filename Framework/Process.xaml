@@ -8,7 +8,7 @@
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>864,1420</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>627,1420</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ProcessTransaction_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="44">
@@ -224,7 +224,7 @@
       </ui:InvokeWorkflowFile>
     </Sequence>
     <ui:Comment DisplayName="Comment (placeholder)" sap:VirtualizedContainerService.HintSize="416,65" sap2010:WorkflowViewState.IdRef="Comment_1" Text="//  Invoke steps of the process" />
-    <If Condition="True" sap:VirtualizedContainerService.HintSize="416,385" sap2010:WorkflowViewState.IdRef="If_1">
+    <If Condition="[Not(String.IsNullOrEmpty(Barcode))]" sap:VirtualizedContainerService.HintSize="416,385" sap2010:WorkflowViewState.IdRef="If_1">
       <If.Then>
         <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Workflows\ReQuote_Process.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="334,122" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" UnSafe="False" WorkflowFileName="Workflows\ReQuote_Process.xaml">
           <ui:InvokeWorkflowFile.Arguments>
@@ -242,22 +242,19 @@
     </If>
     <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="416,61" sap2010:WorkflowViewState.IdRef="CommentOut_1">
       <ui:CommentOut.Body>
-        <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="412,174" sap2010:WorkflowViewState.IdRef="Sequence_4">
+        <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="412,378" sap2010:WorkflowViewState.IdRef="Sequence_4">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <uma:MLSkills ApiKey="{x:Null}" ContinueOnError="{x:Null}" DelayAfter="{x:Null}" DelayBefore="{x:Null}" Name="{x:Null}" NumberOfRetries="{x:Null}" ResponseHeaders="{x:Null}" Result="{x:Null}" SkillURL="{x:Null}" StatusCode="{x:Null}" TimeOutMs="{x:Null}" Connection="Robot" DisplayName="MLSkill" ExternApiFileType="JSON" sap:VirtualizedContainerService.HintSize="350,52" sap2010:WorkflowViewState.IdRef="MLSkills_1" Item="[Input_Text]" JsonResponse="[ClassifierOutput]" NextPageNum="2" RefreshList="False" TotalCount="2">
+          <uma:MLSkills ApiKey="{x:Null}" ContinueOnError="{x:Null}" DelayAfter="{x:Null}" DelayBefore="{x:Null}" Name="{x:Null}" NumberOfRetries="{x:Null}" ResponseHeaders="{x:Null}" Result="{x:Null}" SelectedMLSkill="{x:Reference __ReferenceID0}" SkillURL="{x:Null}" StatusCode="{x:Null}" TimeOutMs="{x:Null}" Connection="Robot" DisplayName="MLSkill" ExternApiFileType="JSON" sap:VirtualizedContainerService.HintSize="350,61" sap2010:WorkflowViewState.IdRef="MLSkills_1" Item="[Input_Text]" JsonResponse="[ClassifierOutput]" NextPageNum="2" RefreshList="False" TotalCount="2">
             <uma:MLSkills.MLSkillList>
               <scg:List x:TypeArguments="um:MLSkill" Capacity="4">
-                <x:Reference>__ReferenceID0</x:Reference>
+                <um:MLSkill x:Name="__ReferenceID0" AccessUri="https://ai-uipath-eus.deskover.com/mlskills/1819e321-faa5-4405-a3c4-ed5f18929e2e/87d62cf7-c77b-45d9-805f-b1d7c3b46577/email-text-classification" AccountId="1819e321-faa5-4405-a3c4-ed5f18929e2e" Description="" Id="522f9db5-380d-4d74-b6aa-390aea72d990" InputDescription="Text that would be classified." InputType="JSON" Name="Email_Text_Classification" OutputDescription="A JSON with predicted class name, associated confidence on that class prediction (between 0-1)." ProjectId="5a09da82-b8fd-476c-84de-a835289804b6" TenantId="87d62cf7-c77b-45d9-805f-b1d7c3b46577" />
                 <um:MLSkill AccessUri="https://ai-uipath-eus.deskover.com/mlskills/1819e321-faa5-4405-a3c4-ed5f18929e2e/87d62cf7-c77b-45d9-805f-b1d7c3b46577/email-text-extraction" AccountId="1819e321-faa5-4405-a3c4-ed5f18929e2e" Description="for extraction and labeling" Id="665014e2-82fb-4ec4-8158-c273ff3c74f8" InputDescription="Text in one of the 100 languages here (https://docs.uipath.com/ai-fabric/v0/docs/aic-cloud-custom-named-entity-recognition#languages) from which entities will be extracted." InputType="JSON" Name="Email_Text_Extraction" OutputDescription="A Json Response with list of named entities in the text. Each element in the list has the following items in the prediction: 1. Text that was recognized; 2. Starting and ending positions of the text, character-wise; 3. Type of the named entity; 4.Confidence." ProjectId="5a09da82-b8fd-476c-84de-a835289804b6" TenantId="87d62cf7-c77b-45d9-805f-b1d7c3b46577" />
               </scg:List>
             </uma:MLSkills.MLSkillList>
-            <uma:MLSkills.SelectedMLSkill>
-              <um:MLSkill x:Name="__ReferenceID0" AccessUri="https://ai-uipath-eus.deskover.com/mlskills/1819e321-faa5-4405-a3c4-ed5f18929e2e/87d62cf7-c77b-45d9-805f-b1d7c3b46577/email-text-classification" AccountId="1819e321-faa5-4405-a3c4-ed5f18929e2e" Description="" Id="522f9db5-380d-4d74-b6aa-390aea72d990" InputDescription="Text that would be classified." InputType="JSON" Name="Email_Text_Classification" OutputDescription="A JSON with predicted class name, associated confidence on that class prediction (between 0-1)." ProjectId="5a09da82-b8fd-476c-84de-a835289804b6" TenantId="87d62cf7-c77b-45d9-805f-b1d7c3b46577" />
-            </uma:MLSkills.SelectedMLSkill>
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">False</x:Boolean>
