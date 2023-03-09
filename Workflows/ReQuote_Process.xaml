@@ -1,4 +1,4 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="ReQuote_Process" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:av="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:njl="clr-namespace:Newtonsoft.Json.Linq;assembly=Newtonsoft.Json" xmlns:s="clr-namespace:System;assembly=System.Private.CoreLib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data.Common" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:um="clr-namespace:UiPath.MLServices;assembly=UiPath.MLServices" xmlns:uma="clr-namespace:UiPath.MLServices.Activities;assembly=UiPath.MLServices.Activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="ReQuote_Process" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:av="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:njl="clr-namespace:Newtonsoft.Json.Linq;assembly=Newtonsoft.Json" xmlns:s="clr-namespace:System;assembly=System.Private.CoreLib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data.Common" xmlns:this="clr-namespace:" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:um="clr-namespace:UiPath.MLServices;assembly=UiPath.MLServices" xmlns:uma="clr-namespace:UiPath.MLServices.Activities;assembly=UiPath.MLServices.Activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <x:Members>
     <x:Property sap2010:Annotation.AnnotationText="Transaction item to be processed." Name="in_TransactionItem" Type="InArgument(ui:QueueItem)" />
     <x:Property sap2010:Annotation.AnnotationText="Dictionary structure to store configuration data of the process (settings, constants and assets)." Name="in_Config" Type="InArgument(scg:Dictionary(x:String, x:Object))" />
@@ -8,7 +8,11 @@
     <x:Property Name="out_Str_ExtractorConfidence" Type="OutArgument(x:String)" />
     <x:Property Name="out_dt_MLoutput" Type="OutArgument(sd:DataTable)" />
     <x:Property Name="out_bool_ExtractedAnyMandatoryItem" Type="OutArgument(x:Boolean)" />
+    <x:Property Name="in_Str_EmailData" Type="InArgument(x:String)" />
   </x:Members>
+  <this:ReQuote_Process.in_Str_EmailData>
+    <InArgument x:TypeArguments="x:String" />
+  </this:ReQuote_Process.in_Str_EmailData>
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
@@ -149,7 +153,6 @@
   </TextExpression.ReferencesForImplementation>
   <Flowchart DisplayName="ReQuote_Process_UntilActionCenter" sap:VirtualizedContainerService.HintSize="970,894" sap2010:WorkflowViewState.IdRef="Flowchart_1">
     <Flowchart.Variables>
-      <Variable x:TypeArguments="x:String" Name="in_Str_EmailData" />
       <Variable x:TypeArguments="x:String" Name="ExtractorOutput" />
       <Variable x:TypeArguments="njl:JObject" Name="JObj_ExtractorOutput" />
     </Flowchart.Variables>
@@ -183,22 +186,42 @@
             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
-        <Assign sap:VirtualizedContainerService.HintSize="350,70" sap2010:WorkflowViewState.IdRef="Assign_13">
-          <Assign.To>
-            <OutArgument x:TypeArguments="x:String">[in_Str_EmailData]</OutArgument>
-          </Assign.To>
-          <Assign.Value>
-            <InArgument x:TypeArguments="x:String">["Subject: "+"Hello Could you give me a quote on 2000 on this reorder please. Also, we may need to change the art - the artwork on the dashboard is very blurry. Do you have a clearer proof of the label? Thank you Elaine -- Elaine OMalia &lt;https://ci3.googleusercontent.com/mail-sig/AIorK4xM4nKRlm9BSac6Q4Zb9ibtPVpxIkK9bElX2xQXYsFnlFiEFBlv3hL9DdLsOedYmgMI_Za2uQ0&gt; Helping Businesses Connect to their Customers (805) 701-2538 www.lainedesigns.com &lt;https://urldefense.com/v3/__http:/www.lainedesigns.com__;!!E0wher4!2hAQc-caOSjZfJyDV5BlUS8QsdHJt_V6B2rXl0aJl9QkQW-BrsVRxLUo9QDBjo1Po1I3tnzObKiurtisK53K$&gt; &lt;https://ci3.googleusercontent.com/mail-sig/AIorK4zLnt1o1CKV7fsDMYMJvOkhIDCfUGzMji-XdFWEjhOaIHsURR7xkk5DcA_E84ETypXrO5mgIvE&gt; Try Constant Contact Today &lt;https://urldefense.com/v3/__https:/go.constantcontact.com/signup.jsp?pn=lainedesigns__;!!E0wher4!2hAQc-caOSjZfJyDV5BlUS8QsdHJt_V6B2rXl0aJl9QkQW-BrsVRxLUo9QDBjo1Po1I3tnzObKiurtDmx6qr$&gt;"]</InArgument>
-          </Assign.Value>
-        </Assign>
+        <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="350,61" sap2010:WorkflowViewState.IdRef="CommentOut_7">
+          <ui:CommentOut.Body>
+            <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="400,192" sap2010:WorkflowViewState.IdRef="Sequence_15">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <Assign sap:VirtualizedContainerService.HintSize="338,70" sap2010:WorkflowViewState.IdRef="Assign_13">
+                <Assign.To>
+                  <OutArgument x:TypeArguments="x:String">[in_Str_EmailData]</OutArgument>
+                </Assign.To>
+                <Assign.Value>
+                  <InArgument x:TypeArguments="x:String">["Subject: "+"Hello Could you give me a quote on 2000 on this reorder please. Also, we may need to change the art - the artwork on the dashboard is very blurry. Do you have a clearer proof of the label? Thank you Elaine -- Elaine OMalia &lt;https://ci3.googleusercontent.com/mail-sig/AIorK4xM4nKRlm9BSac6Q4Zb9ibtPVpxIkK9bElX2xQXYsFnlFiEFBlv3hL9DdLsOedYmgMI_Za2uQ0&gt; Helping Businesses Connect to their Customers (805) 701-2538 www.lainedesigns.com &lt;https://urldefense.com/v3/__http:/www.lainedesigns.com__;!!E0wher4!2hAQc-caOSjZfJyDV5BlUS8QsdHJt_V6B2rXl0aJl9QkQW-BrsVRxLUo9QDBjo1Po1I3tnzObKiurtisK53K$&gt; &lt;https://ci3.googleusercontent.com/mail-sig/AIorK4zLnt1o1CKV7fsDMYMJvOkhIDCfUGzMji-XdFWEjhOaIHsURR7xkk5DcA_E84ETypXrO5mgIvE&gt; Try Constant Contact Today &lt;https://urldefense.com/v3/__https:/go.constantcontact.com/signup.jsp?pn=lainedesigns__;!!E0wher4!2hAQc-caOSjZfJyDV5BlUS8QsdHJt_V6B2rXl0aJl9QkQW-BrsVRxLUo9QDBjo1Po1I3tnzObKiurtDmx6qr$&gt;"]</InArgument>
+                </Assign.Value>
+              </Assign>
+            </Sequence>
+          </ui:CommentOut.Body>
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+        </ui:CommentOut>
         <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="350,101" sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="Info" Message="[&quot;Classifying the email type..&quot;]" />
-        <uma:MLSkills ApiKey="{x:Null}" ContinueOnError="{x:Null}" DelayAfter="{x:Null}" DelayBefore="{x:Null}" Name="{x:Null}" NumberOfRetries="{x:Null}" ResponseHeaders="{x:Null}" Result="{x:Null}" SelectedMLSkill="{x:Reference __ReferenceID0}" SkillURL="{x:Null}" StatusCode="{x:Null}" TimeOutMs="{x:Null}" Connection="Robot" DisplayName="MLSkill" ExternApiFileType="JSON" sap:VirtualizedContainerService.HintSize="350,420" sap2010:WorkflowViewState.IdRef="MLSkills_1" Item="[in_Str_EmailData]" JsonResponse="[ClassifierOutput]" NextPageNum="2" RefreshList="False" TotalCount="2">
+        <uma:MLSkills ApiKey="{x:Null}" ContinueOnError="{x:Null}" DelayAfter="{x:Null}" DelayBefore="{x:Null}" Name="{x:Null}" NumberOfRetries="{x:Null}" ResponseHeaders="{x:Null}" Result="{x:Null}" SkillURL="{x:Null}" StatusCode="{x:Null}" TimeOutMs="{x:Null}" Connection="Robot" DisplayName="MLSkill" ExternApiFileType="JSON" sap:VirtualizedContainerService.HintSize="350,420" sap2010:WorkflowViewState.IdRef="MLSkills_1" Item="[in_Str_EmailData]" JsonResponse="[ClassifierOutput]" NextPageNum="2" RefreshList="False" TotalCount="2">
           <uma:MLSkills.MLSkillList>
             <scg:List x:TypeArguments="um:MLSkill" Capacity="4">
-              <um:MLSkill x:Name="__ReferenceID0" AccessUri="https://ai-uipath-eus.deskover.com/mlskills/1819e321-faa5-4405-a3c4-ed5f18929e2e/87d62cf7-c77b-45d9-805f-b1d7c3b46577/email-text-classification" AccountId="1819e321-faa5-4405-a3c4-ed5f18929e2e" Description="" Id="522f9db5-380d-4d74-b6aa-390aea72d990" InputDescription="Text that would be classified." InputType="JSON" Name="Email_Text_Classification" OutputDescription="A JSON with predicted class name, associated confidence on that class prediction (between 0-1)." ProjectId="5a09da82-b8fd-476c-84de-a835289804b6" TenantId="87d62cf7-c77b-45d9-805f-b1d7c3b46577" />
+              <x:Reference>__ReferenceID0</x:Reference>
               <um:MLSkill AccessUri="https://ai-uipath-eus.deskover.com/mlskills/1819e321-faa5-4405-a3c4-ed5f18929e2e/87d62cf7-c77b-45d9-805f-b1d7c3b46577/email-text-extraction" AccountId="1819e321-faa5-4405-a3c4-ed5f18929e2e" Description="for extraction and labeling" Id="665014e2-82fb-4ec4-8158-c273ff3c74f8" InputDescription="Text in one of the 100 languages here (https://docs.uipath.com/ai-fabric/v0/docs/aic-cloud-custom-named-entity-recognition#languages) from which entities will be extracted." InputType="JSON" Name="Email_Text_Extraction" OutputDescription="A Json Response with list of named entities in the text. Each element in the list has the following items in the prediction: 1. Text that was recognized; 2. Starting and ending positions of the text, character-wise; 3. Type of the named entity; 4.Confidence." ProjectId="5a09da82-b8fd-476c-84de-a835289804b6" TenantId="87d62cf7-c77b-45d9-805f-b1d7c3b46577" />
             </scg:List>
           </uma:MLSkills.MLSkillList>
+          <uma:MLSkills.SelectedMLSkill>
+            <um:MLSkill x:Name="__ReferenceID0" AccessUri="https://ai-uipath-eus.deskover.com/mlskills/1819e321-faa5-4405-a3c4-ed5f18929e2e/87d62cf7-c77b-45d9-805f-b1d7c3b46577/email-text-classification" AccountId="1819e321-faa5-4405-a3c4-ed5f18929e2e" Description="" Id="522f9db5-380d-4d74-b6aa-390aea72d990" InputDescription="Text that would be classified." InputType="JSON" Name="Email_Text_Classification" OutputDescription="A JSON with predicted class name, associated confidence on that class prediction (between 0-1)." ProjectId="5a09da82-b8fd-476c-84de-a835289804b6" TenantId="87d62cf7-c77b-45d9-805f-b1d7c3b46577" />
+          </uma:MLSkills.SelectedMLSkill>
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -255,7 +278,7 @@
                       <av:PointCollection x:Key="ConnectorLocation">270,629.5 270,671</av:PointCollection>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
-                  <Sequence DisplayName="ExtractingDetailsofMail" sap:VirtualizedContainerService.HintSize="498,3022" sap2010:WorkflowViewState.IdRef="Sequence_5">
+                  <Sequence DisplayName="ExtractingDetailsofMail" sap:VirtualizedContainerService.HintSize="498,3013" sap2010:WorkflowViewState.IdRef="Sequence_5">
                     <Sequence.Variables>
                       <Variable x:TypeArguments="scg:Dictionary(x:String, x:String)" Name="Json_Headers" />
                       <Variable x:TypeArguments="njl:JArray" Name="json_Array" />
@@ -270,22 +293,42 @@
                         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                       </scg:Dictionary>
                     </sap:WorkflowViewStateService.ViewState>
-                    <Assign sap:VirtualizedContainerService.HintSize="436,70" sap2010:WorkflowViewState.IdRef="Assign_14">
-                      <Assign.To>
-                        <OutArgument x:TypeArguments="x:String">[in_Str_EmailData]</OutArgument>
-                      </Assign.To>
-                      <Assign.Value>
-                        <InArgument x:TypeArguments="x:String">["Subject: "+"________________________________ From: Kapil Patil (Contractor) &lt;kpatil@bwhittle.com&gt; Sent: Thursday, December 8, 2022 10:29 AM To: quoteautomationbot@outlook.com &lt;quoteautomationbot@outlook.com&gt; Subject: MGM PRINTING ** QUOTE RERQUEST ** Hello, Please provide current pricing for the following: •     Previous Invoice #722134-2109 •     Previous Order #E2108432713000 •     MGM Previous PO #154748 •     Qty: 1000 Thank you, Dena De Leon 817-831-7215 7451 Tower St. Richland Hills, TX 76118"]</InArgument>
-                      </Assign.Value>
-                    </Assign>
+                    <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="436,61" sap2010:WorkflowViewState.IdRef="CommentOut_8">
+                      <ui:CommentOut.Body>
+                        <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="400,192" sap2010:WorkflowViewState.IdRef="Sequence_16">
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                          <Assign sap:VirtualizedContainerService.HintSize="338,70" sap2010:WorkflowViewState.IdRef="Assign_14">
+                            <Assign.To>
+                              <OutArgument x:TypeArguments="x:String">[in_Str_EmailData]</OutArgument>
+                            </Assign.To>
+                            <Assign.Value>
+                              <InArgument x:TypeArguments="x:String">["Subject: "+"________________________________ From: Kapil Patil (Contractor) &lt;kpatil@bwhittle.com&gt; Sent: Thursday, December 8, 2022 10:29 AM To: quoteautomationbot@outlook.com &lt;quoteautomationbot@outlook.com&gt; Subject: MGM PRINTING ** QUOTE RERQUEST ** Hello, Please provide current pricing for the following: •     Previous Invoice #722134-2109 •     Previous Order #E2108432713000 •     MGM Previous PO #154748 •     Qty: 1000 Thank you, Dena De Leon 817-831-7215 7451 Tower St. Richland Hills, TX 76118"]</InArgument>
+                            </Assign.Value>
+                          </Assign>
+                        </Sequence>
+                      </ui:CommentOut.Body>
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                    </ui:CommentOut>
                     <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="436,101" sap2010:WorkflowViewState.IdRef="LogMessage_5" Level="Info" Message="[&quot;Extracting the email data..&quot;]" />
-                    <uma:MLSkills ApiKey="{x:Null}" ContinueOnError="{x:Null}" DelayAfter="{x:Null}" DelayBefore="{x:Null}" Name="{x:Null}" NumberOfRetries="{x:Null}" Result="{x:Null}" SelectedMLSkill="{x:Reference __ReferenceID1}" SkillURL="{x:Null}" StatusCode="{x:Null}" TimeOutMs="{x:Null}" Connection="Robot" DisplayName="MLSkill" ExternApiFileType="JSON" sap:VirtualizedContainerService.HintSize="436,420" sap2010:WorkflowViewState.IdRef="MLSkills_4" Item="[in_Str_EmailData]" JsonResponse="[ExtractorOutput]" NextPageNum="2" RefreshList="False" ResponseHeaders="[headerjson]" TotalCount="2">
+                    <uma:MLSkills ApiKey="{x:Null}" ContinueOnError="{x:Null}" DelayAfter="{x:Null}" DelayBefore="{x:Null}" Name="{x:Null}" NumberOfRetries="{x:Null}" Result="{x:Null}" SkillURL="{x:Null}" StatusCode="{x:Null}" TimeOutMs="{x:Null}" Connection="Robot" DisplayName="MLSkill" ExternApiFileType="JSON" sap:VirtualizedContainerService.HintSize="436,420" sap2010:WorkflowViewState.IdRef="MLSkills_4" Item="[in_Str_EmailData]" JsonResponse="[ExtractorOutput]" NextPageNum="2" RefreshList="False" ResponseHeaders="[headerjson]" TotalCount="2">
                       <uma:MLSkills.MLSkillList>
                         <scg:List x:TypeArguments="um:MLSkill" Capacity="4">
                           <um:MLSkill AccessUri="https://ai-uipath-eus.deskover.com/mlskills/1819e321-faa5-4405-a3c4-ed5f18929e2e/87d62cf7-c77b-45d9-805f-b1d7c3b46577/email-text-classification" AccountId="1819e321-faa5-4405-a3c4-ed5f18929e2e" Description="" Id="522f9db5-380d-4d74-b6aa-390aea72d990" InputDescription="Text that would be classified." InputType="JSON" Name="Email_Text_Classification" OutputDescription="A JSON with predicted class name, associated confidence on that class prediction (between 0-1)." ProjectId="5a09da82-b8fd-476c-84de-a835289804b6" TenantId="87d62cf7-c77b-45d9-805f-b1d7c3b46577" />
-                          <um:MLSkill x:Name="__ReferenceID1" AccessUri="https://ai-uipath-eus.deskover.com/mlskills/1819e321-faa5-4405-a3c4-ed5f18929e2e/87d62cf7-c77b-45d9-805f-b1d7c3b46577/email-text-extraction" AccountId="1819e321-faa5-4405-a3c4-ed5f18929e2e" Description="for extraction and labeling" Id="665014e2-82fb-4ec4-8158-c273ff3c74f8" InputDescription="Text in one of the 100 languages here (https://docs.uipath.com/ai-fabric/v0/docs/aic-cloud-custom-named-entity-recognition#languages) from which entities will be extracted." InputType="JSON" Name="Email_Text_Extraction" OutputDescription="A Json Response with list of named entities in the text. Each element in the list has the following items in the prediction: 1. Text that was recognized; 2. Starting and ending positions of the text, character-wise; 3. Type of the named entity; 4.Confidence." ProjectId="5a09da82-b8fd-476c-84de-a835289804b6" TenantId="87d62cf7-c77b-45d9-805f-b1d7c3b46577" />
+                          <x:Reference>__ReferenceID1</x:Reference>
                         </scg:List>
                       </uma:MLSkills.MLSkillList>
+                      <uma:MLSkills.SelectedMLSkill>
+                        <um:MLSkill x:Name="__ReferenceID1" AccessUri="https://ai-uipath-eus.deskover.com/mlskills/1819e321-faa5-4405-a3c4-ed5f18929e2e/87d62cf7-c77b-45d9-805f-b1d7c3b46577/email-text-extraction" AccountId="1819e321-faa5-4405-a3c4-ed5f18929e2e" Description="for extraction and labeling" Id="665014e2-82fb-4ec4-8158-c273ff3c74f8" InputDescription="Text in one of the 100 languages here (https://docs.uipath.com/ai-fabric/v0/docs/aic-cloud-custom-named-entity-recognition#languages) from which entities will be extracted." InputType="JSON" Name="Email_Text_Extraction" OutputDescription="A Json Response with list of named entities in the text. Each element in the list has the following items in the prediction: 1. Text that was recognized; 2. Starting and ending positions of the text, character-wise; 3. Type of the named entity; 4.Confidence." ProjectId="5a09da82-b8fd-476c-84de-a835289804b6" TenantId="87d62cf7-c77b-45d9-805f-b1d7c3b46577" />
+                      </uma:MLSkills.SelectedMLSkill>
                       <sap:WorkflowViewStateService.ViewState>
                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
                           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -301,12 +344,12 @@
                               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                             </scg:Dictionary>
                           </sap:WorkflowViewStateService.ViewState>
-                          <uma:MLDataLabelling Body="{x:Null}" ContinueOnError="{x:Null}" FileNameInStorage="{x:Null}" FolderName="{x:Null}" OrchExternalTaskData="{x:Null}" ResponseHeaders="{x:Null}" Result="{x:Null}" RuntimeDataLabellingSession="{x:Null}" RuntimeProject="{x:Null}" StatusCode="{x:Null}" DisplayName="Create Labeling Task" FilePath="[ExtractorOutput]" sap:VirtualizedContainerService.HintSize="350,185" sap2010:WorkflowViewState.IdRef="MLDataLabelling_2" RefreshDataLabellingSession="False" RefreshProject="False">
+                          <uma:MLDataLabelling Body="{x:Null}" ContinueOnError="{x:Null}" FileNameInStorage="{x:Null}" FolderName="{x:Null}" OrchExternalTaskData="{x:Null}" ResponseHeaders="{x:Null}" Result="{x:Null}" RuntimeDataLabellingSession="{x:Null}" RuntimeProject="{x:Null}" SelectedDataLabellingSession="{x:Reference __ReferenceID2}" SelectedProject="{x:Reference __ReferenceID3}" StatusCode="{x:Null}" DisplayName="Create Labeling Task" FilePath="[ExtractorOutput]" sap:VirtualizedContainerService.HintSize="350,185" sap2010:WorkflowViewState.IdRef="MLDataLabelling_2" RefreshDataLabellingSession="False" RefreshProject="False">
                             <uma:MLDataLabelling.DataLabellingSession>
                               <um:PageData x:TypeArguments="um:DataLabelling" PageNum="1" PageSize="50" TotalCount="1">
                                 <um:PageData.DataList>
                                   <scg:List x:TypeArguments="um:DataLabelling" Capacity="4">
-                                    <x:Reference>__ReferenceID2</x:Reference>
+                                    <um:DataLabelling x:Name="__ReferenceID2" DatasetId="e378be9e-f8ca-459e-bdbf-475586271dfe" Id="c2edcd9e-9e1f-4f0e-a71b-cd7e94eaecb5" Name="test_labeling" />
                                   </scg:List>
                                 </um:PageData.DataList>
                               </um:PageData>
@@ -316,18 +359,12 @@
                                 <um:PageData.DataList>
                                   <scg:List x:TypeArguments="um:Project" Capacity="4">
                                     <um:Project Id="2716e1b0-7621-4212-9e34-f436fb5c2108" Name="QuoteAutomation" />
-                                    <x:Reference>__ReferenceID3</x:Reference>
+                                    <um:Project x:Name="__ReferenceID3" Id="b412fb29-e0c7-4db2-a763-9a6b87e9e929" Name="QuoteGenerationProcess" />
                                     <um:Project Id="5a09da82-b8fd-476c-84de-a835289804b6" Name="TestEmailClassifier" />
                                   </scg:List>
                                 </um:PageData.DataList>
                               </um:PageData>
                             </uma:MLDataLabelling.Projects>
-                            <uma:MLDataLabelling.SelectedDataLabellingSession>
-                              <um:DataLabelling x:Name="__ReferenceID2" DatasetId="e378be9e-f8ca-459e-bdbf-475586271dfe" Id="c2edcd9e-9e1f-4f0e-a71b-cd7e94eaecb5" Name="test_labeling" />
-                            </uma:MLDataLabelling.SelectedDataLabellingSession>
-                            <uma:MLDataLabelling.SelectedProject>
-                              <um:Project x:Name="__ReferenceID3" Id="b412fb29-e0c7-4db2-a763-9a6b87e9e929" Name="QuoteGenerationProcess" />
-                            </uma:MLDataLabelling.SelectedProject>
                           </uma:MLDataLabelling>
                         </Sequence>
                       </ui:CommentOut.Body>
@@ -359,7 +396,7 @@
                       </sap:WorkflowViewStateService.ViewState>
                     </ui:CommentOut>
                     <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="436,101" sap2010:WorkflowViewState.IdRef="LogMessage_6" Message="[Jarray]" />
-                    <ui:BuildDataTable DataTable="[out_dt_MLoutput]" DisplayName="Build Data Table" sap:VirtualizedContainerService.HintSize="436,69" sap2010:WorkflowViewState.IdRef="BuildDataTable_2" TableInfo="&lt;NewDataSet&gt;&#xD;&#xA;  &lt;xs:schema id=&quot;NewDataSet&quot; xmlns=&quot;&quot; xmlns:xs=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:msdata=&quot;urn:schemas-microsoft-com:xml-msdata&quot;&gt;&#xD;&#xA;    &lt;xs:element name=&quot;NewDataSet&quot; msdata:IsDataSet=&quot;true&quot; msdata:MainDataTable=&quot;TableName&quot; msdata:UseCurrentLocale=&quot;true&quot;&gt;&#xD;&#xA;      &lt;xs:complexType&gt;&#xD;&#xA;        &lt;xs:choice minOccurs=&quot;0&quot; maxOccurs=&quot;unbounded&quot;&gt;&#xD;&#xA;          &lt;xs:element name=&quot;TableName&quot;&gt;&#xD;&#xA;            &lt;xs:complexType&gt;&#xD;&#xA;              &lt;xs:sequence&gt;&#xD;&#xA;                &lt;xs:element name=&quot;entity&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xD;&#xA;                &lt;xs:element name=&quot;value&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xD;&#xA;                &lt;xs:element name=&quot;confidence&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xD;&#xA;              &lt;/xs:sequence&gt;&#xD;&#xA;            &lt;/xs:complexType&gt;&#xD;&#xA;          &lt;/xs:element&gt;&#xD;&#xA;        &lt;/xs:choice&gt;&#xD;&#xA;      &lt;/xs:complexType&gt;&#xD;&#xA;    &lt;/xs:element&gt;&#xD;&#xA;  &lt;/xs:schema&gt;&#xD;&#xA;&lt;/NewDataSet&gt;" />
+                    <ui:BuildDataTable DataTable="[out_dt_MLoutput]" DisplayName="Build Data Table" sap:VirtualizedContainerService.HintSize="436,69" sap2010:WorkflowViewState.IdRef="BuildDataTable_2" TableInfo="&lt;NewDataSet&gt;&#xA;  &lt;xs:schema id=&quot;NewDataSet&quot; xmlns=&quot;&quot; xmlns:xs=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:msdata=&quot;urn:schemas-microsoft-com:xml-msdata&quot;&gt;&#xA;    &lt;xs:element name=&quot;NewDataSet&quot; msdata:IsDataSet=&quot;true&quot; msdata:MainDataTable=&quot;TableName&quot; msdata:UseCurrentLocale=&quot;true&quot;&gt;&#xA;      &lt;xs:complexType&gt;&#xA;        &lt;xs:choice minOccurs=&quot;0&quot; maxOccurs=&quot;unbounded&quot;&gt;&#xA;          &lt;xs:element name=&quot;TableName&quot;&gt;&#xA;            &lt;xs:complexType&gt;&#xA;              &lt;xs:sequence&gt;&#xA;                &lt;xs:element name=&quot;entity&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;value&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;confidence&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;              &lt;/xs:sequence&gt;&#xA;            &lt;/xs:complexType&gt;&#xA;          &lt;/xs:element&gt;&#xA;        &lt;/xs:choice&gt;&#xA;      &lt;/xs:complexType&gt;&#xA;    &lt;/xs:element&gt;&#xA;  &lt;/xs:schema&gt;&#xA;&lt;/NewDataSet&gt;" />
                     <ui:ForEach x:TypeArguments="njl:JToken" CurrentIndex="{x:Null}" DisplayName="For Each" sap:VirtualizedContainerService.HintSize="436,451" sap2010:WorkflowViewState.IdRef="ForEach`1_4" Values="[Jarray]">
                       <ui:ForEach.Body>
                         <ActivityAction x:TypeArguments="njl:JToken">
