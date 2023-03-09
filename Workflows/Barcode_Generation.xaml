@@ -100,6 +100,8 @@
       <AssemblyReference>Microsoft.Win32.Primitives</AssemblyReference>
       <AssemblyReference>UiPath.Database</AssemblyReference>
       <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.Workflow</AssemblyReference>
+      <AssemblyReference>System.Data.SqlClient</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
   <Sequence DisplayName="Barcode_Generation" sap:VirtualizedContainerService.HintSize="947,1087" sap2010:WorkflowViewState.IdRef="Sequence_1">
@@ -145,19 +147,16 @@
         </sap:WorkflowViewStateService.ViewState>
         <ui:ExecuteQuery ContinueOnError="{x:Null}" TimeoutMS="{x:Null}" CommandType="StoredProcedure" DataTable="[findEmailBarcode_DT]" DisplayName="Run query_Find_Email_Barcode" ExistingDbConnection="[sybConStatus]" sap:VirtualizedContainerService.HintSize="200,61" sap2010:WorkflowViewState.IdRef="ExecuteQuery_1" Sql="[in_Config(&quot;FindEmailBarcode&quot;).ToString]">
           <ui:ExecuteQuery.Parameters>
-            <InArgument x:TypeArguments="x:String" x:Key="@aEmailDate">
-              <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_EmailDate" />
-            </InArgument>
-            <InArgument x:TypeArguments="x:String" x:Key="@aEmailFrom">
-              <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_EmailFrom" />
-            </InArgument>
-            <InArgument x:TypeArguments="x:String" x:Key="@aEmailSubject">
-              <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_EmailSubject" />
-            </InArgument>
+            <InArgument x:TypeArguments="x:String" x:Key="@aEmailDate">[in_EmailDate]</InArgument>
+            <InArgument x:TypeArguments="x:String" x:Key="@aEmailFrom">[in_EmailFrom]</InArgument>
+            <InArgument x:TypeArguments="x:String" x:Key="@aEmailSubject">[in_EmailSubject]</InArgument>
           </ui:ExecuteQuery.Parameters>
         </ui:ExecuteQuery>
         <FlowStep.Next>
-          <FlowDecision x:Name="__ReferenceID2" Condition="[findEmailBarcode_DT.RowCount=1]" DisplayName="BarcodeRow Found?" sap:VirtualizedContainerService.HintSize="114,87" sap2010:WorkflowViewState.IdRef="FlowDecision_2">
+          <FlowDecision x:Name="__ReferenceID2" DisplayName="BarcodeRow Found?" sap:VirtualizedContainerService.HintSize="114,87" sap2010:WorkflowViewState.IdRef="FlowDecision_2">
+            <FlowDecision.Condition>
+              <VisualBasicValue x:TypeArguments="x:Boolean" ExpressionText="findEmailBarcode_DT.RowCount=1" />
+            </FlowDecision.Condition>
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -194,10 +193,10 @@
                     <sap:WorkflowViewStateService.ViewState>
                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
                         <av:Point x:Key="ShapeLocation">120,621</av:Point>
-                        <av:Size x:Key="ShapeSize">200,25</av:Size>
+                        <av:Size x:Key="ShapeSize">200,32</av:Size>
                       </scg:Dictionary>
                     </sap:WorkflowViewStateService.ViewState>
-                    <ui:DatabaseDisconnect DatabaseConnection="[sybConStatus]" DisplayName="Disconnect from database" sap:VirtualizedContainerService.HintSize="200,25" sap2010:WorkflowViewState.IdRef="DatabaseDisconnect_1">
+                    <ui:DatabaseDisconnect DatabaseConnection="[sybConStatus]" DisplayName="Disconnect from database" sap:VirtualizedContainerService.HintSize="200,32" sap2010:WorkflowViewState.IdRef="DatabaseDisconnect_1">
                       <sap:WorkflowViewStateService.ViewState>
                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
                           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -228,7 +227,10 @@
           </FlowDecision>
         </FlowStep.Next>
       </FlowStep>
-      <FlowDecision x:Name="__ReferenceID6" Condition="[sybConStatus.State.ToString.ToLower.Equals(&quot;open&quot;)]" DisplayName="Connection Open?" sap:VirtualizedContainerService.HintSize="105,87" sap2010:WorkflowViewState.IdRef="FlowDecision_1" True="{x:Reference __ReferenceID0}">
+      <FlowDecision x:Name="__ReferenceID6" DisplayName="Connection Open?" sap:VirtualizedContainerService.HintSize="105,87" sap2010:WorkflowViewState.IdRef="FlowDecision_1">
+        <FlowDecision.Condition>
+          <VisualBasicValue x:TypeArguments="x:Boolean" ExpressionText="sybConStatus.State.ToString.ToLower.Equals(&quot;open&quot;)" />
+        </FlowDecision.Condition>
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -238,6 +240,9 @@
             <av:PointCollection x:Key="FalseConnector">442.5,160 472.5,160 472.5,164.5 550,164.5</av:PointCollection>
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
+        <FlowDecision.True>
+          <x:Reference>__ReferenceID0</x:Reference>
+        </FlowDecision.True>
         <FlowDecision.False>
           <FlowStep x:Name="__ReferenceID1">
             <sap:WorkflowViewStateService.ViewState>
