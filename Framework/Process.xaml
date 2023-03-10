@@ -8,7 +8,7 @@
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>627,1530</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1054,1479</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ProcessTransaction_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="44">
@@ -128,7 +128,7 @@
       <AssemblyReference>System.Memory.Data</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="Invoke major steps of the business process, which are usually implemented by multiple subworkflows.&#xA;&#xA;If a BusinessRuleException is thrown, the transaction is skipped. &#xA;If another kind of exception occurs, the current transaction can be retried. " DisplayName="Process" sap:VirtualizedContainerService.HintSize="478,1465" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="Invoke major steps of the business process, which are usually implemented by multiple subworkflows.&#xA;&#xA;If a BusinessRuleException is thrown, the transaction is skipped. &#xA;If another kind of exception occurs, the current transaction can be retried. " DisplayName="Process" sap:VirtualizedContainerService.HintSize="496,1414" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="Barcode" />
       <Variable x:TypeArguments="x:String" Name="MaxNoteCount" />
@@ -153,8 +153,8 @@
         <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:LogMessage DisplayName="Log Message Process Start" sap:VirtualizedContainerService.HintSize="416,101" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Started Process&quot;]" />
-    <Sequence DisplayName="EmailText_Generator" sap:VirtualizedContainerService.HintSize="416,90" sap2010:WorkflowViewState.IdRef="Sequence_2">
+    <ui:LogMessage DisplayName="Log Message Process Start" sap:VirtualizedContainerService.HintSize="434,92" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Started Process&quot;]" />
+    <Sequence DisplayName="EmailText_Generator" sap:VirtualizedContainerService.HintSize="434,81" sap2010:WorkflowViewState.IdRef="Sequence_2">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -203,7 +203,7 @@
         </Assign.Value>
       </Assign>
     </Sequence>
-    <Sequence DisplayName="BarCodeNumber_Generation" sap:VirtualizedContainerService.HintSize="416,244" sap2010:WorkflowViewState.IdRef="Sequence_3">
+    <Sequence DisplayName="BarCodeNumber_Generation" sap:VirtualizedContainerService.HintSize="434,224" sap2010:WorkflowViewState.IdRef="Sequence_3">
       <Sequence.Variables>
         <Variable x:TypeArguments="x:String" Name="BarcodeNumber" />
       </Sequence.Variables>
@@ -212,7 +212,7 @@
           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
-      <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Workflows\Barcode_Generation.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="338,122" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_3" UnSafe="False" WorkflowFileName="Workflows\Barcode_Generation.xaml">
+      <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Workflows\Barcode_Generation.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="364,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_3" UnSafe="False" WorkflowFileName="Workflows\Barcode_Generation.xaml">
         <ui:InvokeWorkflowFile.Arguments>
           <OutArgument x:TypeArguments="x:String" x:Key="out_BarcodeNumber">[BarcodeNumber]</OutArgument>
           <InArgument x:TypeArguments="ui:QueueItem" x:Key="in_TransactionItem">[in_TransactionItem]</InArgument>
@@ -224,8 +224,8 @@
         </ui:InvokeWorkflowFile.Arguments>
       </ui:InvokeWorkflowFile>
     </Sequence>
-    <ui:Comment DisplayName="Comment (placeholder)" sap:VirtualizedContainerService.HintSize="416,65" sap2010:WorkflowViewState.IdRef="Comment_1" Text="//  Invoke steps of the process" />
-    <Assign sap:VirtualizedContainerService.HintSize="416,70" sap2010:WorkflowViewState.IdRef="Assign_6">
+    <ui:Comment DisplayName="Comment (placeholder)" sap:VirtualizedContainerService.HintSize="434,56" sap2010:WorkflowViewState.IdRef="Comment_1" Text="//  Invoke steps of the process" />
+    <Assign sap:VirtualizedContainerService.HintSize="434,82" sap2010:WorkflowViewState.IdRef="Assign_6">
       <Assign.To>
         <OutArgument x:TypeArguments="x:String">[Barcode]</OutArgument>
       </Assign.To>
@@ -233,9 +233,9 @@
         <InArgument x:TypeArguments="x:String">65655</InArgument>
       </Assign.Value>
     </Assign>
-    <If Condition="[Not(String.IsNullOrEmpty(Barcode))]" sap:VirtualizedContainerService.HintSize="416,385" sap2010:WorkflowViewState.IdRef="If_1">
+    <If Condition="[Not(String.IsNullOrEmpty(Barcode))]" sap:VirtualizedContainerService.HintSize="434,389" sap2010:WorkflowViewState.IdRef="If_1">
       <If.Then>
-        <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Workflows\ReQuote_Process.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="334,122" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" UnSafe="False" WorkflowFileName="Workflows\ReQuote_Process.xaml">
+        <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Workflows\ReQuote_Process.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="349,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" UnSafe="False" WorkflowFileName="Workflows\ReQuote_Process.xaml">
           <ui:InvokeWorkflowFile.Arguments>
             <InArgument x:TypeArguments="ui:QueueItem" x:Key="in_TransactionItem">
               <VisualBasicValue x:TypeArguments="ui:QueueItem" ExpressionText="in_TransactionItem" />
@@ -268,21 +268,24 @@
         </ui:InvokeWorkflowFile>
       </If.Then>
     </If>
-    <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="416,61" sap2010:WorkflowViewState.IdRef="CommentOut_1">
+    <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="434,52" sap2010:WorkflowViewState.IdRef="CommentOut_1">
       <ui:CommentOut.Body>
-        <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="412,183" sap2010:WorkflowViewState.IdRef="Sequence_4">
+        <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="412,172" sap2010:WorkflowViewState.IdRef="Sequence_4">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <uma:MLSkills ApiKey="{x:Null}" ContinueOnError="{x:Null}" DelayAfter="{x:Null}" DelayBefore="{x:Null}" Name="{x:Null}" NumberOfRetries="{x:Null}" ResponseHeaders="{x:Null}" Result="{x:Null}" SelectedMLSkill="{x:Reference __ReferenceID0}" SkillURL="{x:Null}" StatusCode="{x:Null}" TimeOutMs="{x:Null}" Connection="Robot" DisplayName="MLSkill" ExternApiFileType="JSON" sap:VirtualizedContainerService.HintSize="350,61" sap2010:WorkflowViewState.IdRef="MLSkills_1" Item="[Input_Text]" JsonResponse="[ClassifierOutput]" NextPageNum="2" RefreshList="False" TotalCount="2">
+          <uma:MLSkills ApiKey="{x:Null}" ContinueOnError="{x:Null}" DelayAfter="{x:Null}" DelayBefore="{x:Null}" Name="{x:Null}" NumberOfRetries="{x:Null}" ResponseHeaders="{x:Null}" Result="{x:Null}" SkillURL="{x:Null}" StatusCode="{x:Null}" TimeOutMs="{x:Null}" Connection="Robot" DisplayName="MLSkill" ExternApiFileType="JSON" sap:VirtualizedContainerService.HintSize="350,61" sap2010:WorkflowViewState.IdRef="MLSkills_1" Item="[Input_Text]" JsonResponse="[ClassifierOutput]" NextPageNum="2" RefreshList="False" TotalCount="2">
             <uma:MLSkills.MLSkillList>
               <scg:List x:TypeArguments="um:MLSkill" Capacity="4">
-                <um:MLSkill x:Name="__ReferenceID0" AccessUri="https://ai-uipath-eus.deskover.com/mlskills/1819e321-faa5-4405-a3c4-ed5f18929e2e/87d62cf7-c77b-45d9-805f-b1d7c3b46577/email-text-classification" AccountId="1819e321-faa5-4405-a3c4-ed5f18929e2e" Description="" Id="522f9db5-380d-4d74-b6aa-390aea72d990" InputDescription="Text that would be classified." InputType="JSON" Name="Email_Text_Classification" OutputDescription="A JSON with predicted class name, associated confidence on that class prediction (between 0-1)." ProjectId="5a09da82-b8fd-476c-84de-a835289804b6" TenantId="87d62cf7-c77b-45d9-805f-b1d7c3b46577" />
+                <x:Reference>__ReferenceID0</x:Reference>
                 <um:MLSkill AccessUri="https://ai-uipath-eus.deskover.com/mlskills/1819e321-faa5-4405-a3c4-ed5f18929e2e/87d62cf7-c77b-45d9-805f-b1d7c3b46577/email-text-extraction" AccountId="1819e321-faa5-4405-a3c4-ed5f18929e2e" Description="for extraction and labeling" Id="665014e2-82fb-4ec4-8158-c273ff3c74f8" InputDescription="Text in one of the 100 languages here (https://docs.uipath.com/ai-fabric/v0/docs/aic-cloud-custom-named-entity-recognition#languages) from which entities will be extracted." InputType="JSON" Name="Email_Text_Extraction" OutputDescription="A Json Response with list of named entities in the text. Each element in the list has the following items in the prediction: 1. Text that was recognized; 2. Starting and ending positions of the text, character-wise; 3. Type of the named entity; 4.Confidence." ProjectId="5a09da82-b8fd-476c-84de-a835289804b6" TenantId="87d62cf7-c77b-45d9-805f-b1d7c3b46577" />
               </scg:List>
             </uma:MLSkills.MLSkillList>
+            <uma:MLSkills.SelectedMLSkill>
+              <um:MLSkill x:Name="__ReferenceID0" AccessUri="https://ai-uipath-eus.deskover.com/mlskills/1819e321-faa5-4405-a3c4-ed5f18929e2e/87d62cf7-c77b-45d9-805f-b1d7c3b46577/email-text-classification" AccountId="1819e321-faa5-4405-a3c4-ed5f18929e2e" Description="" Id="522f9db5-380d-4d74-b6aa-390aea72d990" InputDescription="Text that would be classified." InputType="JSON" Name="Email_Text_Classification" OutputDescription="A JSON with predicted class name, associated confidence on that class prediction (between 0-1)." ProjectId="5a09da82-b8fd-476c-84de-a835289804b6" TenantId="87d62cf7-c77b-45d9-805f-b1d7c3b46577" />
+            </uma:MLSkills.SelectedMLSkill>
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">False</x:Boolean>
