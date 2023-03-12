@@ -14,7 +14,7 @@
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>952,1574</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>806,1592</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>Extracting_PreviousBarcode_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="28">
@@ -94,7 +94,7 @@
       <AssemblyReference>System.Runtime.Serialization.Primitives</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Flowchart DisplayName="Extracting_PreviousBarcode" sap:VirtualizedContainerService.HintSize="809,1509" sap2010:WorkflowViewState.IdRef="Flowchart_1">
+  <Flowchart DisplayName="Extracting_PreviousBarcode" sap:VirtualizedContainerService.HintSize="809,1527" sap2010:WorkflowViewState.IdRef="Flowchart_1">
     <Flowchart.Variables>
       <Variable x:TypeArguments="x:Int32" Name="int_FlowType" />
     </Flowchart.Variables>
@@ -104,7 +104,7 @@
         <av:Point x:Key="ShapeLocation">150,2.5</av:Point>
         <av:Size x:Key="ShapeSize">60,75</av:Size>
         <av:PointCollection x:Key="ConnectorLocation">180,77.5 180,134</av:PointCollection>
-        <x:Double x:Key="Height">1472</x:Double>
+        <x:Double x:Key="Height">1481</x:Double>
         <x:Double x:Key="Width">775</x:Double>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
@@ -115,36 +115,20 @@
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <av:Point x:Key="ShapeLocation">420,415.5</av:Point>
-          <av:Size x:Key="ShapeSize">200,109</av:Size>
-          <av:PointCollection x:Key="ConnectorLocation">520,524.5 520,566.5</av:PointCollection>
+          <av:Size x:Key="ShapeSize">200,118</av:Size>
+          <av:PointCollection x:Key="ConnectorLocation">520,533.5 520,566.5</av:PointCollection>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
-      <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="Data Extraction using PO number&#xA;" DisplayName="Workflows\ExtractData_UsingPOnumber.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="200,109" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="Workflows\ExtractData_UsingPOnumber.xaml">
+      <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="Data Extraction using PO number&#xA;" DisplayName="Workflows\ExtractData_UsingPOnumber.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="200,118" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="Workflows\ExtractData_UsingPOnumber.xaml">
         <ui:InvokeWorkflowFile.Arguments>
-          <InArgument x:TypeArguments="x:String" x:Key="in_POnumber">
-            <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_str_POnumber" />
-          </InArgument>
-          <InArgument x:TypeArguments="sd:DataTable" x:Key="in_dt_MandatoryFields">
-            <VisualBasicValue x:TypeArguments="sd:DataTable" ExpressionText="in_dt_MandatoryFields" />
-          </InArgument>
-          <InArgument x:TypeArguments="sd:DataTable" x:Key="in_dt_MLextractedData">
-            <VisualBasicValue x:TypeArguments="sd:DataTable" ExpressionText="in_dt_MLextractedData" />
-          </InArgument>
-          <InArgument x:TypeArguments="ui:QueueItem" x:Key="in_TransactionItem">
-            <VisualBasicValue x:TypeArguments="ui:QueueItem" ExpressionText="in_TransactionItem" />
-          </InArgument>
-          <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">
-            <VisualBasicValue x:TypeArguments="scg:Dictionary(x:String, x:Object)" ExpressionText="in_Config" />
-          </InArgument>
-          <InOutArgument x:TypeArguments="sd:DataTable" x:Key="out_dt_CustomerInfo">
-            <VisualBasicReference x:TypeArguments="sd:DataTable" ExpressionText="out_dt_CustomerInfo" />
-          </InOutArgument>
-          <InArgument x:TypeArguments="x:String" x:Key="in_barcode">
-            <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_barcode" />
-          </InArgument>
-          <OutArgument x:TypeArguments="x:String" x:Key="out_PreviousBarcode">
-            <VisualBasicReference x:TypeArguments="x:String" ExpressionText="io_str_PreviousBarcode" />
-          </OutArgument>
+          <InArgument x:TypeArguments="x:String" x:Key="in_POnumber">[in_str_POnumber]</InArgument>
+          <InArgument x:TypeArguments="sd:DataTable" x:Key="in_dt_MandatoryFields">[in_dt_MandatoryFields]</InArgument>
+          <InArgument x:TypeArguments="sd:DataTable" x:Key="in_dt_MLextractedData">[in_dt_MLextractedData]</InArgument>
+          <InArgument x:TypeArguments="ui:QueueItem" x:Key="in_TransactionItem">[in_TransactionItem]</InArgument>
+          <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[in_Config]</InArgument>
+          <InOutArgument x:TypeArguments="sd:DataTable" x:Key="out_dt_CustomerInfo">[out_dt_CustomerInfo]</InOutArgument>
+          <InArgument x:TypeArguments="x:String" x:Key="in_barcode">[in_barcode]</InArgument>
+          <OutArgument x:TypeArguments="x:String" x:Key="out_PreviousBarcode">[io_str_PreviousBarcode]</OutArgument>
         </ui:InvokeWorkflowFile.Arguments>
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -156,7 +140,7 @@
       <FlowStep.Next>
         <FlowDecision x:Name="__ReferenceID1" DisplayName="Not Extracted previousbarcode?" sap:VirtualizedContainerService.HintSize="160,87" sap2010:WorkflowViewState.IdRef="FlowDecision_2">
           <FlowDecision.Condition>
-            <VisualBasicValue x:TypeArguments="x:Boolean" ExpressionText="Not(String.IsNullOrEmpty(io_str_PreviousBarcode))" />
+            <VisualBasicValue x:TypeArguments="x:Boolean" ExpressionText="(String.IsNullOrEmpty(io_str_PreviousBarcode))" />
           </FlowDecision.Condition>
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -172,11 +156,11 @@
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <av:Point x:Key="ShapeLocation">310,703</av:Point>
-                  <av:Size x:Key="ShapeSize">200,94</av:Size>
-                  <av:PointCollection x:Key="ConnectorLocation">410,797 410,826.5</av:PointCollection>
+                  <av:Size x:Key="ShapeSize">200,103</av:Size>
+                  <av:PointCollection x:Key="ConnectorLocation">410,806 409.5,806 409.5,826.5</av:PointCollection>
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
-              <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="Data Extraction Using Invoice number" DisplayName="Workflows\ExtractData_UsingInvoiceNumber.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="200,94" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" UnSafe="False" WorkflowFileName="Workflows\ExtractData_UsingInvoiceNumber.xaml">
+              <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="Data Extraction Using Invoice number" DisplayName="Workflows\ExtractData_UsingInvoiceNumber.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="200,103" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" UnSafe="False" WorkflowFileName="Workflows\ExtractData_UsingInvoiceNumber.xaml">
                 <ui:InvokeWorkflowFile.Arguments>
                   <InArgument x:TypeArguments="x:String" x:Key="in_str_InvoiceNumber">[in_str_InvoiceNumber]</InArgument>
                   <InArgument x:TypeArguments="sd:DataTable" x:Key="in_dt_MandatoryFields">[in_dt_MandatoryFields]</InArgument>
@@ -198,7 +182,7 @@
               <FlowStep.Next>
                 <FlowDecision x:Name="__ReferenceID3" DisplayName="Not Extracted previousbarcode?" sap:VirtualizedContainerService.HintSize="160,87" sap2010:WorkflowViewState.IdRef="FlowDecision_3">
                   <FlowDecision.Condition>
-                    <VisualBasicValue x:TypeArguments="x:Boolean" ExpressionText="Not(String.IsNullOrEmpty(io_str_PreviousBarcode))" />
+                    <VisualBasicValue x:TypeArguments="x:Boolean" ExpressionText="(String.IsNullOrEmpty(io_str_PreviousBarcode))" />
                   </FlowDecision.Condition>
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -206,7 +190,7 @@
                       <av:Point x:Key="ShapeLocation">330,826.5</av:Point>
                       <av:Size x:Key="ShapeSize">160,87</av:Size>
                       <av:PointCollection x:Key="TrueConnector">330,870 260,870 260,953</av:PointCollection>
-                      <av:PointCollection x:Key="FalseConnector">490,870 670,870 670,1204</av:PointCollection>
+                      <av:PointCollection x:Key="FalseConnector">489,870 670,870 670,1204</av:PointCollection>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
                   <FlowDecision.True>
@@ -214,13 +198,39 @@
                       <sap:WorkflowViewStateService.ViewState>
                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
                           <av:Point x:Key="ShapeLocation">160,953</av:Point>
-                          <av:Size x:Key="ShapeSize">200,94</av:Size>
-                          <av:PointCollection x:Key="ConnectorLocation">260,1047 260,1076.5</av:PointCollection>
+                          <av:Size x:Key="ShapeSize">200,103</av:Size>
+                          <av:PointCollection x:Key="ConnectorLocation">260,1056 259.5,1056 259.5,1076.5</av:PointCollection>
                         </scg:Dictionary>
                       </sap:WorkflowViewStateService.ViewState>
-                      <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="Data Extraction Using Quote Number" DisplayName="Workflows\ExtractData_UsingQuoteNumber.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="200,94" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_3" UnSafe="False" WorkflowFileName="Workflows\ExtractData_UsingQuoteNumber.xaml">
+                      <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="Data Extraction Using Quote Number" DisplayName="Workflows\ExtractData_UsingQuoteNumber.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="374,153" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_3" UnSafe="False" WorkflowFileName="Workflows\ExtractData_UsingQuoteNumber.xaml">
                         <ui:InvokeWorkflowFile.Arguments>
-                          <scg:Dictionary x:TypeArguments="x:String, Argument" />
+                          <InArgument x:TypeArguments="sd:DataTable" x:Key="in_dt_MandatoryFields">
+                            <VisualBasicValue x:TypeArguments="sd:DataTable" ExpressionText="in_dt_MandatoryFields" />
+                          </InArgument>
+                          <InArgument x:TypeArguments="x:String" x:Key="in_str_InvoiceNumber">
+                            <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_str_InvoiceNumber" />
+                          </InArgument>
+                          <InArgument x:TypeArguments="sd:DataTable" x:Key="in_dt_MLextractedData">
+                            <VisualBasicValue x:TypeArguments="sd:DataTable" ExpressionText="in_dt_MLextractedData" />
+                          </InArgument>
+                          <InArgument x:TypeArguments="x:String" x:Key="in_str_QuoteNumber">
+                            <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_str_QuoteNumber" />
+                          </InArgument>
+                          <InArgument x:TypeArguments="x:String" x:Key="in_str_POnumber">
+                            <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_str_POnumber" />
+                          </InArgument>
+                          <InOutArgument x:TypeArguments="x:String" x:Key="io_str_PreviousBarcode">
+                            <VisualBasicReference x:TypeArguments="x:String" ExpressionText="io_str_PreviousBarcode" />
+                          </InOutArgument>
+                          <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">
+                            <VisualBasicValue x:TypeArguments="scg:Dictionary(x:String, x:Object)" ExpressionText="in_Config" />
+                          </InArgument>
+                          <InArgument x:TypeArguments="ui:QueueItem" x:Key="in_TransactionItem">
+                            <VisualBasicValue x:TypeArguments="ui:QueueItem" ExpressionText="in_TransactionItem" />
+                          </InArgument>
+                          <InArgument x:TypeArguments="x:String" x:Key="in_barcode">
+                            <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_barcode" />
+                          </InArgument>
                         </ui:InvokeWorkflowFile.Arguments>
                         <sap:WorkflowViewStateService.ViewState>
                           <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -232,7 +242,7 @@
                       <FlowStep.Next>
                         <FlowDecision x:Name="__ReferenceID5" DisplayName="Not Extracted previousbarcode?" sap:VirtualizedContainerService.HintSize="160,87" sap2010:WorkflowViewState.IdRef="FlowDecision_4">
                           <FlowDecision.Condition>
-                            <VisualBasicValue x:TypeArguments="x:Boolean" ExpressionText="Not(String.IsNullOrEmpty(io_str_PreviousBarcode))" />
+                            <VisualBasicValue x:TypeArguments="x:Boolean" ExpressionText="(String.IsNullOrEmpty(io_str_PreviousBarcode))" />
                           </FlowDecision.Condition>
                           <sap:WorkflowViewStateService.ViewState>
                             <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -240,7 +250,7 @@
                               <av:Point x:Key="ShapeLocation">180,1076.5</av:Point>
                               <av:Size x:Key="ShapeSize">160,87</av:Size>
                               <av:PointCollection x:Key="TrueConnector">180,1120 100,1120 100,1194</av:PointCollection>
-                              <av:PointCollection x:Key="FalseConnector">340,1120 670,1120 670,1204</av:PointCollection>
+                              <av:PointCollection x:Key="FalseConnector">339,1120 670,1120 670,1204</av:PointCollection>
                             </scg:Dictionary>
                           </sap:WorkflowViewStateService.ViewState>
                           <FlowDecision.True>
@@ -248,11 +258,11 @@
                               <sap:WorkflowViewStateService.ViewState>
                                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                   <av:Point x:Key="ShapeLocation">0,1194</av:Point>
-                                  <av:Size x:Key="ShapeSize">200,52</av:Size>
-                                  <av:PointCollection x:Key="ConnectorLocation">100,1246 100,1274</av:PointCollection>
+                                  <av:Size x:Key="ShapeSize">200,61</av:Size>
+                                  <av:PointCollection x:Key="ConnectorLocation">100,1255 100,1274</av:PointCollection>
                                 </scg:Dictionary>
                               </sap:WorkflowViewStateService.ViewState>
-                              <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="200,52" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[&quot;Failed to extract Previous Barcode number using PO Number,Invoice Number and Quote Number..&quot;]">
+                              <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="200,61" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[&quot;Failed to extract Previous Barcode number using PO Number,Invoice Number and Quote Number..&quot;]">
                                 <sap:WorkflowViewStateService.ViewState>
                                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -264,11 +274,11 @@
                                   <sap:WorkflowViewStateService.ViewState>
                                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                       <av:Point x:Key="ShapeLocation">0,1274</av:Point>
-                                      <av:Size x:Key="ShapeSize">200,52</av:Size>
-                                      <av:PointCollection x:Key="ConnectorLocation">100,1326 100,1348</av:PointCollection>
+                                      <av:Size x:Key="ShapeSize">200,61</av:Size>
+                                      <av:PointCollection x:Key="ConnectorLocation">100,1335 100,1348</av:PointCollection>
                                     </scg:Dictionary>
                                   </sap:WorkflowViewStateService.ViewState>
-                                  <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Workflows\SSP_StoreNote.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="200,52" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_4" UnSafe="False" WorkflowFileName="Workflows\SSP_StoreNote.xaml">
+                                  <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Workflows\SSP_StoreNote.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="200,61" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_4" UnSafe="False" WorkflowFileName="Workflows\SSP_StoreNote.xaml">
                                     <ui:InvokeWorkflowFile.Arguments>
                                       <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[in_Config]</InArgument>
                                       <InArgument x:TypeArguments="x:String" x:Key="in_barcode">[in_barcode]</InArgument>
@@ -290,10 +300,10 @@
                                       <sap:WorkflowViewStateService.ViewState>
                                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                           <av:Point x:Key="ShapeLocation">0,1348</av:Point>
-                                          <av:Size x:Key="ShapeSize">200,124</av:Size>
+                                          <av:Size x:Key="ShapeSize">200,133</av:Size>
                                         </scg:Dictionary>
                                       </sap:WorkflowViewStateService.ViewState>
-                                      <Throw sap2010:Annotation.AnnotationText="Failed to extract previous barcode using PO Number, Invoice Number and Quote Number" DisplayName="Throw-BusinessExceeption" Exception="[New BusinessRuleException(&quot;Failed to extract previous barcode using PO Number, Invoice Number and Quote Number&quot;)]" sap:VirtualizedContainerService.HintSize="200,124" sap2010:WorkflowViewState.IdRef="Throw_1">
+                                      <Throw sap2010:Annotation.AnnotationText="Failed to extract previous barcode using PO Number, Invoice Number and Quote Number" DisplayName="Throw-BusinessExceeption" Exception="[New BusinessRuleException(&quot;Failed to extract previous barcode using PO Number, Invoice Number and Quote Number&quot;)]" sap:VirtualizedContainerService.HintSize="200,133" sap2010:WorkflowViewState.IdRef="Throw_1">
                                         <sap:WorkflowViewStateService.ViewState>
                                           <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -312,10 +322,10 @@
                               <sap:WorkflowViewStateService.ViewState>
                                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                   <av:Point x:Key="ShapeLocation">570,1204</av:Point>
-                                  <av:Size x:Key="ShapeSize">200,52</av:Size>
+                                  <av:Size x:Key="ShapeSize">200,61</av:Size>
                                 </scg:Dictionary>
                               </sap:WorkflowViewStateService.ViewState>
-                              <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="200,52" sap2010:WorkflowViewState.IdRef="LogMessage_1" Message="[&quot;Extracted Previous Barcode Number : &quot;+io_str_PreviousBarcode]">
+                              <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="200,61" sap2010:WorkflowViewState.IdRef="LogMessage_1" Message="[&quot;Extracted Previous Barcode Number : &quot;+io_str_PreviousBarcode]">
                                 <sap:WorkflowViewStateService.ViewState>
                                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -371,18 +381,18 @@
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <av:Point x:Key="ShapeLocation">80,134</av:Point>
-          <av:Size x:Key="ShapeSize">200,52</av:Size>
-          <av:PointCollection x:Key="ConnectorLocation">180,186 180,216.50000000000003</av:PointCollection>
+          <av:Size x:Key="ShapeSize">200,61</av:Size>
+          <av:PointCollection x:Key="ConnectorLocation">180,195 180,216.50000000000003</av:PointCollection>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
-      <If Condition="[Not(String.IsNullOrEmpty(in_str_POnumber))]" DisplayName="If-Deciding the Flow" sap:VirtualizedContainerService.HintSize="200,52" sap2010:WorkflowViewState.IdRef="If_1">
+      <If Condition="[Not(String.IsNullOrEmpty(in_str_POnumber))]" DisplayName="If-Deciding the Flow" sap:VirtualizedContainerService.HintSize="200,61" sap2010:WorkflowViewState.IdRef="If_1">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
         <If.Then>
-          <Assign sap:VirtualizedContainerService.HintSize="434,82" sap2010:WorkflowViewState.IdRef="Assign_1">
+          <Assign sap:VirtualizedContainerService.HintSize="262,70" sap2010:WorkflowViewState.IdRef="Assign_1">
             <Assign.To>
               <OutArgument x:TypeArguments="x:Int32">[int_FlowType]</OutArgument>
             </Assign.To>
@@ -392,9 +402,9 @@
           </Assign>
         </If.Then>
         <If.Else>
-          <If Condition="[Not(String.IsNullOrEmpty(in_str_InvoiceNumber))]" sap:VirtualizedContainerService.HintSize="590,652" sap2010:WorkflowViewState.IdRef="If_2">
+          <If Condition="[Not(String.IsNullOrEmpty(in_str_InvoiceNumber))]" sap:VirtualizedContainerService.HintSize="426,626" sap2010:WorkflowViewState.IdRef="If_2">
             <If.Then>
-              <Assign sap:VirtualizedContainerService.HintSize="434,82" sap2010:WorkflowViewState.IdRef="Assign_2">
+              <Assign sap:VirtualizedContainerService.HintSize="262,70" sap2010:WorkflowViewState.IdRef="Assign_2">
                 <Assign.To>
                   <OutArgument x:TypeArguments="x:Int32">[int_FlowType]</OutArgument>
                 </Assign.To>
@@ -404,9 +414,9 @@
               </Assign>
             </If.Then>
             <If.Else>
-              <If Condition="[Not(String.IsNullOrEmpty(in_str_QuoteNumber))]" sap:VirtualizedContainerService.HintSize="512,376" sap2010:WorkflowViewState.IdRef="If_3">
+              <If Condition="[Not(String.IsNullOrEmpty(in_str_QuoteNumber))]" sap:VirtualizedContainerService.HintSize="344,363" sap2010:WorkflowViewState.IdRef="If_3">
                 <If.Then>
-                  <Assign sap:VirtualizedContainerService.HintSize="434,82" sap2010:WorkflowViewState.IdRef="Assign_3">
+                  <Assign sap:VirtualizedContainerService.HintSize="262,70" sap2010:WorkflowViewState.IdRef="Assign_3">
                     <Assign.To>
                       <OutArgument x:TypeArguments="x:Int32">[int_FlowType]</OutArgument>
                     </Assign.To>
@@ -416,7 +426,7 @@
                   </Assign>
                 </If.Then>
                 <If.Else>
-                  <Assign sap:VirtualizedContainerService.HintSize="434,82" sap2010:WorkflowViewState.IdRef="Assign_4">
+                  <Assign sap:VirtualizedContainerService.HintSize="262,70" sap2010:WorkflowViewState.IdRef="Assign_4">
                     <Assign.To>
                       <OutArgument x:TypeArguments="x:Int32">[int_FlowType]</OutArgument>
                     </Assign.To>

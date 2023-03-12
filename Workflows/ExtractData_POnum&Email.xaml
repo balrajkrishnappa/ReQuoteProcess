@@ -14,7 +14,7 @@
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>952,1324</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>974,1333</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ExtractData_POnum_Email_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="56">
@@ -94,7 +94,7 @@
       <AssemblyReference>System.Private.Xml</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Flowchart DisplayName="ExtractData_POnum_Email" sap:VirtualizedContainerService.HintSize="944,1259" sap2010:WorkflowViewState.IdRef="Flowchart_1">
+  <Flowchart DisplayName="ExtractData_POnum_Email" sap:VirtualizedContainerService.HintSize="984,1268" sap2010:WorkflowViewState.IdRef="Flowchart_1">
     <Flowchart.Variables>
       <Variable x:TypeArguments="x:String" Name="str_SenderEmail" />
       <Variable x:TypeArguments="x:Boolean" Name="bool_EmailValidated" />
@@ -104,8 +104,8 @@
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
         <av:Point x:Key="ShapeLocation">580,2.5</av:Point>
         <av:Size x:Key="ShapeSize">60,75</av:Size>
-        <x:Double x:Key="Width">910</x:Double>
-        <av:PointCollection x:Key="ConnectorLocation">610,77.5 610,129</av:PointCollection>
+        <x:Double x:Key="Width">950</x:Double>
+        <av:PointCollection x:Key="ConnectorLocation">610,77.5 610,107.5 685,107.5 685,164 655,164</av:PointCollection>
         <x:Double x:Key="Height">1222.5</x:Double>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
@@ -116,10 +116,10 @@
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <av:Point x:Key="ShapeLocation">710,574</av:Point>
-          <av:Size x:Key="ShapeSize">200,52</av:Size>
+          <av:Size x:Key="ShapeSize">200,61</av:Size>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
-      <Throw DisplayName="Throw_Databse_Credentials_Error" Exception="[new BusinessRuleException(&quot;Check sybase database credentials.&quot;)]" sap:VirtualizedContainerService.HintSize="200,52" sap2010:WorkflowViewState.IdRef="Throw_1" />
+      <Throw DisplayName="Throw_Databse_Credentials_Error" Exception="[new BusinessRuleException(&quot;Check sybase database credentials.&quot;)]" sap:VirtualizedContainerService.HintSize="200,61" sap2010:WorkflowViewState.IdRef="Throw_1" />
     </FlowStep>
     <FlowDecision x:Name="__ReferenceID5" Condition="[sybConStatus.State.ToString.ToLower.Equals(&quot;open&quot;)]" DisplayName="Connection Open?" sap:VirtualizedContainerService.HintSize="105,87" sap2010:WorkflowViewState.IdRef="FlowDecision_1">
       <sap:WorkflowViewStateService.ViewState>
@@ -128,7 +128,7 @@
           <av:Point x:Key="ShapeLocation">407.5,556.5</av:Point>
           <av:Size x:Key="ShapeSize">105,87</av:Size>
           <av:PointCollection x:Key="TrueConnector">407.5,600 320,600 320,658</av:PointCollection>
-          <av:PointCollection x:Key="FalseConnector">512.5,600 710,600</av:PointCollection>
+          <av:PointCollection x:Key="FalseConnector">512.5,600 542.5,600 542.5,604.5 710,604.5</av:PointCollection>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
       <FlowDecision.True>
@@ -136,14 +136,18 @@
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <av:Point x:Key="ShapeLocation">220,658</av:Point>
-              <av:Size x:Key="ShapeSize">200,124</av:Size>
-              <av:PointCollection x:Key="ConnectorLocation">320,782 320,812 291.5,812 291.5,816.5</av:PointCollection>
+              <av:Size x:Key="ShapeSize">200,133</av:Size>
+              <av:PointCollection x:Key="ConnectorLocation">320,791 291.5,791 291.5,816.5</av:PointCollection>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <ui:ExecuteQuery ContinueOnError="{x:Null}" TimeoutMS="{x:Null}" sap2010:Annotation.AnnotationText="Extract Data using PO number and email&#xA;OMPROD..sspFindAccountByEmail" CommandType="StoredProcedure" DataTable="[out_dt_CustomerInfo]" DisplayName="Run query_OMPROD..sspFindAccountByEmail" ExistingDbConnection="[sybConStatus]" sap:VirtualizedContainerService.HintSize="200,124" sap2010:WorkflowViewState.IdRef="ExecuteQuery_2" Sql="[in_Config(&quot;SspFindAccountByEmail&quot;).ToString]">
+          <ui:ExecuteQuery ContinueOnError="{x:Null}" TimeoutMS="{x:Null}" sap2010:Annotation.AnnotationText="Extract Data using PO number and email&#xA;OMPROD..sspFindAccountByEmail" CommandType="StoredProcedure" DataTable="[out_dt_CustomerInfo]" DisplayName="Run query_OMPROD..sspFindAccountByEmail" ExistingDbConnection="[sybConStatus]" sap:VirtualizedContainerService.HintSize="200,133" sap2010:WorkflowViewState.IdRef="ExecuteQuery_2" Sql="[in_Config(&quot;SspFindAccountByEmail&quot;).ToString]">
             <ui:ExecuteQuery.Parameters>
-              <InArgument x:TypeArguments="x:String" x:Key="@aSetid">[in_Config("Setid").ToString]</InArgument>
-              <InArgument x:TypeArguments="x:String" x:Key="@Email">[in_TransactionItem.SpecificContent("EmailSender").ToString]</InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="@aSetid">
+                <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_Config(&quot;Setid&quot;).ToString" />
+              </InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="@Email">
+                <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_TransactionItem.SpecificContent(&quot;EmailSender&quot;).ToString" />
+              </InArgument>
             </ui:ExecuteQuery.Parameters>
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -158,8 +162,8 @@
                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                   <av:Point x:Key="ShapeLocation">240,816.5</av:Point>
                   <av:Size x:Key="ShapeSize">103,87</av:Size>
-                  <av:PointCollection x:Key="TrueConnector">240,860 220,860 220,959</av:PointCollection>
-                  <av:PointCollection x:Key="FalseConnector">343,860 450,860</av:PointCollection>
+                  <av:PointCollection x:Key="TrueConnector">240,860 134,860 134,959</av:PointCollection>
+                  <av:PointCollection x:Key="FalseConnector">343,860 373,860 373,864.5 450,864.5</av:PointCollection>
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
               <FlowDecision.True>
@@ -167,11 +171,11 @@
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <av:Point x:Key="ShapeLocation">3,959</av:Point>
-                      <av:Size x:Key="ShapeSize">434,82</av:Size>
-                      <av:PointCollection x:Key="ConnectorLocation">220,1041 220,1068.5</av:PointCollection>
+                      <av:Size x:Key="ShapeSize">262,70</av:Size>
+                      <av:PointCollection x:Key="ConnectorLocation">134,1029 134,1059 150,1059 150,1084</av:PointCollection>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
-                  <Assign DisplayName="Assigning Barcode" sap:VirtualizedContainerService.HintSize="434,82" sap2010:WorkflowViewState.IdRef="Assign_1">
+                  <Assign DisplayName="Assigning Barcode" sap:VirtualizedContainerService.HintSize="262,70" sap2010:WorkflowViewState.IdRef="Assign_1">
                     <Assign.To>
                       <OutArgument x:TypeArguments="x:String">[out_CustomerID]</OutArgument>
                     </Assign.To>
@@ -188,11 +192,11 @@
                     <FlowStep x:Name="__ReferenceID2">
                       <sap:WorkflowViewStateService.ViewState>
                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                          <av:Point x:Key="ShapeLocation">120,1068.5</av:Point>
-                          <av:Size x:Key="ShapeSize">200,83</av:Size>
+                          <av:Point x:Key="ShapeLocation">50,1084</av:Point>
+                          <av:Size x:Key="ShapeSize">200,92</av:Size>
                         </scg:Dictionary>
                       </sap:WorkflowViewStateService.ViewState>
-                      <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="Adding Note in the db" DisplayName="Workflows\SSP_StoreNote.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="335,144" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="Workflows\SSP_StoreNote.xaml">
+                      <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="Adding Note in the db" DisplayName="Workflows\SSP_StoreNote.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="200,92" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="Workflows\SSP_StoreNote.xaml">
                         <ui:InvokeWorkflowFile.Arguments>
                           <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">
                             <VisualBasicValue x:TypeArguments="scg:Dictionary(x:String, x:Object)" ExpressionText="in_Config" />
@@ -206,17 +210,17 @@
                           <InArgument x:TypeArguments="x:String" x:Key="in_Type">
                             <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_Config(&quot;StoreNotesType&quot;).ToString" />
                           </InArgument>
-                          <InArgument x:TypeArguments="x:String" x:Key="in_AgentID">
-                            <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_Config(&quot;AgentID&quot;).ToString" />
+                          <InArgument x:TypeArguments="x:Int32" x:Key="in_AgentID">
+                            <Literal x:TypeArguments="x:Int32" Value="9463" />
                           </InArgument>
-                          <InArgument x:TypeArguments="x:String" x:Key="in_RevisionNum">
-                            <Literal x:TypeArguments="x:String">1</Literal>
+                          <InArgument x:TypeArguments="x:Int32" x:Key="in_RevisionNum">
+                            <Literal x:TypeArguments="x:Int32" Value="1" />
                           </InArgument>
-                          <InArgument x:TypeArguments="x:String" x:Key="in_PartNum">
-                            <Literal x:TypeArguments="x:String">1</Literal>
+                          <InArgument x:TypeArguments="x:Int32" x:Key="in_PartNum">
+                            <Literal x:TypeArguments="x:Int32" Value="1" />
                           </InArgument>
-                          <InArgument x:TypeArguments="x:String" x:Key="in_NoteNum">
-                            <Literal x:TypeArguments="x:String">1</Literal>
+                          <InArgument x:TypeArguments="x:Int32" x:Key="in_NoteNum">
+                            <Literal x:TypeArguments="x:Int32" Value="1" />
                           </InArgument>
                         </ui:InvokeWorkflowFile.Arguments>
                         <sap:WorkflowViewStateService.ViewState>
@@ -235,10 +239,10 @@
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <av:Point x:Key="ShapeLocation">450,834</av:Point>
-                      <av:Size x:Key="ShapeSize">200,52</av:Size>
+                      <av:Size x:Key="ShapeSize">200,61</av:Size>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
-                  <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="200,52" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Could not extract 1 row of Information from sspFindAccountByEmail&quot;]">
+                  <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="200,61" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Could not extract 1 row of Information from sspFindAccountByEmail&quot;]">
                     <sap:WorkflowViewStateService.ViewState>
                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
                         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -263,11 +267,11 @@
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <av:Point x:Key="ShapeLocation">393,129</av:Point>
-          <av:Size x:Key="ShapeSize">434,82</av:Size>
-          <av:PointCollection x:Key="ConnectorLocation">610,211 610,255.5</av:PointCollection>
+          <av:Size x:Key="ShapeSize">262,70</av:Size>
+          <av:PointCollection x:Key="ConnectorLocation">524,199 524,229 610,229 610,255.5</av:PointCollection>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
-      <Assign DisplayName="SenderEmail" sap:VirtualizedContainerService.HintSize="434,82" sap2010:WorkflowViewState.IdRef="Assign_2">
+      <Assign DisplayName="SenderEmail" sap:VirtualizedContainerService.HintSize="262,70" sap2010:WorkflowViewState.IdRef="Assign_2">
         <Assign.To>
           <OutArgument x:TypeArguments="x:String">[str_SenderEmail]</OutArgument>
         </Assign.To>
@@ -285,11 +289,11 @@
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <av:Point x:Key="ShapeLocation">510,255.5</av:Point>
-              <av:Size x:Key="ShapeSize">200,109</av:Size>
-              <av:PointCollection x:Key="ConnectorLocation">610,364.5 610,406.5</av:PointCollection>
+              <av:Size x:Key="ShapeSize">200,118</av:Size>
+              <av:PointCollection x:Key="ConnectorLocation">610,373.5 610,406.5</av:PointCollection>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <TryCatch sap2010:Annotation.AnnotationText="Validating Email for  discountlabel.com and  bwhittle.com Domain" DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="200,109" sap2010:WorkflowViewState.IdRef="TryCatch_1">
+          <TryCatch sap2010:Annotation.AnnotationText="Validating Email for  discountlabel.com and  bwhittle.com Domain" DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="200,118" sap2010:WorkflowViewState.IdRef="TryCatch_1">
             <TryCatch.Variables>
               <Variable x:TypeArguments="x:String" Name="temp" />
             </TryCatch.Variables>
@@ -301,7 +305,7 @@
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
             <TryCatch.Try>
-              <Assign sap:VirtualizedContainerService.HintSize="434,82" sap2010:WorkflowViewState.IdRef="Assign_3">
+              <Assign sap:VirtualizedContainerService.HintSize="262,70" sap2010:WorkflowViewState.IdRef="Assign_3">
                 <Assign.To>
                   <OutArgument x:TypeArguments="x:String">[temp]</OutArgument>
                 </Assign.To>
@@ -311,7 +315,7 @@
               </Assign>
             </TryCatch.Try>
             <TryCatch.Catches>
-              <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="440,151" sap2010:WorkflowViewState.IdRef="Catch`1_1">
+              <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="400,139" sap2010:WorkflowViewState.IdRef="Catch`1_1">
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -322,7 +326,7 @@
                   <ActivityAction.Argument>
                     <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
                   </ActivityAction.Argument>
-                  <Assign sap:VirtualizedContainerService.HintSize="434,82" sap2010:WorkflowViewState.IdRef="Assign_4">
+                  <Assign sap:VirtualizedContainerService.HintSize="262,70" sap2010:WorkflowViewState.IdRef="Assign_4">
                     <Assign.To>
                       <OutArgument x:TypeArguments="x:Boolean">[bool_EmailValidated]</OutArgument>
                     </Assign.To>
@@ -342,18 +346,18 @@
                   <av:Point x:Key="ShapeLocation">567,406.5</av:Point>
                   <av:Size x:Key="ShapeSize">86,87</av:Size>
                   <av:PointCollection x:Key="TrueConnector">567,450 460,450 460,556.5</av:PointCollection>
-                  <av:PointCollection x:Key="FalseConnector">653,450 683,450 683,449.52 703,449.52</av:PointCollection>
+                  <av:PointCollection x:Key="FalseConnector">653,450 750,450</av:PointCollection>
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
               <FlowDecision.False>
                 <FlowStep x:Name="__ReferenceID9">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                      <av:Point x:Key="ShapeLocation">703,423.52</av:Point>
-                      <av:Size x:Key="ShapeSize">200,52</av:Size>
+                      <av:Point x:Key="ShapeLocation">750,419.5</av:Point>
+                      <av:Size x:Key="ShapeSize">200,61</av:Size>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
-                  <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="200,52" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[&quot;Sender Email has  discountlabel.com OR  bwhittle.com domain&quot;]">
+                  <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="200,61" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[&quot;Sender Email has  discountlabel.com OR  bwhittle.com domain&quot;]">
                     <sap:WorkflowViewStateService.ViewState>
                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
                         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
