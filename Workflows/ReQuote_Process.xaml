@@ -8,6 +8,11 @@
     <x:Property Name="in_Str_EmailData" Type="InArgument(x:String)" />
     <x:Property Name="in_Barcode" Type="InArgument(x:String)" />
     <x:Property Name="out_ProcessEmail" Type="InArgument(x:Boolean)" />
+    <x:Property Name="Out_MandatoryFieldData" Type="InArgument(sd:DataTable)" />
+    <x:Property Name="out_str_PreviousBarcode" Type="OutArgument(x:String)" />
+    <x:Property Name="out_str_POnumber" Type="OutArgument(x:String)" />
+    <x:Property Name="out_str_InvoiceNumber" Type="OutArgument(x:String)" />
+    <x:Property Name="out_str_QuoteNumber" Type="OutArgument(x:String)" />
   </x:Members>
   <this:ReQuote_Process.in_Str_EmailData>
     <InArgument x:TypeArguments="x:String" />
@@ -15,10 +20,13 @@
   <this:ReQuote_Process.out_ProcessEmail>
     <InArgument x:TypeArguments="x:Boolean" />
   </this:ReQuote_Process.out_ProcessEmail>
+  <this:ReQuote_Process.Out_MandatoryFieldData>
+    <InArgument x:TypeArguments="sd:DataTable" />
+  </this:ReQuote_Process.Out_MandatoryFieldData>
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1154,1444</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1292,1587</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ReQuote_Process_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="57">
@@ -156,16 +164,12 @@
       <AssemblyReference>System.Text.RegularExpressions</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Flowchart sap2010:Annotation.AnnotationText="Classifcation of mail and Extraction of Items from mail" DisplayName="ReQuote_Process_UntilMLExtraction" sap:VirtualizedContainerService.HintSize="1164,1379" sap2010:WorkflowViewState.IdRef="Flowchart_1">
+  <Flowchart sap2010:Annotation.AnnotationText="Classifcation of mail and Extraction of Items from mail" DisplayName="ReQuote_Process_UntilMLExtraction" sap:VirtualizedContainerService.HintSize="1204,1522" sap2010:WorkflowViewState.IdRef="Flowchart_1">
     <Flowchart.Variables>
       <Variable x:TypeArguments="x:String" Name="ExtractorOutput" />
       <Variable x:TypeArguments="njl:JObject" Name="JObj_ExtractorOutput" />
-      <Variable x:TypeArguments="x:String" Name="str_InvoiceNumber" />
-      <Variable x:TypeArguments="x:String" Name="str_POnumber" />
-      <Variable x:TypeArguments="x:String" Name="str_QuoteNumber" />
       <Variable x:TypeArguments="x:String" Name="str_InvoiceNumberConfidence" />
       <Variable x:TypeArguments="x:String" Name="str_QuotenumberConfidence" />
-      <Variable x:TypeArguments="x:String" Name="str_PreviousBarcode" />
       <Variable x:TypeArguments="x:String" Name="str_PreviousBarcodeConfidence" />
       <Variable x:TypeArguments="x:String" Name="str_PoNumberConfidence" />
       <Variable x:TypeArguments="x:String" Name="Str_ClassifierConfidence" />
@@ -177,15 +181,15 @@
         <av:Point x:Key="ShapeLocation">470,2.5</av:Point>
         <av:Size x:Key="ShapeSize">60,75</av:Size>
         <av:PointCollection x:Key="ConnectorLocation">500,77.5 500,139.5</av:PointCollection>
-        <x:Double x:Key="Width">1129.5</x:Double>
-        <x:Double x:Key="Height">1311.2</x:Double>
+        <x:Double x:Key="Width">1169.5</x:Double>
+        <x:Double x:Key="Height">1454.5</x:Double>
         <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
     <Flowchart.StartNode>
-      <x:Reference>__ReferenceID18</x:Reference>
+      <x:Reference>__ReferenceID21</x:Reference>
     </Flowchart.StartNode>
-    <FlowStep x:Name="__ReferenceID18">
+    <FlowStep x:Name="__ReferenceID21">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <av:Point x:Key="ShapeLocation">400,139.5</av:Point>
@@ -503,34 +507,42 @@
                           <av:PointCollection x:Key="ConnectorLocation">370,755 530,755 530,826.5</av:PointCollection>
                         </scg:Dictionary>
                       </sap:WorkflowViewStateService.ViewState>
-                      <Sequence sap2010:Annotation.AnnotationText="Assigning all the mandatory variables required to create a new quote. Getting Necessary data from mail with confidence" DisplayName="AssigningMandatoryVariable" sap:VirtualizedContainerService.HintSize="200,168" sap2010:WorkflowViewState.IdRef="Sequence_21">
+                      <Sequence sap2010:Annotation.AnnotationText="Assigning all the mandatory variables required to create a new quote. Getting Necessary data from mail with confidence" DisplayName="AssigningMandatoryVariable" sap:VirtualizedContainerService.HintSize="770,4527" sap2010:WorkflowViewState.IdRef="Sequence_21">
                         <sap:WorkflowViewStateService.ViewState>
                           <scg:Dictionary x:TypeArguments="x:String, x:Object">
                             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                             <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
                           </scg:Dictionary>
                         </sap:WorkflowViewStateService.ViewState>
-                        <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" sap2010:Annotation.AnnotationText="Assigning values and it's confidence for InvoiceNumber, PO number" DataTable="[out_dt_MLoutput]" DisplayName="For Each Row in Data Table" sap:VirtualizedContainerService.HintSize="434,587" sap2010:WorkflowViewState.IdRef="ForEachRow_2">
+                        <Assign sap:VirtualizedContainerService.HintSize="708,82" sap2010:WorkflowViewState.IdRef="Assign_21">
+                          <Assign.To>
+                            <OutArgument x:TypeArguments="sd:DataTable">[Out_MandatoryFieldData]</OutArgument>
+                          </Assign.To>
+                          <Assign.Value>
+                            <InArgument x:TypeArguments="sd:DataTable">[out_dt_MLoutput.Clone]</InArgument>
+                          </Assign.Value>
+                        </Assign>
+                        <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" sap2010:Annotation.AnnotationText="Assigning values and it's confidence for InvoiceNumber, PO number" DataTable="[out_dt_MLoutput]" DisplayName="For Each Row in Data Table" sap:VirtualizedContainerService.HintSize="708,4263" sap2010:WorkflowViewState.IdRef="ForEachRow_2">
                           <ui:ForEachRow.Body>
                             <ActivityAction x:TypeArguments="sd:DataRow">
                               <ActivityAction.Argument>
                                 <DelegateInArgument x:TypeArguments="sd:DataRow" Name="row" />
                               </ActivityAction.Argument>
-                              <Sequence DisplayName="AssigningMandatoryItems" sap:VirtualizedContainerService.HintSize="400,439" sap2010:WorkflowViewState.IdRef="Sequence_20">
+                              <Sequence DisplayName="AssigningMandatoryItems" sap:VirtualizedContainerService.HintSize="674,4115" sap2010:WorkflowViewState.IdRef="Sequence_20">
                                 <sap:WorkflowViewStateService.ViewState>
                                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                   </scg:Dictionary>
                                 </sap:WorkflowViewStateService.ViewState>
-                                <If Condition="[row(&quot;entity&quot;).ToString.ToLower=&quot;barcode&quot;]" DisplayName="if-barcode" sap:VirtualizedContainerService.HintSize="338,52" sap2010:WorkflowViewState.IdRef="If_4">
+                                <If Condition="[row(&quot;entity&quot;).ToString.ToLower=&quot;barcode&quot; And (CDbl(row(&quot;confidence&quot;).ToString)&gt;CDbl(in_Config(&quot;ClassifierConfidence&quot;).ToString))]" DisplayName="if-barcode" sap:VirtualizedContainerService.HintSize="612,992" sap2010:WorkflowViewState.IdRef="If_4">
                                   <sap:WorkflowViewStateService.ViewState>
                                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                       <x:Boolean x:Key="IsPinned">False</x:Boolean>
                                     </scg:Dictionary>
                                   </sap:WorkflowViewStateService.ViewState>
                                   <If.Then>
-                                    <Sequence sap:VirtualizedContainerService.HintSize="534,624" sap2010:WorkflowViewState.IdRef="Sequence_25">
+                                    <Sequence sap:VirtualizedContainerService.HintSize="534,716" sap2010:WorkflowViewState.IdRef="Sequence_25">
                                       <Sequence.Variables>
                                         <Variable x:TypeArguments="x:String" Name="temp" />
                                       </Sequence.Variables>
@@ -575,12 +587,20 @@
                                           </Catch>
                                         </TryCatch.Catches>
                                       </TryCatch>
+                                      <ui:AddDataRow ArrayRow="{x:Null}" DataRow="[row]" DataTable="[Out_MandatoryFieldData]" DisplayName="Add Data Row" sap:VirtualizedContainerService.HintSize="472,52" sap2010:WorkflowViewState.IdRef="AddDataRow_2">
+                                        <sap:WorkflowViewStateService.ViewState>
+                                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                          </scg:Dictionary>
+                                        </sap:WorkflowViewStateService.ViewState>
+                                      </ui:AddDataRow>
                                       <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="472,132" sap2010:WorkflowViewState.IdRef="MultipleAssign_6">
                                         <ui:MultipleAssign.AssignOperations>
                                           <scg:List x:TypeArguments="ui:AssignOperation" Capacity="4">
                                             <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_12">
                                               <ui:AssignOperation.To>
-                                                <OutArgument x:TypeArguments="x:String">[str_PreviousBarcode]</OutArgument>
+                                                <OutArgument x:TypeArguments="x:String">[out_str_PreviousBarcode]</OutArgument>
                                               </ui:AssignOperation.To>
                                               <ui:AssignOperation.Value>
                                                 <InArgument x:TypeArguments="x:String">[row("value").ToString]</InArgument>
@@ -600,25 +620,25 @@
                                     </Sequence>
                                   </If.Then>
                                 </If>
-                                <If Condition="[row(&quot;entity&quot;).ToString.ToLower=&quot;ponumber&quot;]" DisplayName="If-PONumber" sap:VirtualizedContainerService.HintSize="338,52" sap2010:WorkflowViewState.IdRef="If_1">
+                                <If Condition="[row(&quot;entity&quot;).ToString.ToLower=&quot;ponumber&quot;  And (CDbl(row(&quot;confidence&quot;).ToString)&gt;CDbl(in_Config(&quot;ClassifierConfidence&quot;).ToString))]" DisplayName="If-PONumber" sap:VirtualizedContainerService.HintSize="612,752" sap2010:WorkflowViewState.IdRef="If_1">
                                   <sap:WorkflowViewStateService.ViewState>
                                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                       <x:Boolean x:Key="IsPinned">False</x:Boolean>
                                     </scg:Dictionary>
                                   </sap:WorkflowViewStateService.ViewState>
                                   <If.Then>
-                                    <Sequence sap:VirtualizedContainerService.HintSize="400,81" sap2010:WorkflowViewState.IdRef="Sequence_19">
+                                    <Sequence sap:VirtualizedContainerService.HintSize="493,473" sap2010:WorkflowViewState.IdRef="Sequence_19">
                                       <Sequence.Variables>
                                         <Variable x:TypeArguments="x:String" Name="temp" />
                                       </Sequence.Variables>
                                       <sap:WorkflowViewStateService.ViewState>
                                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                           <x:Boolean x:Key="IsPinned">False</x:Boolean>
                                         </scg:Dictionary>
                                       </sap:WorkflowViewStateService.ViewState>
-                                      <TryCatch sap2010:Annotation.AnnotationText="Checking if Extracted value has a number in it." DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="431,94" sap2010:WorkflowViewState.IdRef="TryCatch_3">
+                                      <TryCatch sap2010:Annotation.AnnotationText="Checking if Extracted value has a number in it." DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="431,97" sap2010:WorkflowViewState.IdRef="TryCatch_3">
                                         <sap:WorkflowViewStateService.ViewState>
                                           <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                             <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -653,12 +673,20 @@
                                           </Catch>
                                         </TryCatch.Catches>
                                       </TryCatch>
+                                      <ui:AddDataRow ArrayRow="{x:Null}" DataRow="[row]" DataTable="[Out_MandatoryFieldData]" DisplayName="Add Data Row" sap:VirtualizedContainerService.HintSize="431,53" sap2010:WorkflowViewState.IdRef="AddDataRow_3">
+                                        <sap:WorkflowViewStateService.ViewState>
+                                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                          </scg:Dictionary>
+                                        </sap:WorkflowViewStateService.ViewState>
+                                      </ui:AddDataRow>
                                       <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="431,132" sap2010:WorkflowViewState.IdRef="MultipleAssign_3">
                                         <ui:MultipleAssign.AssignOperations>
                                           <scg:List x:TypeArguments="ui:AssignOperation" Capacity="4">
                                             <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_6">
                                               <ui:AssignOperation.To>
-                                                <OutArgument x:TypeArguments="x:String">[str_POnumber]</OutArgument>
+                                                <OutArgument x:TypeArguments="x:String">[out_str_POnumber]</OutArgument>
                                               </ui:AssignOperation.To>
                                               <ui:AssignOperation.Value>
                                                 <InArgument x:TypeArguments="x:String">[row("value").ToString]</InArgument>
@@ -678,15 +706,15 @@
                                     </Sequence>
                                   </If.Then>
                                 </If>
-                                <If Condition="[row(&quot;entity&quot;).ToString.ToLower=&quot;invoicenumber&quot;]" DisplayName="If-InvoiceNumber" sap:VirtualizedContainerService.HintSize="338,52" sap2010:WorkflowViewState.IdRef="If_2">
+                                <If Condition="[row(&quot;entity&quot;).ToString.ToLower=&quot;invoicenumber&quot;  And (CDbl(row(&quot;confidence&quot;).ToString)&gt;CDbl(in_Config(&quot;ClassifierConfidence&quot;).ToString))]" DisplayName="If-InvoiceNumber" sap:VirtualizedContainerService.HintSize="612,1138" sap2010:WorkflowViewState.IdRef="If_2">
                                   <sap:WorkflowViewStateService.ViewState>
                                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                       <x:Boolean x:Key="IsPinned">False</x:Boolean>
                                     </scg:Dictionary>
                                   </sap:WorkflowViewStateService.ViewState>
                                   <If.Then>
-                                    <Sequence sap:VirtualizedContainerService.HintSize="534,624" sap2010:WorkflowViewState.IdRef="Sequence_22">
+                                    <Sequence sap:VirtualizedContainerService.HintSize="534,859" sap2010:WorkflowViewState.IdRef="Sequence_22">
                                       <Sequence.Variables>
                                         <Variable x:TypeArguments="x:String" Name="temp" />
                                         <Variable x:TypeArguments="x:String" Name="str_InvoiceNumberConfidence" />
@@ -697,7 +725,7 @@
                                           <x:Boolean x:Key="IsPinned">False</x:Boolean>
                                         </scg:Dictionary>
                                       </sap:WorkflowViewStateService.ViewState>
-                                      <TryCatch sap2010:Annotation.AnnotationText="Checking if Extracted value has a number in it." DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="472,341" sap2010:WorkflowViewState.IdRef="TryCatch_4">
+                                      <TryCatch sap2010:Annotation.AnnotationText="Checking if Extracted value has a number in it." DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="472,347" sap2010:WorkflowViewState.IdRef="TryCatch_4">
                                         <sap:WorkflowViewStateService.ViewState>
                                           <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -706,7 +734,7 @@
                                           </scg:Dictionary>
                                         </sap:WorkflowViewStateService.ViewState>
                                         <TryCatch.Try>
-                                          <Assign sap:VirtualizedContainerService.HintSize="434,82" sap2010:WorkflowViewState.IdRef="Assign_16">
+                                          <Assign sap:VirtualizedContainerService.HintSize="434,83" sap2010:WorkflowViewState.IdRef="Assign_16">
                                             <Assign.To>
                                               <OutArgument x:TypeArguments="x:String">[temp]</OutArgument>
                                             </Assign.To>
@@ -716,7 +744,7 @@
                                           </Assign>
                                         </TryCatch.Try>
                                         <TryCatch.Catches>
-                                          <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="438,21" sap2010:WorkflowViewState.IdRef="Catch`1_3">
+                                          <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="438,22" sap2010:WorkflowViewState.IdRef="Catch`1_3">
                                             <sap:WorkflowViewStateService.ViewState>
                                               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                                 <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -732,12 +760,20 @@
                                           </Catch>
                                         </TryCatch.Catches>
                                       </TryCatch>
+                                      <ui:AddDataRow ArrayRow="{x:Null}" DataRow="[row]" DataTable="[Out_MandatoryFieldData]" DisplayName="Add Data Row" sap:VirtualizedContainerService.HintSize="472,189" sap2010:WorkflowViewState.IdRef="AddDataRow_4">
+                                        <sap:WorkflowViewStateService.ViewState>
+                                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                          </scg:Dictionary>
+                                        </sap:WorkflowViewStateService.ViewState>
+                                      </ui:AddDataRow>
                                       <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="472,132" sap2010:WorkflowViewState.IdRef="MultipleAssign_4">
                                         <ui:MultipleAssign.AssignOperations>
                                           <scg:List x:TypeArguments="ui:AssignOperation" Capacity="4">
                                             <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_8">
                                               <ui:AssignOperation.To>
-                                                <OutArgument x:TypeArguments="x:String">[str_InvoiceNumber]</OutArgument>
+                                                <OutArgument x:TypeArguments="x:String">[out_str_InvoiceNumber]</OutArgument>
                                               </ui:AssignOperation.To>
                                               <ui:AssignOperation.Value>
                                                 <InArgument x:TypeArguments="x:String">[row("value").ToString]</InArgument>
@@ -757,15 +793,15 @@
                                     </Sequence>
                                   </If.Then>
                                 </If>
-                                <If Condition="[row(&quot;entity&quot;).ToString.ToLower=&quot;previousquotenumber&quot;]" DisplayName="If-PreviousQuoteNumber" sap:VirtualizedContainerService.HintSize="338,52" sap2010:WorkflowViewState.IdRef="If_3">
+                                <If Condition="[row(&quot;entity&quot;).ToString.ToLower=&quot;previousquotenumber&quot;  And (CDbl(row(&quot;confidence&quot;).ToString)&gt;CDbl(in_Config(&quot;ClassifierConfidence&quot;).ToString))]" DisplayName="If-PreviousQuoteNumber" sap:VirtualizedContainerService.HintSize="612,1002" sap2010:WorkflowViewState.IdRef="If_3">
                                   <sap:WorkflowViewStateService.ViewState>
                                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                       <x:Boolean x:Key="IsPinned">False</x:Boolean>
                                     </scg:Dictionary>
                                   </sap:WorkflowViewStateService.ViewState>
                                   <If.Then>
-                                    <Sequence sap:VirtualizedContainerService.HintSize="534,624" sap2010:WorkflowViewState.IdRef="Sequence_24">
+                                    <Sequence sap:VirtualizedContainerService.HintSize="534,723" sap2010:WorkflowViewState.IdRef="Sequence_24">
                                       <Sequence.Variables>
                                         <Variable x:TypeArguments="x:String" Name="temp" />
                                         <Variable x:TypeArguments="x:String" Name="str_InvoiceNumberConfidence" />
@@ -777,7 +813,7 @@
                                           <x:Boolean x:Key="IsPinned">False</x:Boolean>
                                         </scg:Dictionary>
                                       </sap:WorkflowViewStateService.ViewState>
-                                      <TryCatch sap2010:Annotation.AnnotationText="Checking if Extracted value has a number in it." DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="472,341" sap2010:WorkflowViewState.IdRef="TryCatch_5">
+                                      <TryCatch sap2010:Annotation.AnnotationText="Checking if Extracted value has a number in it." DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="472,347" sap2010:WorkflowViewState.IdRef="TryCatch_5">
                                         <sap:WorkflowViewStateService.ViewState>
                                           <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -786,7 +822,7 @@
                                           </scg:Dictionary>
                                         </sap:WorkflowViewStateService.ViewState>
                                         <TryCatch.Try>
-                                          <Assign sap:VirtualizedContainerService.HintSize="434,82" sap2010:WorkflowViewState.IdRef="Assign_17">
+                                          <Assign sap:VirtualizedContainerService.HintSize="434,83" sap2010:WorkflowViewState.IdRef="Assign_17">
                                             <Assign.To>
                                               <OutArgument x:TypeArguments="x:String">[temp]</OutArgument>
                                             </Assign.To>
@@ -796,7 +832,7 @@
                                           </Assign>
                                         </TryCatch.Try>
                                         <TryCatch.Catches>
-                                          <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="438,21" sap2010:WorkflowViewState.IdRef="Catch`1_4">
+                                          <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="438,22" sap2010:WorkflowViewState.IdRef="Catch`1_4">
                                             <sap:WorkflowViewStateService.ViewState>
                                               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                                 <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -812,12 +848,20 @@
                                           </Catch>
                                         </TryCatch.Catches>
                                       </TryCatch>
+                                      <ui:AddDataRow ArrayRow="{x:Null}" DataRow="[row]" DataTable="[Out_MandatoryFieldData]" DisplayName="Add Data Row" sap:VirtualizedContainerService.HintSize="472,53" sap2010:WorkflowViewState.IdRef="AddDataRow_5">
+                                        <sap:WorkflowViewStateService.ViewState>
+                                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                          </scg:Dictionary>
+                                        </sap:WorkflowViewStateService.ViewState>
+                                      </ui:AddDataRow>
                                       <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="472,132" sap2010:WorkflowViewState.IdRef="MultipleAssign_5">
                                         <ui:MultipleAssign.AssignOperations>
                                           <scg:List x:TypeArguments="ui:AssignOperation" Capacity="4">
                                             <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_10">
                                               <ui:AssignOperation.To>
-                                                <OutArgument x:TypeArguments="x:String">[str_QuoteNumber]</OutArgument>
+                                                <OutArgument x:TypeArguments="x:String">[out_str_QuoteNumber]</OutArgument>
                                               </ui:AssignOperation.To>
                                               <ui:AssignOperation.Value>
                                                 <InArgument x:TypeArguments="x:String">[row("value").ToString]</InArgument>
@@ -848,10 +892,7 @@
                         </ui:ForEachRow>
                       </Sequence>
                       <FlowStep.Next>
-                        <FlowDecision x:Name="__ReferenceID12" sap2010:Annotation.AnnotationText="Checking if atleast I mandatory item exist with enough confidence" DisplayName="Atleat 1 Mandatory Item" sap:VirtualizedContainerService.HintSize="134,87" sap2010:WorkflowViewState.IdRef="FlowDecision_6">
-                          <FlowDecision.Condition>
-                            <VisualBasicValue x:TypeArguments="x:Boolean" ExpressionText="(Not(String.IsNullOrEmpty(str_InvoiceNumber)) And (CDbl(str_InvoiceNumberConfidence)&gt;CDbl(in_Config(&quot;ClassifierConfidence&quot;).ToString))) Or &#xD;&#xA;(Not(String.IsNullOrEmpty(str_POnumber)) And (CDbl(str_PoNumberConfidence)&gt;CDbl(in_Config(&quot;ClassifierConfidence&quot;).ToString))) Or&#xD;&#xA;(Not(String.IsNullOrEmpty(str_QuoteNumber)) And (CDbl(str_QuotenumberConfidence)&gt;CDbl(in_Config(&quot;ClassifierConfidence&quot;).ToString))) Or&#xD;&#xA;(Not(String.IsNullOrEmpty(str_PreviousBarcode)) And (CDbl(str_PreviousBarcodeConfidence)&gt;CDbl(in_Config(&quot;ClassifierConfidence&quot;).ToString)))" />
-                          </FlowDecision.Condition>
+                        <FlowDecision x:Name="__ReferenceID12" sap2010:Annotation.AnnotationText="Checking if atleast I mandatory item exist with enough confidence" Condition="[(Not(String.IsNullOrEmpty(out_str_InvoiceNumber)) And (CDbl(str_InvoiceNumberConfidence)&gt;CDbl(in_Config(&quot;ClassifierConfidence&quot;).ToString))) Or &#xA;(Not(String.IsNullOrEmpty(out_str_POnumber)) And (CDbl(str_PoNumberConfidence)&gt;CDbl(in_Config(&quot;ClassifierConfidence&quot;).ToString))) Or&#xA;(Not(String.IsNullOrEmpty(out_str_QuoteNumber)) And (CDbl(str_QuotenumberConfidence)&gt;CDbl(in_Config(&quot;ClassifierConfidence&quot;).ToString))) Or&#xA;(Not(String.IsNullOrEmpty(out_str_PreviousBarcode)) And (CDbl(str_PreviousBarcodeConfidence)&gt;CDbl(in_Config(&quot;ClassifierConfidence&quot;).ToString)))]" DisplayName="Atleat 1 Mandatory Item" sap:VirtualizedContainerService.HintSize="134,87" sap2010:WorkflowViewState.IdRef="FlowDecision_6">
                           <sap:WorkflowViewStateService.ViewState>
                             <scg:Dictionary x:TypeArguments="x:String, x:Object">
                               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -868,7 +909,7 @@
                                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                   <av:Point x:Key="ShapeLocation">3,919</av:Point>
                                   <av:Size x:Key="ShapeSize">434,82</av:Size>
-                                  <av:PointCollection x:Key="ConnectorLocation">220,1001 220,1031 520,1031 520,1066.5</av:PointCollection>
+                                  <av:PointCollection x:Key="ConnectorLocation">220,1001 220,1031 510,1031 510,1106.5</av:PointCollection>
                                 </scg:Dictionary>
                               </sap:WorkflowViewStateService.ViewState>
                               <Assign sap:VirtualizedContainerService.HintSize="434,82" sap2010:WorkflowViewState.IdRef="Assign_19">
@@ -885,24 +926,21 @@
                                 </sap:WorkflowViewStateService.ViewState>
                               </Assign>
                               <FlowStep.Next>
-                                <FlowDecision x:Name="__ReferenceID4" DisplayName="Flow Decision" sap:VirtualizedContainerService.HintSize="79,87" sap2010:WorkflowViewState.IdRef="FlowDecision_7">
-                                  <FlowDecision.Condition>
-                                    <VisualBasicValue x:TypeArguments="x:Boolean" ExpressionText="(Not(String.IsNullOrEmpty(str_InvoiceNumber)) And (CDbl(str_InvoiceNumberConfidence)&gt;CDbl(in_Config(&quot;ClassifierConfidence&quot;).ToString))) And &#xD;&#xA;(Not(String.IsNullOrEmpty(str_POnumber)) And (CDbl(str_PoNumberConfidence)&gt;CDbl(in_Config(&quot;ClassifierConfidence&quot;).ToString))) And&#xD;&#xA;(Not(String.IsNullOrEmpty(str_QuoteNumber)) And (CDbl(str_QuotenumberConfidence)&gt;CDbl(in_Config(&quot;ClassifierConfidence&quot;).ToString))) And&#xD;&#xA;(Not(String.IsNullOrEmpty(str_PreviousBarcode)) And (CDbl(str_PreviousBarcodeConfidence)&gt;CDbl(in_Config(&quot;ClassifierConfidence&quot;).ToString)))" />
-                                  </FlowDecision.Condition>
+                                <FlowDecision x:Name="__ReferenceID4" Condition="[(Not(String.IsNullOrEmpty(out_str_InvoiceNumber)) And (CDbl(str_InvoiceNumberConfidence)&gt;CDbl(in_Config(&quot;ClassifierConfidence&quot;).ToString))) And &#xA;(Not(String.IsNullOrEmpty(out_str_POnumber)) And (CDbl(str_PoNumberConfidence)&gt;CDbl(in_Config(&quot;ClassifierConfidence&quot;).ToString))) And&#xA;(Not(String.IsNullOrEmpty(out_str_QuoteNumber)) And (CDbl(str_QuotenumberConfidence)&gt;CDbl(in_Config(&quot;ClassifierConfidence&quot;).ToString))) And&#xA;(Not(String.IsNullOrEmpty(out_str_PreviousBarcode)) And (CDbl(str_PreviousBarcodeConfidence)&gt;CDbl(in_Config(&quot;ClassifierConfidence&quot;).ToString)))]" DisplayName="Flow Decision" sap:VirtualizedContainerService.HintSize="79,87" sap2010:WorkflowViewState.IdRef="FlowDecision_7">
                                   <sap:WorkflowViewStateService.ViewState>
                                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                                      <av:Point x:Key="ShapeLocation">480.5,1066.5</av:Point>
+                                      <av:Point x:Key="ShapeLocation">470.5,1106.5</av:Point>
                                       <av:Size x:Key="ShapeSize">79,87</av:Size>
-                                      <av:PointCollection x:Key="TrueConnector">480.5,1110 450.5,1110 450.5,1109.52 430.5,1109.52</av:PointCollection>
-                                      <av:PointCollection x:Key="FalseConnector">559.5,1110 640,1110</av:PointCollection>
+                                      <av:PointCollection x:Key="TrueConnector">470.5,1150 290,1150</av:PointCollection>
+                                      <av:PointCollection x:Key="FalseConnector">549.5,1150 770.5,1150</av:PointCollection>
                                     </scg:Dictionary>
                                   </sap:WorkflowViewStateService.ViewState>
                                   <FlowDecision.True>
                                     <FlowStep x:Name="__ReferenceID15">
                                       <sap:WorkflowViewStateService.ViewState>
                                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                          <av:Point x:Key="ShapeLocation">230.5,1083.52</av:Point>
+                                          <av:Point x:Key="ShapeLocation">90,1124</av:Point>
                                           <av:Size x:Key="ShapeSize">200,52</av:Size>
                                         </scg:Dictionary>
                                       </sap:WorkflowViewStateService.ViewState>
@@ -916,82 +954,114 @@
                                     </FlowStep>
                                   </FlowDecision.True>
                                   <FlowDecision.False>
-                                    <FlowStep x:Name="__ReferenceID17">
+                                    <FlowStep x:Name="__ReferenceID16">
                                       <sap:WorkflowViewStateService.ViewState>
                                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                          <av:Point x:Key="ShapeLocation">640,1033</av:Point>
-                                          <av:Size x:Key="ShapeSize">200,154</av:Size>
-                                          <av:PointCollection x:Key="ConnectorLocation">840,1110 910,1110 910,1229.5</av:PointCollection>
+                                          <av:Point x:Key="ShapeLocation">770.5,1109.5</av:Point>
+                                          <av:Size x:Key="ShapeSize">219,81</av:Size>
+                                          <av:PointCollection x:Key="ConnectorLocation">880,1190.5 880,1206.5</av:PointCollection>
                                         </scg:Dictionary>
                                       </sap:WorkflowViewStateService.ViewState>
-                                      <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="Adding notes in Database&#xD;&#xA;Note:bot failed to classify/extract data from email and need process it manually by quote&#xD;&#xA;agent." DisplayName="Workflows\SSP_StoreNote.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="200,154" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" UnSafe="False" WorkflowFileName="Workflows\SSP_StoreNote.xaml">
-                                        <ui:InvokeWorkflowFile.Arguments>
-                                          <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">
-                                            <VisualBasicValue x:TypeArguments="scg:Dictionary(x:String, x:Object)" ExpressionText="in_Config" />
-                                          </InArgument>
-                                          <InArgument x:TypeArguments="x:String" x:Key="in_barcode">
-                                            <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_Barcode" />
-                                          </InArgument>
-                                          <InArgument x:TypeArguments="x:String" x:Key="in_Comment">
-                                            <Literal x:TypeArguments="x:String" xml:space="preserve">bot failed to extract data from email and need process it manually by quote
-agent.</Literal>
-                                          </InArgument>
-                                          <InArgument x:TypeArguments="x:String" x:Key="in_Type">
-                                            <Literal x:TypeArguments="x:String">Perm</Literal>
-                                          </InArgument>
-                                          <InArgument x:TypeArguments="x:String" x:Key="in_AgentID">
-                                            <Literal x:TypeArguments="x:String">9463</Literal>
-                                          </InArgument>
-                                          <InArgument x:TypeArguments="x:String" x:Key="in_RevisionNum">
-                                            <Literal x:TypeArguments="x:String">1</Literal>
-                                          </InArgument>
-                                          <InArgument x:TypeArguments="x:String" x:Key="in_PartNum">
-                                            <Literal x:TypeArguments="x:String">1</Literal>
-                                          </InArgument>
-                                          <InArgument x:TypeArguments="x:String" x:Key="in_NoteNum">
-                                            <Literal x:TypeArguments="x:String">1</Literal>
-                                          </InArgument>
-                                        </ui:InvokeWorkflowFile.Arguments>
+                                      <Sequence DisplayName="SendMailData_For_Labelling" sap:VirtualizedContainerService.HintSize="219,81" sap2010:WorkflowViewState.IdRef="Sequence_26">
                                         <sap:WorkflowViewStateService.ViewState>
                                           <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                                            <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
                                           </scg:Dictionary>
                                         </sap:WorkflowViewStateService.ViewState>
-                                      </ui:InvokeWorkflowFile>
+                                        <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="350,92" sap2010:WorkflowViewState.IdRef="LogMessage_10" Level="Info" Message="[&quot;Sending the maildata for Relabelling to increase confidence&quot;]" />
+                                        <uma:MLDataLabelling Body="{x:Null}" ContinueOnError="{x:Null}" DataLabellingSession="{x:Null}" FileNameInStorage="{x:Null}" FolderName="{x:Null}" OrchExternalTaskData="{x:Null}" ResponseHeaders="{x:Null}" Result="{x:Null}" RuntimeDataLabellingSession="{x:Null}" RuntimeProject="{x:Null}" SelectedDataLabellingSession="{x:Null}" StatusCode="{x:Null}" DisplayName="Create Labeling Task" FilePath="[in_Config(&quot;RequoteRetrainFiles&quot;).ToString.Replace(&quot;MailData&quot;,in_TransactionItem.SpecificContent(&quot;EmailSender&quot;).ToString)]" sap:VirtualizedContainerService.HintSize="350,176" sap2010:WorkflowViewState.IdRef="MLDataLabelling_4" RefreshDataLabellingSession="False" RefreshProject="False">
+                                          <uma:MLDataLabelling.Projects>
+                                            <um:PageData x:TypeArguments="um:Project" PageNum="1" PageSize="50" TotalCount="3">
+                                              <um:PageData.DataList>
+                                                <scg:List x:TypeArguments="um:Project" Capacity="4">
+                                                  <x:Reference>__ReferenceID3</x:Reference>
+                                                  <um:Project Id="b412fb29-e0c7-4db2-a763-9a6b87e9e929" Name="QuoteGenerationProcess" />
+                                                  <um:Project Id="5a09da82-b8fd-476c-84de-a835289804b6" Name="TestEmailClassifier" />
+                                                </scg:List>
+                                              </um:PageData.DataList>
+                                            </um:PageData>
+                                          </uma:MLDataLabelling.Projects>
+                                          <uma:MLDataLabelling.SelectedProject>
+                                            <um:Project x:Name="__ReferenceID3" Id="2716e1b0-7621-4212-9e34-f436fb5c2108" Name="QuoteAutomation" />
+                                          </uma:MLDataLabelling.SelectedProject>
+                                        </uma:MLDataLabelling>
+                                      </Sequence>
                                       <FlowStep.Next>
-                                        <FlowStep x:Name="__ReferenceID16">
+                                        <FlowDecision x:Name="__ReferenceID18" Condition="[String.IsNullOrWhiteSpace(out_str_InvoiceNumber) And &#xA;String.IsNullOrWhiteSpace(out_str_POnumber) And&#xA;String.IsNullOrWhiteSpace(out_str_PreviousBarcode) And&#xA;String.IsNullOrWhiteSpace(out_str_QuoteNumber)]" DisplayName="Flow Decision" sap:VirtualizedContainerService.HintSize="79,87" sap2010:WorkflowViewState.IdRef="FlowDecision_8">
                                           <sap:WorkflowViewStateService.ViewState>
                                             <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                              <av:Point x:Key="ShapeLocation">800.5,1229.5</av:Point>
-                                              <av:Size x:Key="ShapeSize">219,81</av:Size>
+                                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                              <av:Point x:Key="ShapeLocation">840.5,1206.5</av:Point>
+                                              <av:Size x:Key="ShapeSize">79,87</av:Size>
+                                              <av:PointCollection x:Key="TrueConnector">840.5,1250 560,1250 560,1273</av:PointCollection>
+                                              <av:PointCollection x:Key="FalseConnector">919.5,1250 949.5,1250 949.5,1249.52 969.5,1249.52</av:PointCollection>
                                             </scg:Dictionary>
                                           </sap:WorkflowViewStateService.ViewState>
-                                          <Sequence DisplayName="SendMailData_For_Labelling" sap:VirtualizedContainerService.HintSize="219,81" sap2010:WorkflowViewState.IdRef="Sequence_26">
-                                            <sap:WorkflowViewStateService.ViewState>
-                                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                                              </scg:Dictionary>
-                                            </sap:WorkflowViewStateService.ViewState>
-                                            <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="350,92" sap2010:WorkflowViewState.IdRef="LogMessage_10" Level="Info" Message="[&quot;Sending the maildata for Relabelling to increase confidence&quot;]" />
-                                            <uma:MLDataLabelling Body="{x:Null}" ContinueOnError="{x:Null}" DataLabellingSession="{x:Null}" FileNameInStorage="{x:Null}" FolderName="{x:Null}" OrchExternalTaskData="{x:Null}" ResponseHeaders="{x:Null}" Result="{x:Null}" RuntimeDataLabellingSession="{x:Null}" RuntimeProject="{x:Null}" SelectedDataLabellingSession="{x:Null}" StatusCode="{x:Null}" DisplayName="Create Labeling Task" FilePath="[in_Config(&quot;RequoteRetrainFiles&quot;).ToString.Replace(&quot;MailData&quot;,in_TransactionItem.SpecificContent(&quot;EmailSender&quot;).ToString)]" sap:VirtualizedContainerService.HintSize="350,176" sap2010:WorkflowViewState.IdRef="MLDataLabelling_4" RefreshDataLabellingSession="False" RefreshProject="False">
-                                              <uma:MLDataLabelling.Projects>
-                                                <um:PageData x:TypeArguments="um:Project" PageNum="1" PageSize="50" TotalCount="3">
-                                                  <um:PageData.DataList>
-                                                    <scg:List x:TypeArguments="um:Project" Capacity="4">
-                                                      <x:Reference>__ReferenceID3</x:Reference>
-                                                      <um:Project Id="b412fb29-e0c7-4db2-a763-9a6b87e9e929" Name="QuoteGenerationProcess" />
-                                                      <um:Project Id="5a09da82-b8fd-476c-84de-a835289804b6" Name="TestEmailClassifier" />
-                                                    </scg:List>
-                                                  </um:PageData.DataList>
-                                                </um:PageData>
-                                              </uma:MLDataLabelling.Projects>
-                                              <uma:MLDataLabelling.SelectedProject>
-                                                <um:Project x:Name="__ReferenceID3" Id="2716e1b0-7621-4212-9e34-f436fb5c2108" Name="QuoteAutomation" />
-                                              </uma:MLDataLabelling.SelectedProject>
-                                            </uma:MLDataLabelling>
-                                          </Sequence>
-                                        </FlowStep>
+                                          <FlowDecision.True>
+                                            <FlowStep x:Name="__ReferenceID17">
+                                              <sap:WorkflowViewStateService.ViewState>
+                                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                  <av:Point x:Key="ShapeLocation">460,1273</av:Point>
+                                                  <av:Size x:Key="ShapeSize">200,154</av:Size>
+                                                  <av:PointCollection x:Key="ConnectorLocation">460,1350 430,1350 430,1349.52 410,1349.52</av:PointCollection>
+                                                </scg:Dictionary>
+                                              </sap:WorkflowViewStateService.ViewState>
+                                              <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="Adding notes in Database&#xA;Note:bot failed to classify/extract data from email and need process it manually by quote&#xA;agent. " DisplayName="Workflows\SSP_StoreNote.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="200,154" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" UnSafe="False" WorkflowFileName="Workflows\SSP_StoreNote.xaml">
+                                                <ui:InvokeWorkflowFile.Arguments>
+                                                  <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[in_Config]</InArgument>
+                                                  <InArgument x:TypeArguments="x:String" x:Key="in_barcode">[in_Barcode]</InArgument>
+                                                  <InArgument x:TypeArguments="x:String" x:Key="in_Comment" xml:space="preserve">bot failed to extract data from email and need process it manually by quote
+agent.</InArgument>
+                                                  <InArgument x:TypeArguments="x:String" x:Key="in_Type">Perm</InArgument>
+                                                  <InArgument x:TypeArguments="x:String" x:Key="in_AgentID">9463</InArgument>
+                                                  <InArgument x:TypeArguments="x:String" x:Key="in_RevisionNum">1</InArgument>
+                                                  <InArgument x:TypeArguments="x:String" x:Key="in_PartNum">1</InArgument>
+                                                  <InArgument x:TypeArguments="x:String" x:Key="in_NoteNum">1</InArgument>
+                                                </ui:InvokeWorkflowFile.Arguments>
+                                                <sap:WorkflowViewStateService.ViewState>
+                                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                                    <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                                                  </scg:Dictionary>
+                                                </sap:WorkflowViewStateService.ViewState>
+                                              </ui:InvokeWorkflowFile>
+                                              <FlowStep.Next>
+                                                <FlowStep x:Name="__ReferenceID20">
+                                                  <sap:WorkflowViewStateService.ViewState>
+                                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                      <av:Point x:Key="ShapeLocation">210,1323.52</av:Point>
+                                                      <av:Size x:Key="ShapeSize">200,52</av:Size>
+                                                    </scg:Dictionary>
+                                                  </sap:WorkflowViewStateService.ViewState>
+                                                  <Throw Exception="[New BusinessRuleException(&quot;bot failed to extract data from email and needto be processed manually by quote agent.&quot;)]" sap:VirtualizedContainerService.HintSize="200,52" sap2010:WorkflowViewState.IdRef="Throw_3">
+                                                    <sap:WorkflowViewStateService.ViewState>
+                                                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                                      </scg:Dictionary>
+                                                    </sap:WorkflowViewStateService.ViewState>
+                                                  </Throw>
+                                                </FlowStep>
+                                              </FlowStep.Next>
+                                            </FlowStep>
+                                          </FlowDecision.True>
+                                          <FlowDecision.False>
+                                            <FlowStep x:Name="__ReferenceID19">
+                                              <sap:WorkflowViewStateService.ViewState>
+                                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                  <av:Point x:Key="ShapeLocation">969.5,1223.52</av:Point>
+                                                  <av:Size x:Key="ShapeSize">200,52</av:Size>
+                                                </scg:Dictionary>
+                                              </sap:WorkflowViewStateService.ViewState>
+                                              <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="200,52" sap2010:WorkflowViewState.IdRef="LogMessage_11" Level="Info" Message="[&quot;Proceeding with existing Data to process the mail...&quot;]">
+                                                <sap:WorkflowViewStateService.ViewState>
+                                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                                  </scg:Dictionary>
+                                                </sap:WorkflowViewStateService.ViewState>
+                                              </ui:LogMessage>
+                                            </FlowStep>
+                                          </FlowDecision.False>
+                                        </FlowDecision>
                                       </FlowStep.Next>
                                     </FlowStep>
                                   </FlowDecision.False>
@@ -1005,7 +1075,7 @@ agent.</Literal>
                                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                   <av:Point x:Key="ShapeLocation">643,919</av:Point>
                                   <av:Size x:Key="ShapeSize">434,82</av:Size>
-                                  <av:PointCollection x:Key="ConnectorLocation">860,1001 860,1031 520,1031 520,1066.5</av:PointCollection>
+                                  <av:PointCollection x:Key="ConnectorLocation">860,1001 860,1031 510,1031 510,1106.5</av:PointCollection>
                                 </scg:Dictionary>
                               </sap:WorkflowViewStateService.ViewState>
                               <Assign sap:VirtualizedContainerService.HintSize="434,82" sap2010:WorkflowViewState.IdRef="Assign_20">
@@ -1117,5 +1187,8 @@ agent.</Literal>
     <x:Reference>__ReferenceID15</x:Reference>
     <x:Reference>__ReferenceID16</x:Reference>
     <x:Reference>__ReferenceID17</x:Reference>
+    <x:Reference>__ReferenceID18</x:Reference>
+    <x:Reference>__ReferenceID19</x:Reference>
+    <x:Reference>__ReferenceID20</x:Reference>
   </Flowchart>
 </Activity>

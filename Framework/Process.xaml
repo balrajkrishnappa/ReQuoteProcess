@@ -8,7 +8,7 @@
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>616,1479</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1054,1950</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ProcessTransaction_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="44">
@@ -59,7 +59,7 @@
     </scg:List>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
-    <scg:List x:TypeArguments="AssemblyReference" Capacity="132">
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="67">
       <AssemblyReference>System.Activities</AssemblyReference>
       <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
       <AssemblyReference>mscorlib</AssemblyReference>
@@ -128,7 +128,7 @@
       <AssemblyReference>System.Memory.Data</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="Invoke major steps of the business process, which are usually implemented by multiple subworkflows.&#xA;&#xA;If a BusinessRuleException is thrown, the transaction is skipped. &#xA;If another kind of exception occurs, the current transaction can be retried. " DisplayName="Process" sap:VirtualizedContainerService.HintSize="496,1414" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="Invoke major steps of the business process, which are usually implemented by multiple subworkflows.&#xA;&#xA;If a BusinessRuleException is thrown, the transaction is skipped. &#xA;If another kind of exception occurs, the current transaction can be retried. " DisplayName="Process" sap:VirtualizedContainerService.HintSize="519,1885" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="Barcode" />
       <Variable x:TypeArguments="x:String" Name="MaxNoteCount" />
@@ -146,6 +146,12 @@
       <Variable x:TypeArguments="x:String" Name="ClassifierConfidence" />
       <Variable x:TypeArguments="x:String" Name="ExtractorConfidence" />
       <Variable x:TypeArguments="sd:DataTable" Name="dt_MLoutput" />
+      <Variable x:TypeArguments="x:Boolean" Name="bool_ProcessEmail" />
+      <Variable x:TypeArguments="sd:DataTable" Name="dt_MandatoryFieldData" />
+      <Variable x:TypeArguments="x:String" Name="str_PreviousBarcode" />
+      <Variable x:TypeArguments="x:String" Name="str_POnumber" />
+      <Variable x:TypeArguments="x:String" Name="str_InvoiceNumber" />
+      <Variable x:TypeArguments="x:String" Name="str_QuoteNumber" />
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -153,16 +159,16 @@
         <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:LogMessage DisplayName="Log Message Process Start" sap:VirtualizedContainerService.HintSize="434,92" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Started Process&quot;]" />
-    <Sequence DisplayName="EmailText_Generator" sap:VirtualizedContainerService.HintSize="434,81" sap2010:WorkflowViewState.IdRef="Sequence_2">
+    <ui:LogMessage DisplayName="Log Message Process Start" sap:VirtualizedContainerService.HintSize="457,92" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Started Process&quot;]" />
+    <Sequence DisplayName="EmailText_Generator" sap:VirtualizedContainerService.HintSize="457,81" sap2010:WorkflowViewState.IdRef="Sequence_2">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">False</x:Boolean>
           <x:Boolean x:Key="IsPinned">False</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
-      <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="338,101" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[&quot;Extracting mail data from queue&quot;]" />
-      <Assign sap:VirtualizedContainerService.HintSize="338,70" sap2010:WorkflowViewState.IdRef="Assign_1">
+      <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="434,92" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[&quot;Extracting mail data from queue&quot;]" />
+      <Assign sap:VirtualizedContainerService.HintSize="434,82" sap2010:WorkflowViewState.IdRef="Assign_1">
         <Assign.To>
           <OutArgument x:TypeArguments="x:String">[emailsubject]</OutArgument>
         </Assign.To>
@@ -170,7 +176,7 @@
           <InArgument x:TypeArguments="x:String">[in_TransactionItem.SpecificContent("EmailSubject").ToString]</InArgument>
         </Assign.Value>
       </Assign>
-      <Assign sap:VirtualizedContainerService.HintSize="338,70" sap2010:WorkflowViewState.IdRef="Assign_2">
+      <Assign sap:VirtualizedContainerService.HintSize="434,82" sap2010:WorkflowViewState.IdRef="Assign_2">
         <Assign.To>
           <OutArgument x:TypeArguments="x:String">[emailbody]</OutArgument>
         </Assign.To>
@@ -178,7 +184,7 @@
           <InArgument x:TypeArguments="x:String">[in_TransactionItem.SpecificContent("EmailBody").ToString]</InArgument>
         </Assign.Value>
       </Assign>
-      <Assign sap:VirtualizedContainerService.HintSize="338,70" sap2010:WorkflowViewState.IdRef="Assign_3">
+      <Assign sap:VirtualizedContainerService.HintSize="434,82" sap2010:WorkflowViewState.IdRef="Assign_3">
         <Assign.To>
           <OutArgument x:TypeArguments="x:String">[senderEmail]</OutArgument>
         </Assign.To>
@@ -186,7 +192,7 @@
           <InArgument x:TypeArguments="x:String">[in_TransactionItem.SpecificContent("EmailSender").ToString]</InArgument>
         </Assign.Value>
       </Assign>
-      <Assign sap:VirtualizedContainerService.HintSize="338,70" sap2010:WorkflowViewState.IdRef="Assign_4">
+      <Assign sap:VirtualizedContainerService.HintSize="434,82" sap2010:WorkflowViewState.IdRef="Assign_4">
         <Assign.To>
           <OutArgument x:TypeArguments="x:String">[mailDateAndTime]</OutArgument>
         </Assign.To>
@@ -194,7 +200,7 @@
           <InArgument x:TypeArguments="x:String">[in_TransactionItem.SpecificContent("DateTime").ToString]</InArgument>
         </Assign.Value>
       </Assign>
-      <Assign sap:VirtualizedContainerService.HintSize="338,70" sap2010:WorkflowViewState.IdRef="Assign_5">
+      <Assign sap:VirtualizedContainerService.HintSize="434,82" sap2010:WorkflowViewState.IdRef="Assign_5">
         <Assign.To>
           <OutArgument x:TypeArguments="x:String">[Input_Text]</OutArgument>
         </Assign.To>
@@ -203,7 +209,7 @@
         </Assign.Value>
       </Assign>
     </Sequence>
-    <Sequence DisplayName="BarCodeNumber_Generation" sap:VirtualizedContainerService.HintSize="434,224" sap2010:WorkflowViewState.IdRef="Sequence_3">
+    <Sequence DisplayName="BarCodeNumber_Generation" sap:VirtualizedContainerService.HintSize="457,224" sap2010:WorkflowViewState.IdRef="Sequence_3">
       <Sequence.Variables>
         <Variable x:TypeArguments="x:String" Name="BarcodeNumber" />
       </Sequence.Variables>
@@ -214,32 +220,18 @@
       </sap:WorkflowViewStateService.ViewState>
       <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Workflows\Barcode_Generation.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="364,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_3" UnSafe="False" WorkflowFileName="Workflows\Barcode_Generation.xaml">
         <ui:InvokeWorkflowFile.Arguments>
-          <OutArgument x:TypeArguments="x:String" x:Key="out_BarcodeNumber">
-            <VisualBasicReference x:TypeArguments="x:String" ExpressionText="BarcodeNumber" />
-          </OutArgument>
-          <InArgument x:TypeArguments="ui:QueueItem" x:Key="in_TransactionItem">
-            <VisualBasicValue x:TypeArguments="ui:QueueItem" ExpressionText="in_TransactionItem" />
-          </InArgument>
-          <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">
-            <VisualBasicValue x:TypeArguments="scg:Dictionary(x:String, x:Object)" ExpressionText="in_Config" />
-          </InArgument>
-          <InArgument x:TypeArguments="x:String" x:Key="in_EmailDate">
-            <VisualBasicValue x:TypeArguments="x:String" ExpressionText="mailDateAndTime" />
-          </InArgument>
-          <InArgument x:TypeArguments="x:String" x:Key="in_EmailText">
-            <VisualBasicValue x:TypeArguments="x:String" ExpressionText="emailbody" />
-          </InArgument>
-          <InArgument x:TypeArguments="x:String" x:Key="in_EmailFrom">
-            <VisualBasicValue x:TypeArguments="x:String" ExpressionText="senderEmail" />
-          </InArgument>
-          <InArgument x:TypeArguments="x:String" x:Key="in_EmailSubject">
-            <VisualBasicValue x:TypeArguments="x:String" ExpressionText="emailsubject" />
-          </InArgument>
+          <OutArgument x:TypeArguments="x:String" x:Key="out_BarcodeNumber">[BarcodeNumber]</OutArgument>
+          <InArgument x:TypeArguments="ui:QueueItem" x:Key="in_TransactionItem">[in_TransactionItem]</InArgument>
+          <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[in_Config]</InArgument>
+          <InArgument x:TypeArguments="x:String" x:Key="in_EmailDate">[mailDateAndTime]</InArgument>
+          <InArgument x:TypeArguments="x:String" x:Key="in_EmailText">[emailbody]</InArgument>
+          <InArgument x:TypeArguments="x:String" x:Key="in_EmailFrom">[senderEmail]</InArgument>
+          <InArgument x:TypeArguments="x:String" x:Key="in_EmailSubject">[emailsubject]</InArgument>
         </ui:InvokeWorkflowFile.Arguments>
       </ui:InvokeWorkflowFile>
     </Sequence>
-    <ui:Comment DisplayName="Comment (placeholder)" sap:VirtualizedContainerService.HintSize="434,56" sap2010:WorkflowViewState.IdRef="Comment_1" Text="//  Invoke steps of the process" />
-    <Assign sap:VirtualizedContainerService.HintSize="434,82" sap2010:WorkflowViewState.IdRef="Assign_6">
+    <ui:Comment DisplayName="Comment (placeholder)" sap:VirtualizedContainerService.HintSize="457,56" sap2010:WorkflowViewState.IdRef="Comment_1" Text="//  Invoke steps of the process" />
+    <Assign sap:VirtualizedContainerService.HintSize="457,82" sap2010:WorkflowViewState.IdRef="Assign_6">
       <Assign.To>
         <OutArgument x:TypeArguments="x:String">[Barcode]</OutArgument>
       </Assign.To>
@@ -247,45 +239,51 @@
         <InArgument x:TypeArguments="x:String">2207144494000</InArgument>
       </Assign.Value>
     </Assign>
-    <If Condition="[Not(String.IsNullOrEmpty(Barcode))]" sap:VirtualizedContainerService.HintSize="434,389" sap2010:WorkflowViewState.IdRef="If_1">
+    <If sap2010:Annotation.AnnotationText="Requote process until ML Data extraction&#xA;" Condition="[Not(String.IsNullOrEmpty(Barcode))]" sap:VirtualizedContainerService.HintSize="457,431" sap2010:WorkflowViewState.IdRef="If_1">
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
       <If.Then>
         <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Workflows\ReQuote_Process.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="349,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" UnSafe="False" WorkflowFileName="Workflows\ReQuote_Process.xaml">
           <ui:InvokeWorkflowFile.Arguments>
-            <InArgument x:TypeArguments="ui:QueueItem" x:Key="in_TransactionItem">
-              <VisualBasicValue x:TypeArguments="ui:QueueItem" ExpressionText="in_TransactionItem" />
-            </InArgument>
-            <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">
-              <VisualBasicValue x:TypeArguments="scg:Dictionary(x:String, x:Object)" ExpressionText="in_Config" />
-            </InArgument>
-            <OutArgument x:TypeArguments="x:String" x:Key="ClassifierOutput">
-              <VisualBasicReference x:TypeArguments="x:String" ExpressionText="ClassifierOutput" />
-            </OutArgument>
-            <OutArgument x:TypeArguments="x:String" x:Key="out_Str_EmailRequestType">
-              <VisualBasicReference x:TypeArguments="x:String" ExpressionText="Str_EmailRequestType" />
-            </OutArgument>
-            <OutArgument x:TypeArguments="x:String" x:Key="out_Str_ClassifierConfidence">
-              <VisualBasicReference x:TypeArguments="x:String" ExpressionText="ClassifierConfidence" />
-            </OutArgument>
-            <OutArgument x:TypeArguments="x:String" x:Key="out_Str_ExtractorConfidence">
-              <VisualBasicReference x:TypeArguments="x:String" ExpressionText="ExtractorConfidence" />
-            </OutArgument>
-            <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_dt_MLoutput">
-              <VisualBasicReference x:TypeArguments="sd:DataTable" ExpressionText="dt_MLoutput" />
-            </OutArgument>
-            <OutArgument x:TypeArguments="x:Boolean" x:Key="out_bool_ExtractedAnyMandatoryItem">
-              <VisualBasicReference x:TypeArguments="x:Boolean" ExpressionText="boolFoundrequiredData" />
-            </OutArgument>
-            <InArgument x:TypeArguments="x:String" x:Key="in_Str_EmailData">
-              <VisualBasicValue x:TypeArguments="x:String" ExpressionText="Input_Text" />
-            </InArgument>
-            <InArgument x:TypeArguments="x:String" x:Key="in_Barcode">
-              <VisualBasicValue x:TypeArguments="x:String" ExpressionText="Barcode" />
-            </InArgument>
+            <InArgument x:TypeArguments="ui:QueueItem" x:Key="in_TransactionItem">[in_TransactionItem]</InArgument>
+            <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[in_Config]</InArgument>
+            <OutArgument x:TypeArguments="x:String" x:Key="out_Str_EmailRequestType">[Str_EmailRequestType]</OutArgument>
+            <OutArgument x:TypeArguments="x:String" x:Key="out_Str_ExtractorConfidence">[ExtractorConfidence]</OutArgument>
+            <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_dt_MLoutput">[dt_MLoutput]</OutArgument>
+            <InArgument x:TypeArguments="x:String" x:Key="in_Str_EmailData">[Input_Text]</InArgument>
+            <InArgument x:TypeArguments="x:String" x:Key="in_Barcode">[Barcode]</InArgument>
+            <InArgument x:TypeArguments="x:Boolean" x:Key="out_ProcessEmail">[bool_ProcessEmail]</InArgument>
+            <InArgument x:TypeArguments="sd:DataTable" x:Key="Out_MandatoryFieldData">[dt_MandatoryFieldData]</InArgument>
+            <OutArgument x:TypeArguments="x:String" x:Key="out_str_PreviousBarcode">[str_PreviousBarcode]</OutArgument>
+            <OutArgument x:TypeArguments="x:String" x:Key="out_str_POnumber">[str_POnumber]</OutArgument>
+            <OutArgument x:TypeArguments="x:String" x:Key="out_str_InvoiceNumber">[str_InvoiceNumber]</OutArgument>
+            <OutArgument x:TypeArguments="x:String" x:Key="out_str_QuoteNumber">[str_QuoteNumber]</OutArgument>
           </ui:InvokeWorkflowFile.Arguments>
         </ui:InvokeWorkflowFile>
       </If.Then>
     </If>
-    <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="434,52" sap2010:WorkflowViewState.IdRef="CommentOut_1">
+    <If Condition="[bool_ProcessEmail]" sap:VirtualizedContainerService.HintSize="457,389" sap2010:WorkflowViewState.IdRef="If_2">
+      <If.Then>
+        <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Workflows\RequoteProcess_InDataBase.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="379,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_4" UnSafe="False" WorkflowFileName="Workflows\RequoteProcess_InDataBase.xaml">
+          <ui:InvokeWorkflowFile.Arguments>
+            <InArgument x:TypeArguments="sd:DataTable" x:Key="in_dt_MandatoryFields">[dt_MandatoryFieldData]</InArgument>
+            <InArgument x:TypeArguments="sd:DataTable" x:Key="in_dt_MLextractedData">[dt_MLoutput]</InArgument>
+            <InArgument x:TypeArguments="x:String" x:Key="in_str_QuoteNumber">[str_QuoteNumber]</InArgument>
+            <InArgument x:TypeArguments="x:String" x:Key="in_str_InvoiceNumber">[str_InvoiceNumber]</InArgument>
+            <InArgument x:TypeArguments="x:String" x:Key="in_str_PreviousBarcode">[str_PreviousBarcode]</InArgument>
+            <InArgument x:TypeArguments="x:String" x:Key="in_str_POnumber">[str_POnumber]</InArgument>
+            <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[in_Config]</InArgument>
+            <InArgument x:TypeArguments="ui:QueueItem" x:Key="in_TransactionItem">[in_TransactionItem]</InArgument>
+            <InArgument x:TypeArguments="x:String" x:Key="in_barcode">[Barcode]</InArgument>
+            <InArgument x:TypeArguments="x:String" x:Key="in_str_Quantity" />
+          </ui:InvokeWorkflowFile.Arguments>
+        </ui:InvokeWorkflowFile>
+      </If.Then>
+    </If>
+    <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="457,52" sap2010:WorkflowViewState.IdRef="CommentOut_1">
       <ui:CommentOut.Body>
         <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="412,163" sap2010:WorkflowViewState.IdRef="Sequence_4">
           <sap:WorkflowViewStateService.ViewState>

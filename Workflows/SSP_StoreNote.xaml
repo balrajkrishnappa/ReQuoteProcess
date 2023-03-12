@@ -4,10 +4,10 @@
     <x:Property Name="in_barcode" Type="InArgument(x:String)" />
     <x:Property Name="in_Comment" Type="InArgument(x:String)" />
     <x:Property Name="in_Type" Type="InArgument(x:String)" />
-    <x:Property Name="in_AgentID" Type="InArgument(x:String)" />
-    <x:Property Name="in_RevisionNum" Type="InArgument(x:String)" />
-    <x:Property Name="in_PartNum" Type="InArgument(x:String)" />
-    <x:Property Name="in_NoteNum" Type="InArgument(x:String)" />
+    <x:Property Name="in_AgentID" Type="InArgument(x:Int32)" />
+    <x:Property Name="in_RevisionNum" Type="InArgument(x:Int32)" />
+    <x:Property Name="in_PartNum" Type="InArgument(x:Int32)" />
+    <x:Property Name="in_NoteNum" Type="InArgument(x:Int32)" />
   </x:Members>
   <this:SSP_StoreNote.in_barcode>
     <InArgument x:TypeArguments="x:String" />
@@ -15,7 +15,7 @@
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1054,1255</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>937,1255</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>SSP_StoreNote_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="31">
@@ -144,27 +144,13 @@
         </sap:WorkflowViewStateService.ViewState>
         <ui:ExecuteQuery ContinueOnError="{x:Null}" TimeoutMS="{x:Null}" CommandType="StoredProcedure" DataTable="[dt_SSPstoreNotesOutput]" DisplayName="SspStoreNote" ExistingDbConnection="[sybConStatus]" sap:VirtualizedContainerService.HintSize="200,52" sap2010:WorkflowViewState.IdRef="ExecuteQuery_1" Sql="[in_Config(&quot;workflow_data..SspStoreNote&quot;).ToString]">
           <ui:ExecuteQuery.Parameters>
-            <InArgument x:TypeArguments="x:Int32" x:Key="@aBarcode">
-              <VisualBasicValue x:TypeArguments="x:Int32" ExpressionText="CInt(in_barcode)" />
-            </InArgument>
-            <InArgument x:TypeArguments="x:String" x:Key="@aComment">
-              <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_Comment" />
-            </InArgument>
-            <InArgument x:TypeArguments="x:String" x:Key="@aType">
-              <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_Type" />
-            </InArgument>
-            <InArgument x:TypeArguments="x:Int32" x:Key="@anAgentID">
-              <VisualBasicValue x:TypeArguments="x:Int32" ExpressionText="CInt(in_AgentID)" />
-            </InArgument>
-            <InArgument x:TypeArguments="x:Int32" x:Key="@aRevisionNum">
-              <VisualBasicValue x:TypeArguments="x:Int32" ExpressionText="CInt(in_RevisionNum)" />
-            </InArgument>
-            <InArgument x:TypeArguments="x:Int32" x:Key="@aPartNum">
-              <VisualBasicValue x:TypeArguments="x:Int32" ExpressionText="CInt(in_PartNum)" />
-            </InArgument>
-            <InArgument x:TypeArguments="x:Int32" x:Key="@aNoteNum">
-              <VisualBasicValue x:TypeArguments="x:Int32" ExpressionText="CInt(in_NoteNum)" />
-            </InArgument>
+            <InArgument x:TypeArguments="x:Int32" x:Key="@aBarcode">[CInt(in_barcode)]</InArgument>
+            <InArgument x:TypeArguments="x:String" x:Key="@aComment">[in_Comment]</InArgument>
+            <InArgument x:TypeArguments="x:String" x:Key="@aType">[in_Type]</InArgument>
+            <InArgument x:TypeArguments="x:Int32" x:Key="@anAgentID">[CInt(in_AgentID)]</InArgument>
+            <InArgument x:TypeArguments="x:Int32" x:Key="@aRevisionNum">[CInt(in_RevisionNum)]</InArgument>
+            <InArgument x:TypeArguments="x:Int32" x:Key="@aPartNum">[CInt(in_PartNum)]</InArgument>
+            <InArgument x:TypeArguments="x:Int32" x:Key="@aNoteNum">[CInt(in_NoteNum)]</InArgument>
           </ui:ExecuteQuery.Parameters>
         </ui:ExecuteQuery>
         <FlowStep.Next>
