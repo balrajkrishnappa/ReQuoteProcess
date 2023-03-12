@@ -1,16 +1,13 @@
 <Activity mc:Ignorable="sap sap2010" x:Class="SSP_QTLoadLabelItem" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data.Common" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <x:Members>
-    <x:Property Name="in_CustInfo" Type="InArgument(sd:DataTable)" />
     <x:Property Name="io_str_PreviousBarcode" Type="InOutArgument(x:String)" />
     <x:Property sap2010:Annotation.AnnotationText="Dictionary structure to store configuration data of the process (settings, constants and assets)." Name="in_Config" Type="InArgument(scg:Dictionary(x:String, x:Object))" />
-    <x:Property sap2010:Annotation.AnnotationText="Transaction item to be processed." Name="in_TransactionItem" Type="InArgument(ui:QueueItem)" />
-    <x:Property Name="in_barcode" Type="InArgument(x:String)" />
-    <x:Property Name="out_Count" Type="OutArgument(x:Int32)" />
+    <x:Property Name="out_dt_ProductDetails" Type="OutArgument(sd:DataTable)" />
   </x:Members>
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>952,1408</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>530,1191</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>SSP_QTLoadLabelItem_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="54">
@@ -48,7 +45,7 @@
     </scg:List>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
-    <scg:List x:TypeArguments="AssemblyReference" Capacity="37">
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="74">
       <AssemblyReference>System.Activities</AssemblyReference>
       <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
       <AssemblyReference>System.Private.CoreLib</AssemblyReference>
@@ -85,9 +82,16 @@
       <AssemblyReference>System.ComponentModel.Primitives</AssemblyReference>
       <AssemblyReference>System.Security.Permissions</AssemblyReference>
       <AssemblyReference>System.Runtime.InteropServices</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
+      <AssemblyReference>System.Memory.Data</AssemblyReference>
+      <AssemblyReference>NPOI</AssemblyReference>
+      <AssemblyReference>System.Console</AssemblyReference>
+      <AssemblyReference>System.Configuration.ConfigurationManager</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>System.Private.Uri</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="SSP_QTLoadLabelItem" sap:VirtualizedContainerService.HintSize="636,1343" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="SSP_QTLoadLabelItem" sap:VirtualizedContainerService.HintSize="540,1126" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="ui:DatabaseConnection" Name="sybConStatus" />
     </Sequence.Variables>
@@ -96,17 +100,13 @@
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Workflows\Connect_Sybase.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="574,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="Workflows\Connect_Sybase.xaml">
+    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Workflows\Connect_Sybase.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="478,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="Workflows\Connect_Sybase.xaml">
       <ui:InvokeWorkflowFile.Arguments>
-        <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">
-          <VisualBasicValue x:TypeArguments="scg:Dictionary(x:String, x:Object)" ExpressionText="in_Config" />
-        </InArgument>
-        <OutArgument x:TypeArguments="ui:DatabaseConnection" x:Key="sybConStatus">
-          <VisualBasicReference x:TypeArguments="ui:DatabaseConnection" ExpressionText="sybConStatus" />
-        </OutArgument>
+        <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[in_Config]</InArgument>
+        <OutArgument x:TypeArguments="ui:DatabaseConnection" x:Key="sybConStatus">[sybConStatus]</OutArgument>
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>
-    <If sap2010:Annotation.AnnotationText="Fetch previous barcode from Sybase for the previous quote or order using&#xA;“OMPROD..sspSearchByInvoice”," Condition="[sybConStatus.State.ToString.ToLower=&quot;open&quot; And Not(String.IsNullOrEmpty(io_str_PreviousBarcode))]" sap:VirtualizedContainerService.HintSize="574,1022" sap2010:WorkflowViewState.IdRef="If_1">
+    <If sap2010:Annotation.AnnotationText="" Condition="[sybConStatus.State.ToString.ToLower=&quot;open&quot; And Not(String.IsNullOrEmpty(io_str_PreviousBarcode))]" sap:VirtualizedContainerService.HintSize="478,797" sap2010:WorkflowViewState.IdRef="If_1">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
@@ -115,20 +115,17 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
       <If.Then>
-        <Sequence DisplayName="sspQTLoadLabelItem" sap:VirtualizedContainerService.HintSize="496,603" sap2010:WorkflowViewState.IdRef="Sequence_3">
-          <Sequence.Variables>
-            <Variable x:TypeArguments="sd:DataTable" Name="out_dt_CustomerInfo" />
-          </Sequence.Variables>
+        <Sequence DisplayName="sspQTLoadLabelItem" sap:VirtualizedContainerService.HintSize="400,389" sap2010:WorkflowViewState.IdRef="Sequence_3">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="434,92" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;If workflow_quote..sspQTLoadLabelItem stored procedure returns the value/count 2 means that it was an Order&quot;]" />
-          <ui:ExecuteQuery ContinueOnError="{x:Null}" TimeoutMS="{x:Null}" sap2010:Annotation.AnnotationText="“workflow_quote..sspQTLoadLabelItem”. If this stored procedure returns the value/count 2 which means that it was an Order" CommandType="StoredProcedure" DataTable="[out_dt_CustomerInfo]" DisplayName="Run query_SspQTLoadLabelItem" ExistingDbConnection="[sybConStatus]" sap:VirtualizedContainerService.HintSize="434,146" sap2010:WorkflowViewState.IdRef="ExecuteQuery_1" Sql="[in_Config(&quot;SspQTLoadLabelItem&quot;).ToString]">
+          <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="338,92" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;If workflow_quote..sspValidateItemReorderNum stored procedure returns the value/count 2 means that it was an Order&quot;]" />
+          <ui:ExecuteQuery ContinueOnError="{x:Null}" TimeoutMS="{x:Null}" sap2010:Annotation.AnnotationText="“workflow_quote..sspValidateItemReorderNum”. If this stored procedure returns the value/count 1 which means that it was an Quote" CommandType="StoredProcedure" DataTable="[out_dt_ProductDetails]" DisplayName="Run query_SspQTLoadLabelItem" ExistingDbConnection="[sybConStatus]" sap:VirtualizedContainerService.HintSize="338,146" sap2010:WorkflowViewState.IdRef="ExecuteQuery_1" Sql="[in_Config(&quot;SspQTLoadLabelItem&quot;).ToString]">
             <ui:ExecuteQuery.Parameters>
-              <InArgument x:TypeArguments="x:String" x:Key="@aReorderNum">
-                <VisualBasicValue x:TypeArguments="x:String" ExpressionText="io_str_PreviousBarcode" />
+              <InArgument x:TypeArguments="x:Int32" x:Key="@aBarcode">
+                <VisualBasicValue x:TypeArguments="x:Int32" ExpressionText="CInt(io_str_PreviousBarcode)" />
               </InArgument>
               <InArgument x:TypeArguments="x:String" x:Key="@aSetID">
                 <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_Config(&quot;Setid&quot;).ToString" />
@@ -143,44 +140,6 @@
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
           </ui:ExecuteQuery>
-          <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="434,52" sap2010:WorkflowViewState.IdRef="CommentOut_1">
-            <ui:CommentOut.Body>
-              <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="496,193" sap2010:WorkflowViewState.IdRef="Sequence_2">
-                <sap:WorkflowViewStateService.ViewState>
-                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                  </scg:Dictionary>
-                </sap:WorkflowViewStateService.ViewState>
-                <Assign DisplayName="Assigning Barcode" sap:VirtualizedContainerService.HintSize="434,82" sap2010:WorkflowViewState.IdRef="Assign_1">
-                  <Assign.To>
-                    <OutArgument x:TypeArguments="x:String">[io_str_PreviousBarcode]</OutArgument>
-                  </Assign.To>
-                  <Assign.Value>
-                    <InArgument x:TypeArguments="x:String">[out_dt_CustomerInfo.Rows(0).Item("barcode").ToString]</InArgument>
-                  </Assign.Value>
-                  <sap:WorkflowViewStateService.ViewState>
-                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                    </scg:Dictionary>
-                  </sap:WorkflowViewStateService.ViewState>
-                </Assign>
-              </Sequence>
-            </ui:CommentOut.Body>
-            <sap:WorkflowViewStateService.ViewState>
-              <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                <x:Boolean x:Key="IsPinned">False</x:Boolean>
-              </scg:Dictionary>
-            </sap:WorkflowViewStateService.ViewState>
-          </ui:CommentOut>
-          <Assign sap:VirtualizedContainerService.HintSize="434,82" sap2010:WorkflowViewState.IdRef="Assign_2">
-            <Assign.To>
-              <OutArgument x:TypeArguments="x:Int32">[out_Count]</OutArgument>
-            </Assign.To>
-            <Assign.Value>
-              <InArgument x:TypeArguments="x:Int32">[out_dt_CustomerInfo.RowCount]</InArgument>
-            </Assign.Value>
-          </Assign>
         </Sequence>
       </If.Then>
       <If.Else>
@@ -194,5 +153,12 @@
         </Sequence>
       </If.Else>
     </If>
+    <ui:DatabaseDisconnect DatabaseConnection="[sybConStatus]" DisplayName="Disconnect from database" sap:VirtualizedContainerService.HintSize="478,25" sap2010:WorkflowViewState.IdRef="DatabaseDisconnect_1">
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:DatabaseDisconnect>
   </Sequence>
 </Activity>
