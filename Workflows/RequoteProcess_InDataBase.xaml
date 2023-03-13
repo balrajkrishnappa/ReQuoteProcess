@@ -165,7 +165,7 @@
                   <av:PointCollection x:Key="ConnectorLocation">480,424 480,489.5</av:PointCollection>
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
-              <Sequence sap2010:Annotation.AnnotationText="Extracting Product details after finding if previous barcode was a Quote or an Order&#xA;" DisplayName="CheckOrder_FromPreviousOrder" sap:VirtualizedContainerService.HintSize="581,2142" sap2010:WorkflowViewState.IdRef="Sequence_1">
+              <Sequence sap2010:Annotation.AnnotationText="Extracting Product details after finding if previous barcode was a Quote or an Order&#xA;" DisplayName="CheckOrder_FromPreviousOrder" sap:VirtualizedContainerService.HintSize="200,168" sap2010:WorkflowViewState.IdRef="Sequence_1">
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -452,6 +452,9 @@
                                     <InOutArgument x:TypeArguments="sd:DataTable" x:Key="in_dt_ProductDetails">
                                       <VisualBasicReference x:TypeArguments="sd:DataTable" ExpressionText="dt_ProductDetails" />
                                     </InOutArgument>
+                                    <InArgument x:TypeArguments="x:Int32" x:Key="in_int_Count">
+                                      <VisualBasicValue x:TypeArguments="x:Int32" ExpressionText="int_Count" />
+                                    </InArgument>
                                   </ui:InvokeWorkflowFile.Arguments>
                                 </ui:InvokeWorkflowFile>
                               </Sequence>

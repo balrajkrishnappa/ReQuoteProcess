@@ -10,7 +10,7 @@
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>820,2230</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1000,2404</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>Output_QTLoadReOrderItem_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="33">
@@ -99,7 +99,7 @@
       <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="Output_QTLoadReOrderItem" sap:VirtualizedContainerService.HintSize="830,2165" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="Output_QTLoadReOrderItem" sap:VirtualizedContainerService.HintSize="830,2339" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:Int32" Name="index" />
       <Variable x:TypeArguments="x:String" Name="item" />
@@ -131,6 +131,14 @@
       </sap:WorkflowViewStateService.ViewState>
     </ui:CommentOut>
     <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="768,92" sap2010:WorkflowViewState.IdRef="LogMessage_5" Message="[in_dt_MLextractedData.RowCount]" />
+    <Sequence sap2010:Annotation.AnnotationText="Create 2 dictionary" DisplayName="Mapping" sap:VirtualizedContainerService.HintSize="768,134" sap2010:WorkflowViewState.IdRef="Sequence_15">
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </Sequence>
     <ui:FilterDataTable DataTable="[in_dt_MLextractedData]" DisplayName="Filter Data Table" FilterRowsMode="Remove" sap:VirtualizedContainerService.HintSize="768,161" sap2010:WorkflowViewState.IdRef="FilterDataTable_2" OutputDataTable="[in_dt_MLextractedData]" SelectColumnsMode="Keep">
       <ui:FilterDataTable.Filters>
         <scg:List x:TypeArguments="ui:FilterOperationArgument" Capacity="4">
