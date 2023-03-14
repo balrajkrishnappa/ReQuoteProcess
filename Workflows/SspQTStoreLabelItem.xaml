@@ -10,14 +10,15 @@
     <x:Property Name="in_ShipVia" Type="InArgument(x:String)" />
     <x:Property Name="in_Application" Type="InArgument(x:String)" />
     <x:Property Name="in_ShipToZip" Type="InArgument(x:String)" />
+    <x:Property Name="out_SspQTStorelabelOUTPUT" Type="OutArgument(sd:DataTable)" />
   </x:Members>
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1000,702</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>897,702</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>SspQTStoreLabelItem_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
-    <scg:List x:TypeArguments="x:String" Capacity="58">
+    <scg:List x:TypeArguments="x:String" Capacity="34">
       <x:String>System.Activities</x:String>
       <x:String>System.Activities.Statements</x:String>
       <x:String>System.Activities.Expressions</x:String>
@@ -50,10 +51,12 @@
       <x:String>System.Security</x:String>
       <x:String>UiPath.Database.Activities</x:String>
       <x:String>Microsoft.VisualBasic.CompilerServices</x:String>
+      <x:String>UiPath.Excel</x:String>
+      <x:String>UiPath.Excel.Activities</x:String>
     </scg:List>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
-    <scg:List x:TypeArguments="AssemblyReference" Capacity="46">
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="54">
       <AssemblyReference>System.Activities</AssemblyReference>
       <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
       <AssemblyReference>System.Private.CoreLib</AssemblyReference>
@@ -99,6 +102,14 @@
       <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
       <AssemblyReference>System.Collections</AssemblyReference>
       <AssemblyReference>System.Runtime.InteropServices</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Excel</AssemblyReference>
+      <AssemblyReference>System.Linq.Expressions</AssemblyReference>
+      <AssemblyReference>System.Linq.Parallel</AssemblyReference>
+      <AssemblyReference>System.Collections.Immutable</AssemblyReference>
+      <AssemblyReference>System.Linq</AssemblyReference>
+      <AssemblyReference>System.Linq.Queryable</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
   <Flowchart DisplayName="SspQTStoreLabelItem" sap:VirtualizedContainerService.HintSize="644,637" sap2010:WorkflowViewState.IdRef="Flowchart_1">
@@ -112,24 +123,48 @@
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
     <Flowchart.StartNode>
-      <x:Reference>__ReferenceID2</x:Reference>
+      <x:Reference>__ReferenceID1</x:Reference>
     </Flowchart.StartNode>
-    <FlowStep x:Name="__ReferenceID2">
+    <FlowStep x:Name="__ReferenceID1">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <av:Point x:Key="ShapeLocation">200,127.5</av:Point>
           <av:Size x:Key="ShapeSize">200,52</av:Size>
-          <av:PointCollection x:Key="ConnectorLocation">300,179.5 300,229.5</av:PointCollection>
+          <av:PointCollection x:Key="ConnectorLocation">300,179.5 300,209.5 350,209.5 350,259.5</av:PointCollection>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
-      <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Update_MLextracteddate_To_ProductData.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="379,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_3" UnSafe="False" WorkflowFileName="Workflows\Update_MLextracteddate_To_ProductData.xaml">
+      <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Update_MLextracteddate_To_ProductData.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="200,52" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_3" UnSafe="False" WorkflowFileName="Workflows\Update_MLextracteddate_To_ProductData.xaml">
         <ui:InvokeWorkflowFile.Arguments>
-          <InArgument x:TypeArguments="sd:DataTable" x:Key="in_dt_MandatoryFields">[in_dt_MandatoryFields]</InArgument>
-          <InArgument x:TypeArguments="sd:DataTable" x:Key="in_dt_MLextractedData">[in_dt_MLextractedData]</InArgument>
-          <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[in_Config]</InArgument>
-          <InArgument x:TypeArguments="ui:QueueItem" x:Key="in_TransactionItem">[in_TransactionItem]</InArgument>
-          <InArgument x:TypeArguments="x:String" x:Key="in_barcode">[in_barcode]</InArgument>
-          <InOutArgument x:TypeArguments="sd:DataTable" x:Key="in_dt_ProductDetails">[in_dt_ProductDetails]</InOutArgument>
+          <InArgument x:TypeArguments="sd:DataTable" x:Key="in_dt_MLextractedData">
+            <VisualBasicValue x:TypeArguments="sd:DataTable" ExpressionText="in_dt_MLextractedData" />
+          </InArgument>
+          <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">
+            <VisualBasicValue x:TypeArguments="scg:Dictionary(x:String, x:Object)" ExpressionText="in_Config" />
+          </InArgument>
+          <InArgument x:TypeArguments="ui:QueueItem" x:Key="in_TransactionItem">
+            <VisualBasicValue x:TypeArguments="ui:QueueItem" ExpressionText="in_TransactionItem" />
+          </InArgument>
+          <InArgument x:TypeArguments="x:String" x:Key="in_barcode">
+            <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_barcode" />
+          </InArgument>
+          <InArgument x:TypeArguments="sd:DataTable" x:Key="in_dt_ProductDetails">
+            <VisualBasicValue x:TypeArguments="sd:DataTable" ExpressionText="in_dt_ProductDetails" />
+          </InArgument>
+          <InArgument x:TypeArguments="x:Int32" x:Key="in_intCount">
+            <VisualBasicValue x:TypeArguments="x:Int32" ExpressionText="in_int_Count" />
+          </InArgument>
+          <InArgument x:TypeArguments="x:String" x:Key="in_ShipVia">
+            <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_ShipVia" />
+          </InArgument>
+          <InArgument x:TypeArguments="x:String" x:Key="in_Application">
+            <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_Application" />
+          </InArgument>
+          <InArgument x:TypeArguments="x:String" x:Key="in_ShipToZip">
+            <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_ShipToZip" />
+          </InArgument>
+          <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_dt_Layout">
+            <VisualBasicReference x:TypeArguments="sd:DataTable" ExpressionText="in_dt_ProductDetails" />
+          </OutArgument>
         </ui:InvokeWorkflowFile.Arguments>
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -141,366 +176,620 @@
         <FlowStep x:Name="__ReferenceID0">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
-              <av:Point x:Key="ShapeLocation">200,229.5</av:Point>
-              <av:Size x:Key="ShapeSize">200,52</av:Size>
-              <av:PointCollection x:Key="ConnectorLocation">300,281.5 300,331.5</av:PointCollection>
+              <av:Point x:Key="ShapeLocation">250,259.5</av:Point>
+              <av:Size x:Key="ShapeSize">200,81</av:Size>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <If Condition="[in_int_Count=1]" sap:VirtualizedContainerService.HintSize="200,52" sap2010:WorkflowViewState.IdRef="If_1">
+          <Sequence DisplayName="SspQTStoreLabelItem" sap:VirtualizedContainerService.HintSize="540,1159" sap2010:WorkflowViewState.IdRef="Sequence_14">
+            <Sequence.Variables>
+              <Variable x:TypeArguments="ui:DatabaseConnection" Name="sybConStatus" />
+            </Sequence.Variables>
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                <x:Boolean x:Key="IsPinned">False</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <If.Then>
-              <Sequence DisplayName="SspQTStoreLabelItem" sap:VirtualizedContainerService.HintSize="540,1159" sap2010:WorkflowViewState.IdRef="Sequence_1">
-                <Sequence.Variables>
-                  <Variable x:TypeArguments="ui:DatabaseConnection" Name="sybConStatus" />
-                </Sequence.Variables>
-                <sap:WorkflowViewStateService.ViewState>
-                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                  </scg:Dictionary>
-                </sap:WorkflowViewStateService.ViewState>
-                <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Workflows\Connect_Sybase.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="478,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_4" UnSafe="False" WorkflowFileName="Workflows\Connect_Sybase.xaml">
-                  <ui:InvokeWorkflowFile.Arguments>
-                    <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[in_Config]</InArgument>
-                    <OutArgument x:TypeArguments="ui:DatabaseConnection" x:Key="sybConStatus">[sybConStatus]</OutArgument>
-                  </ui:InvokeWorkflowFile.Arguments>
-                </ui:InvokeWorkflowFile>
-                <If sap2010:Annotation.AnnotationText="Combine the previous product details with new details(shiptozip, shipvia, application...) from request and&#xA;   store the updated product details using the “workflow_quote..sspQTStoreLabelItem”." Condition="[sybConStatus.State.ToString.ToLower=&quot;open&quot;]" sap:VirtualizedContainerService.HintSize="478,895" sap2010:WorkflowViewState.IdRef="If_2">
-                  <sap:WorkflowViewStateService.ViewState>
-                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                      <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
-                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                    </scg:Dictionary>
-                  </sap:WorkflowViewStateService.ViewState>
-                  <If.Then>
-                    <Sequence sap:VirtualizedContainerService.HintSize="400,547" sap2010:WorkflowViewState.IdRef="Sequence_4">
-                      <Sequence.Variables>
-                        <Variable x:TypeArguments="sd:DataTable" Name="out_dt_CustomerInfo" />
-                      </Sequence.Variables>
-                      <sap:WorkflowViewStateService.ViewState>
-                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                        </scg:Dictionary>
-                      </sap:WorkflowViewStateService.ViewState>
-                      <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="338,92" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;If workflow_quote..sspValidateItemReorderNum stored procedure returns the value/count 1 means that it was a quote&quot;]" />
-                      <ui:ExecuteQuery ContinueOnError="{x:Null}" TimeoutMS="{x:Null}" sap2010:Annotation.AnnotationText="Find SSPValidate Item Reorder" CommandType="StoredProcedure" DataTable="[out_dt_CustomerInfo]" DisplayName="Run query_SspValidateItemReorderNum" ExistingDbConnection="[sybConStatus]" sap:VirtualizedContainerService.HintSize="338,120" sap2010:WorkflowViewState.IdRef="ExecuteQuery_1" Sql="[in_Config(&quot;SspQTStoreLabelItem&quot;).ToString]">
-                        <ui:ExecuteQuery.Parameters>
-                          <InArgument x:TypeArguments="x:Int32" x:Key="@inBarcode">[Cint(in_barcode)]</InArgument>
-                          <InArgument x:TypeArguments="x:Int32" x:Key="@inRevision">[CInt(in_Config("SspQTStoreLabelItemRevisionNum").ToString)]</InArgument>
-                          <InArgument x:TypeArguments="x:String" x:Key="@inProdCountry">[in_dt_ProductDetails(0)("").ToString]</InArgument>
-                          <InArgument x:TypeArguments="x:String" x:Key="@inProdCode">[in_dt_ProductDetails(0)("").ToString]</InArgument>
-                          <InArgument x:TypeArguments="x:String" x:Key="@inProdClass">[in_dt_ProductDetails(0)("").ToString]</InArgument>
-                          <InArgument x:TypeArguments="x:String" x:Key="@inLabelType">[in_dt_ProductDetails(0)("").ToString]</InArgument>
-                          <InArgument x:TypeArguments="x:String" x:Key="@inLabelSubtype">[in_dt_ProductDetails(0)("").ToString]</InArgument>
-                          <InArgument x:TypeArguments="x:String" x:Key="@inShape">[in_dt_ProductDetails(0)("").ToString]</InArgument>
-                          <InArgument x:TypeArguments="x:String" x:Key="@inSubshape">[in_dt_ProductDetails(0)("").ToString]</InArgument>
-                          <InArgument x:TypeArguments="x:Double" x:Key="@inHeight">[CDbl(in_dt_ProductDetails(0)("").ToString)]</InArgument>
-                          <InArgument x:TypeArguments="x:Double" x:Key="@inWidth">[CDbl(in_dt_ProductDetails(0)("").ToString)]</InArgument>
-                          <InArgument x:TypeArguments="x:Double" x:Key="@inDiameter">[CDbl(in_dt_ProductDetails(0)("").ToString)]</InArgument>
-                          <InArgument x:TypeArguments="x:String" x:Key="@inPaperType">[in_dt_ProductDetails(0)("").ToString]</InArgument>
-                          <InArgument x:TypeArguments="x:String" x:Key="@inPaperSubtype">[in_dt_ProductDetails(0)("").ToString]</InArgument>
-                          <InArgument x:TypeArguments="x:String" x:Key="@inStockColor">[in_dt_ProductDetails(0)("").ToString]</InArgument>
-                          <InArgument x:TypeArguments="x:String" x:Key="@inBarcodeType">[in_dt_ProductDetails(0)("").ToString]</InArgument>
-                          <InArgument x:TypeArguments="x:String" x:Key="@inConsecDigits">[in_dt_ProductDetails(0)("").ToString]</InArgument>
-                          <InArgument x:TypeArguments="x:String" x:Key="@inStartingNum">[in_dt_ProductDetails(0)("").ToString]</InArgument>
-                          <InArgument x:TypeArguments="x:String" x:Key="@inEndingNum">[in_dt_ProductDetails(0)("").ToString]</InArgument>
-                          <InArgument x:TypeArguments="x:Int32" x:Key="@inNumResets">[CInt(in_dt_ProductDetails(0)("").ToString)]</InArgument>
-                          <InArgument x:TypeArguments="x:Int32" x:Key="@inOrientation">[CInt(in_dt_ProductDetails(0)("").ToString)]</InArgument>
-                          <InArgument x:TypeArguments="x:String" x:Key="@inInsideWindow">[in_dt_ProductDetails(0)("").ToString]</InArgument>
-                          <InArgument x:TypeArguments="x:Int32" x:Key="@inQtyRollBest">[CInt(in_dt_ProductDetails(0)("").ToString)]</InArgument>
-                          <InArgument x:TypeArguments="x:Int32" x:Key="@inQtyPerRoll">[CInt(in_dt_ProductDetails(0)("").ToString)]</InArgument>
-                          <InArgument x:TypeArguments="x:Int32" x:Key="@inUnitM">[CInt(in_dt_ProductDetails(0)("").ToString)]</InArgument>
-                          <InArgument x:TypeArguments="x:String" x:Key="@inFLOC">[in_dt_ProductDetails(0)("").ToString]</InArgument>
-                          <InArgument x:TypeArguments="x:Double" x:Key="@inCoresSize">[CDbl(in_dt_ProductDetails(0)("").ToString)]</InArgument>
-                          <InArgument x:TypeArguments="x:String" x:Key="@inCoresMachine">[in_dt_ProductDetails(0)("").ToString]</InArgument>
-                          <InArgument x:TypeArguments="x:String" x:Key="@inHowProduced">[in_dt_ProductDetails(0)("").ToString]</InArgument>
-                          <InArgument x:TypeArguments="x:Int32" x:Key="@inWhereProduced">[Cint(in_dt_ProductDetails(0)("").ToString)]</InArgument>
-                          <InArgument x:TypeArguments="x:String" x:Key="@inTACode">[in_dt_ProductDetails(0)("").ToString]</InArgument>
-                          <InArgument x:TypeArguments="x:String" x:Key="@inFreightZip">[in_dt_ProductDetails(0)("").ToString]</InArgument>
-                          <InArgument x:TypeArguments="x:String" x:Key="@inPriceDisplay">[in_dt_ProductDetails(0)("").ToString]</InArgument>
-                          <InArgument x:TypeArguments="x:String" x:Key="@inDescription">[in_dt_ProductDetails(0)("").ToString]</InArgument>
-                          <InArgument x:TypeArguments="x:String" x:Key="@inPriceSource">[in_dt_ProductDetails(0)("").ToString]</InArgument>
-                          <InArgument x:TypeArguments="x:String" x:Key="@inShipVia">[in_dt_ProductDetails(0)("").ToString]</InArgument>
-                          <InArgument x:TypeArguments="x:String" x:Key="@inApplication">[in_dt_ProductDetails(0)("").ToString]</InArgument>
-                          <InArgument x:TypeArguments="x:Int32" x:Key="@inMultiStocks">[Cint(in_dt_ProductDetails(0)("").ToString)]</InArgument>
-                          <InArgument x:TypeArguments="x:String" x:Key="@inSetId">[in_Config("Setid").ToString]</InArgument>
-                          <InArgument x:TypeArguments="x:String" x:Key="@inStockNum">[in_dt_ProductDetails(0)("").ToString]</InArgument>
-                          <InArgument x:TypeArguments="x:String" x:Key="@inTintColor">[in_dt_ProductDetails(0)("").ToString]</InArgument>
-                          <InArgument x:TypeArguments="x:String" x:Key="@inStockNum2">[in_dt_ProductDetails(0)("").ToString]</InArgument>
-                          <InArgument x:TypeArguments="x:String" x:Key="@inPaperType2">[in_dt_ProductDetails(0)("").ToString]</InArgument>
-                          <InArgument x:TypeArguments="x:String" x:Key="@inPaperSubtype2">[in_dt_ProductDetails(0)("").ToString]</InArgument>
-                          <InArgument x:TypeArguments="x:String" x:Key="@inStockColor2">[in_dt_ProductDetails(0)("").ToString]</InArgument>
-                          <InArgument x:TypeArguments="x:String" x:Key="@inTintColor2">[in_dt_ProductDetails(0)("").ToString]</InArgument>
-                          <InArgument x:TypeArguments="x:String" x:Key="@inShipFromZip">[in_dt_ProductDetails(0)("").ToString]</InArgument>
-                        </ui:ExecuteQuery.Parameters>
-                        <sap:WorkflowViewStateService.ViewState>
-                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                            <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
-                          </scg:Dictionary>
-                        </sap:WorkflowViewStateService.ViewState>
-                      </ui:ExecuteQuery>
-                      <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="338,52" sap2010:WorkflowViewState.IdRef="CommentOut_1">
-                        <ui:CommentOut.Body>
-                          <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="496,193" sap2010:WorkflowViewState.IdRef="Sequence_3">
-                            <sap:WorkflowViewStateService.ViewState>
-                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                              </scg:Dictionary>
-                            </sap:WorkflowViewStateService.ViewState>
-                            <Assign DisplayName="Assigning Barcode" sap:VirtualizedContainerService.HintSize="434,82" sap2010:WorkflowViewState.IdRef="Assign_1">
-                              <Assign.To>
-                                <OutArgument x:TypeArguments="x:String">[io_str_PreviousBarcode]</OutArgument>
-                              </Assign.To>
-                              <Assign.Value>
-                                <InArgument x:TypeArguments="x:String">[out_dt_CustomerInfo.Rows(0).Item("barcode").ToString]</InArgument>
-                              </Assign.Value>
-                              <sap:WorkflowViewStateService.ViewState>
-                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                                </scg:Dictionary>
-                              </sap:WorkflowViewStateService.ViewState>
-                            </Assign>
-                          </Sequence>
-                        </ui:CommentOut.Body>
-                        <sap:WorkflowViewStateService.ViewState>
-                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                            <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                          </scg:Dictionary>
-                        </sap:WorkflowViewStateService.ViewState>
-                      </ui:CommentOut>
-                      <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="338,52" sap2010:WorkflowViewState.IdRef="CommentOut_2">
-                        <ui:CommentOut.Body>
-                          <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="496,194" sap2010:WorkflowViewState.IdRef="Sequence_5">
-                            <sap:WorkflowViewStateService.ViewState>
-                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                              </scg:Dictionary>
-                            </sap:WorkflowViewStateService.ViewState>
-                            <Assign sap:VirtualizedContainerService.HintSize="434,83" sap2010:WorkflowViewState.IdRef="Assign_2">
-                              <Assign.To>
-                                <OutArgument x:TypeArguments="x:Int32">[out_Count]</OutArgument>
-                              </Assign.To>
-                              <Assign.Value>
-                                <InArgument x:TypeArguments="x:Int32">[out_dt_CustomerInfo.RowCount]</InArgument>
-                              </Assign.Value>
-                            </Assign>
-                          </Sequence>
-                        </ui:CommentOut.Body>
-                        <sap:WorkflowViewStateService.ViewState>
-                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                            <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                          </scg:Dictionary>
-                        </sap:WorkflowViewStateService.ViewState>
-                      </ui:CommentOut>
-                    </Sequence>
-                  </If.Then>
-                  <If.Else>
-                    <Throw DisplayName="Throw_Databse_Credentials_Error" Exception="[new BusinessRuleException(&quot;Check sybase database credentials.&quot;)]" sap:VirtualizedContainerService.HintSize="334,91" sap2010:WorkflowViewState.IdRef="Throw_1" />
-                  </If.Else>
-                </If>
-              </Sequence>
-            </If.Then>
-            <If.Else>
-              <Sequence sap:VirtualizedContainerService.HintSize="400,104" sap2010:WorkflowViewState.IdRef="Sequence_2">
-                <sap:WorkflowViewStateService.ViewState>
-                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                  </scg:Dictionary>
-                </sap:WorkflowViewStateService.ViewState>
-              </Sequence>
-            </If.Else>
-          </If>
-          <FlowStep.Next>
-            <FlowStep x:Name="__ReferenceID1">
+            <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Workflows\Connect_Sybase.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="478,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_6" UnSafe="False" WorkflowFileName="Workflows\Connect_Sybase.xaml">
+              <ui:InvokeWorkflowFile.Arguments>
+                <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[in_Config]</InArgument>
+                <OutArgument x:TypeArguments="ui:DatabaseConnection" x:Key="sybConStatus">[sybConStatus]</OutArgument>
+              </ui:InvokeWorkflowFile.Arguments>
+            </ui:InvokeWorkflowFile>
+            <If sap2010:Annotation.AnnotationText="Combine the previous product details with new details(shiptozip, shipvia, application...) from request and&#xA;   store the updated product details using the “workflow_quote..sspQTStoreLabelItem”." Condition="[sybConStatus.State.ToString.ToLower=&quot;open&quot;]" sap:VirtualizedContainerService.HintSize="478,895" sap2010:WorkflowViewState.IdRef="If_6">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                  <av:Point x:Key="ShapeLocation">200,331.5</av:Point>
-                  <av:Size x:Key="ShapeSize">200,52</av:Size>
-                  <av:PointCollection x:Key="ConnectorLocation">310,291.5 310,341.5</av:PointCollection>
+                  <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
-              <If Condition="[in_int_Count=2]" sap:VirtualizedContainerService.HintSize="200,52" sap2010:WorkflowViewState.IdRef="If_4">
-                <sap:WorkflowViewStateService.ViewState>
-                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                  </scg:Dictionary>
-                </sap:WorkflowViewStateService.ViewState>
-                <If.Then>
-                  <Sequence DisplayName="SspQTStoreLabelItem" sap:VirtualizedContainerService.HintSize="540,1163" sap2010:WorkflowViewState.IdRef="Sequence_9">
-                    <Sequence.Variables>
-                      <Variable x:TypeArguments="ui:DatabaseConnection" Name="sybConStatus" />
-                    </Sequence.Variables>
-                    <sap:WorkflowViewStateService.ViewState>
-                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                      </scg:Dictionary>
-                    </sap:WorkflowViewStateService.ViewState>
-                    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Workflows\Connect_Sybase.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="478,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_5" UnSafe="False" WorkflowFileName="Workflows\Connect_Sybase.xaml">
-                      <ui:InvokeWorkflowFile.Arguments>
-                        <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[in_Config]</InArgument>
-                        <OutArgument x:TypeArguments="ui:DatabaseConnection" x:Key="sybConStatus">[sybConStatus]</OutArgument>
-                      </ui:InvokeWorkflowFile.Arguments>
-                    </ui:InvokeWorkflowFile>
-                    <If sap2010:Annotation.AnnotationText="Combine the previous product details with new details(shiptozip, shipvia, application...) from request and&#xA;   store the updated product details using the “workflow_quote..sspQTStoreLabelItem”." Condition="[sybConStatus.State.ToString.ToLower=&quot;open&quot;]" sap:VirtualizedContainerService.HintSize="478,899" sap2010:WorkflowViewState.IdRef="If_5">
-                      <sap:WorkflowViewStateService.ViewState>
-                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
-                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                          <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                        </scg:Dictionary>
-                      </sap:WorkflowViewStateService.ViewState>
-                      <If.Then>
-                        <Sequence sap:VirtualizedContainerService.HintSize="400,551" sap2010:WorkflowViewState.IdRef="Sequence_8">
-                          <Sequence.Variables>
-                            <Variable x:TypeArguments="sd:DataTable" Name="out_dt_CustomerInfo" />
-                          </Sequence.Variables>
+              <If.Then>
+                <Sequence sap:VirtualizedContainerService.HintSize="400,547" sap2010:WorkflowViewState.IdRef="Sequence_13">
+                  <Sequence.Variables>
+                    <Variable x:TypeArguments="sd:DataTable" Name="out_dt_CustomerInfo" />
+                  </Sequence.Variables>
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="338,92" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Info" Message="[&quot;If workflow_quote..sspValidateItemReorderNum stored procedure returns the value/count 1 means that it was a quote&quot;]" />
+                  <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="338,52" sap2010:WorkflowViewState.IdRef="CommentOut_5">
+                    <ui:CommentOut.Body>
+                      <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="496,319" sap2010:WorkflowViewState.IdRef="Sequence_11">
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                        <ui:ReadRange Range="{x:Null}" AddHeaders="True" DataTable="[in_dt_ProductDetails]" DisplayName="Read Range Workbook" sap:VirtualizedContainerService.HintSize="434,88" sap2010:WorkflowViewState.IdRef="ReadRange_2" SheetName="Final" WorkbookPath="Mapping.xlsx" />
+                        <Assign DisplayName="Assigning Barcode" sap:VirtualizedContainerService.HintSize="434,82" sap2010:WorkflowViewState.IdRef="Assign_5">
+                          <Assign.To>
+                            <OutArgument x:TypeArguments="x:String">[io_str_PreviousBarcode]</OutArgument>
+                          </Assign.To>
+                          <Assign.Value>
+                            <InArgument x:TypeArguments="x:String">[out_dt_CustomerInfo.Rows(0).Item("barcode").ToString]</InArgument>
+                          </Assign.Value>
                           <sap:WorkflowViewStateService.ViewState>
                             <scg:Dictionary x:TypeArguments="x:String, x:Object">
                               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                             </scg:Dictionary>
                           </sap:WorkflowViewStateService.ViewState>
-                          <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="338,94" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[&quot;If workflow_quote..sspValidateItemReorderNum stored procedure returns the value/count 1 means that it was a quote&quot;]" />
-                          <ui:ExecuteQuery ContinueOnError="{x:Null}" TimeoutMS="{x:Null}" sap2010:Annotation.AnnotationText="Find SSPValidate Item Reorder" CommandType="StoredProcedure" DataTable="[out_dt_CustomerInfo]" DisplayName="Run query_SspValidateItemReorderNum" ExistingDbConnection="[sybConStatus]" sap:VirtualizedContainerService.HintSize="338,120" sap2010:WorkflowViewState.IdRef="ExecuteQuery_2" Sql="[in_Config(&quot;SspQTStoreLabelItem&quot;).ToString]">
-                            <ui:ExecuteQuery.Parameters>
-                              <InArgument x:TypeArguments="x:Int32" x:Key="@inBarcode">[Cint(in_barcode)]</InArgument>
-                              <InArgument x:TypeArguments="x:Int32" x:Key="@inRevision">[CInt(in_Config("SspQTStoreLabelItemRevisionNum").ToString)]</InArgument>
-                              <InArgument x:TypeArguments="x:String" x:Key="@inProdCountry">[in_dt_ProductDetails(0)("").ToString]</InArgument>
-                              <InArgument x:TypeArguments="x:String" x:Key="@inProdCode">[in_dt_ProductDetails(0)("").ToString]</InArgument>
-                              <InArgument x:TypeArguments="x:String" x:Key="@inProdClass">[in_dt_ProductDetails(0)("").ToString]</InArgument>
-                              <InArgument x:TypeArguments="x:String" x:Key="@inLabelType">[in_dt_ProductDetails(0)("").ToString]</InArgument>
-                              <InArgument x:TypeArguments="x:String" x:Key="@inLabelSubtype">[in_dt_ProductDetails(0)("").ToString]</InArgument>
-                              <InArgument x:TypeArguments="x:String" x:Key="@inShape">[in_dt_ProductDetails(0)("").ToString]</InArgument>
-                              <InArgument x:TypeArguments="x:String" x:Key="@inSubshape">[in_dt_ProductDetails(0)("").ToString]</InArgument>
-                              <InArgument x:TypeArguments="x:Double" x:Key="@inHeight">[CDbl(in_dt_ProductDetails(0)("").ToString)]</InArgument>
-                              <InArgument x:TypeArguments="x:Double" x:Key="@inWidth">[CDbl(in_dt_ProductDetails(0)("").ToString)]</InArgument>
-                              <InArgument x:TypeArguments="x:Double" x:Key="@inDiameter">[CDbl(in_dt_ProductDetails(0)("").ToString)]</InArgument>
-                              <InArgument x:TypeArguments="x:String" x:Key="@inPaperType">[in_dt_ProductDetails(0)("").ToString]</InArgument>
-                              <InArgument x:TypeArguments="x:String" x:Key="@inPaperSubtype">[in_dt_ProductDetails(0)("").ToString]</InArgument>
-                              <InArgument x:TypeArguments="x:String" x:Key="@inStockColor">[in_dt_ProductDetails(0)("").ToString]</InArgument>
-                              <InArgument x:TypeArguments="x:String" x:Key="@inBarcodeType">[in_dt_ProductDetails(0)("").ToString]</InArgument>
-                              <InArgument x:TypeArguments="x:String" x:Key="@inConsecDigits">[in_dt_ProductDetails(0)("").ToString]</InArgument>
-                              <InArgument x:TypeArguments="x:String" x:Key="@inStartingNum">[in_dt_ProductDetails(0)("").ToString]</InArgument>
-                              <InArgument x:TypeArguments="x:String" x:Key="@inEndingNum">[in_dt_ProductDetails(0)("").ToString]</InArgument>
-                              <InArgument x:TypeArguments="x:Int32" x:Key="@inNumResets">[CInt(in_dt_ProductDetails(0)("").ToString)]</InArgument>
-                              <InArgument x:TypeArguments="x:Int32" x:Key="@inOrientation">[CInt(in_dt_ProductDetails(0)("").ToString)]</InArgument>
-                              <InArgument x:TypeArguments="x:String" x:Key="@inInsideWindow">[in_dt_ProductDetails(0)("").ToString]</InArgument>
-                              <InArgument x:TypeArguments="x:Int32" x:Key="@inQtyRollBest">[CInt(in_dt_ProductDetails(0)("").ToString)]</InArgument>
-                              <InArgument x:TypeArguments="x:Int32" x:Key="@inQtyPerRoll">[CInt(in_dt_ProductDetails(0)("").ToString)]</InArgument>
-                              <InArgument x:TypeArguments="x:Int32" x:Key="@inUnitM">[CInt(in_dt_ProductDetails(0)("").ToString)]</InArgument>
-                              <InArgument x:TypeArguments="x:String" x:Key="@inFLOC">[in_dt_ProductDetails(0)("").ToString]</InArgument>
-                              <InArgument x:TypeArguments="x:Double" x:Key="@inCoresSize">[CDbl(in_dt_ProductDetails(0)("").ToString)]</InArgument>
-                              <InArgument x:TypeArguments="x:String" x:Key="@inCoresMachine">[in_dt_ProductDetails(0)("").ToString]</InArgument>
-                              <InArgument x:TypeArguments="x:String" x:Key="@inHowProduced">[in_dt_ProductDetails(0)("").ToString]</InArgument>
-                              <InArgument x:TypeArguments="x:Int32" x:Key="@inWhereProduced">[Cint(in_dt_ProductDetails(0)("").ToString)]</InArgument>
-                              <InArgument x:TypeArguments="x:String" x:Key="@inTACode">[in_dt_ProductDetails(0)("").ToString]</InArgument>
-                              <InArgument x:TypeArguments="x:String" x:Key="@inFreightZip">[in_dt_ProductDetails(0)("").ToString]</InArgument>
-                              <InArgument x:TypeArguments="x:String" x:Key="@inPriceDisplay">[in_dt_ProductDetails(0)("").ToString]</InArgument>
-                              <InArgument x:TypeArguments="x:String" x:Key="@inDescription">[in_dt_ProductDetails(0)("").ToString]</InArgument>
-                              <InArgument x:TypeArguments="x:String" x:Key="@inPriceSource">[in_dt_ProductDetails(0)("").ToString]</InArgument>
-                              <InArgument x:TypeArguments="x:String" x:Key="@inShipVia">[in_dt_ProductDetails(0)("").ToString]</InArgument>
-                              <InArgument x:TypeArguments="x:String" x:Key="@inApplication">[in_dt_ProductDetails(0)("").ToString]</InArgument>
-                              <InArgument x:TypeArguments="x:Int32" x:Key="@inMultiStocks">[Cint(in_dt_ProductDetails(0)("").ToString)]</InArgument>
-                              <InArgument x:TypeArguments="x:String" x:Key="@inSetId">[in_Config("Setid").ToString]</InArgument>
-                              <InArgument x:TypeArguments="x:String" x:Key="@inStockNum">[in_dt_ProductDetails(0)("").ToString]</InArgument>
-                              <InArgument x:TypeArguments="x:String" x:Key="@inTintColor">[in_dt_ProductDetails(0)("").ToString]</InArgument>
-                              <InArgument x:TypeArguments="x:String" x:Key="@inStockNum2">[in_dt_ProductDetails(0)("").ToString]</InArgument>
-                              <InArgument x:TypeArguments="x:String" x:Key="@inPaperType2">[in_dt_ProductDetails(0)("").ToString]</InArgument>
-                              <InArgument x:TypeArguments="x:String" x:Key="@inPaperSubtype2">[in_dt_ProductDetails(0)("").ToString]</InArgument>
-                              <InArgument x:TypeArguments="x:String" x:Key="@inStockColor2">[in_dt_ProductDetails(0)("").ToString]</InArgument>
-                              <InArgument x:TypeArguments="x:String" x:Key="@inTintColor2">[in_dt_ProductDetails(0)("").ToString]</InArgument>
-                              <InArgument x:TypeArguments="x:String" x:Key="@inShipFromZip">[in_dt_ProductDetails(0)("").ToString]</InArgument>
-                            </ui:ExecuteQuery.Parameters>
-                            <sap:WorkflowViewStateService.ViewState>
-                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
-                              </scg:Dictionary>
-                            </sap:WorkflowViewStateService.ViewState>
-                          </ui:ExecuteQuery>
-                          <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="338,53" sap2010:WorkflowViewState.IdRef="CommentOut_3">
-                            <ui:CommentOut.Body>
-                              <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="496,192" sap2010:WorkflowViewState.IdRef="Sequence_6">
-                                <sap:WorkflowViewStateService.ViewState>
-                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                                  </scg:Dictionary>
-                                </sap:WorkflowViewStateService.ViewState>
-                                <Assign DisplayName="Assigning Barcode" sap:VirtualizedContainerService.HintSize="434,82" sap2010:WorkflowViewState.IdRef="Assign_3">
-                                  <Assign.To>
-                                    <OutArgument x:TypeArguments="x:String">[io_str_PreviousBarcode]</OutArgument>
-                                  </Assign.To>
-                                  <Assign.Value>
-                                    <InArgument x:TypeArguments="x:String">[out_dt_CustomerInfo.Rows(0).Item("barcode").ToString]</InArgument>
-                                  </Assign.Value>
-                                  <sap:WorkflowViewStateService.ViewState>
-                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                                    </scg:Dictionary>
-                                  </sap:WorkflowViewStateService.ViewState>
-                                </Assign>
-                              </Sequence>
-                            </ui:CommentOut.Body>
-                            <sap:WorkflowViewStateService.ViewState>
-                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                                <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                              </scg:Dictionary>
-                            </sap:WorkflowViewStateService.ViewState>
-                          </ui:CommentOut>
-                          <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="338,53" sap2010:WorkflowViewState.IdRef="CommentOut_4">
-                            <ui:CommentOut.Body>
-                              <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="496,194" sap2010:WorkflowViewState.IdRef="Sequence_7">
-                                <sap:WorkflowViewStateService.ViewState>
-                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                                  </scg:Dictionary>
-                                </sap:WorkflowViewStateService.ViewState>
-                                <Assign sap:VirtualizedContainerService.HintSize="434,83" sap2010:WorkflowViewState.IdRef="Assign_4">
-                                  <Assign.To>
-                                    <OutArgument x:TypeArguments="x:Int32">[out_Count]</OutArgument>
-                                  </Assign.To>
-                                  <Assign.Value>
-                                    <InArgument x:TypeArguments="x:Int32">[out_dt_CustomerInfo.RowCount]</InArgument>
-                                  </Assign.Value>
-                                </Assign>
-                              </Sequence>
-                            </ui:CommentOut.Body>
-                            <sap:WorkflowViewStateService.ViewState>
-                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                                <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                              </scg:Dictionary>
-                            </sap:WorkflowViewStateService.ViewState>
-                          </ui:CommentOut>
-                        </Sequence>
-                      </If.Then>
-                      <If.Else>
-                        <Throw DisplayName="Throw_Databse_Credentials_Error" Exception="[new BusinessRuleException(&quot;Check sybase database credentials.&quot;)]" sap:VirtualizedContainerService.HintSize="334,91" sap2010:WorkflowViewState.IdRef="Throw_2" />
-                      </If.Else>
-                    </If>
-                  </Sequence>
-                </If.Then>
-                <If.Else>
-                  <Sequence sap:VirtualizedContainerService.HintSize="400,104" sap2010:WorkflowViewState.IdRef="Sequence_10">
+                        </Assign>
+                      </Sequence>
+                    </ui:CommentOut.Body>
                     <sap:WorkflowViewStateService.ViewState>
                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                        <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
                       </scg:Dictionary>
                     </sap:WorkflowViewStateService.ViewState>
-                  </Sequence>
-                </If.Else>
-              </If>
-            </FlowStep>
-          </FlowStep.Next>
+                  </ui:CommentOut>
+                  <ui:ExecuteQuery ContinueOnError="{x:Null}" TimeoutMS="{x:Null}" sap2010:Annotation.AnnotationText="Find SSPValidate Item Reorder" CommandType="StoredProcedure" DataTable="[out_SspQTStorelabelOUTPUT]" DisplayName="Run query_SspValidateItemReorderNum" ExistingDbConnection="[sybConStatus]" sap:VirtualizedContainerService.HintSize="338,120" sap2010:WorkflowViewState.IdRef="ExecuteQuery_4" Sql="[in_Config(&quot;SspQTStoreLabelItem&quot;).ToString]">
+                    <ui:ExecuteQuery.Parameters>
+                      <InArgument x:TypeArguments="x:Int32" x:Key="@inBarcode">[Cint(in_barcode)]</InArgument>
+                      <InArgument x:TypeArguments="x:Int32" x:Key="@inRevision">[CInt(in_Config("SspQTStoreLabelItemRevisionNum").ToString)]</InArgument>
+                      <InArgument x:TypeArguments="x:String" x:Key="@inProdCountry">[in_dt_ProductDetails(0)("@inProdCountry").ToString]</InArgument>
+                      <InArgument x:TypeArguments="x:String" x:Key="@inProdCode">[in_dt_ProductDetails(0)("@inProdCode").ToString]</InArgument>
+                      <InArgument x:TypeArguments="x:String" x:Key="@inProdClass">[in_dt_ProductDetails(0)("@inProdClass").ToString]</InArgument>
+                      <InArgument x:TypeArguments="x:String" x:Key="@inLabelType">[in_dt_ProductDetails(0)("@inLabelType").ToString]</InArgument>
+                      <InArgument x:TypeArguments="x:String" x:Key="@inLabelSubtype">[in_dt_ProductDetails(0)("@inLabelSubtype").ToString]</InArgument>
+                      <InArgument x:TypeArguments="x:String" x:Key="@inShape">[in_dt_ProductDetails(0)("@inShape").ToString]</InArgument>
+                      <InArgument x:TypeArguments="x:String" x:Key="@inSubshape">[in_dt_ProductDetails(0)("@inSubshape").ToString]</InArgument>
+                      <InArgument x:TypeArguments="x:Double" x:Key="@inHeight">[CDbl(in_dt_ProductDetails(0)("@inHeight").ToString)]</InArgument>
+                      <InArgument x:TypeArguments="x:Double" x:Key="@inWidth">[CDbl(in_dt_ProductDetails(0)("@inWidth").ToString)]</InArgument>
+                      <InArgument x:TypeArguments="x:Double" x:Key="@inDiameter">[CDbl(in_dt_ProductDetails(0)("@inDiameter").ToString)]</InArgument>
+                      <InArgument x:TypeArguments="x:String" x:Key="@inPaperType">[in_dt_ProductDetails(0)("@inPaperType").ToString]</InArgument>
+                      <InArgument x:TypeArguments="x:String" x:Key="@inPaperSubtype">[in_dt_ProductDetails(0)("@inPaperSubtype").ToString]</InArgument>
+                      <InArgument x:TypeArguments="x:String" x:Key="@inStockColor">[in_dt_ProductDetails(0)("@inStockColor").ToString]</InArgument>
+                      <InArgument x:TypeArguments="x:String" x:Key="@inBarcodeType">[in_dt_ProductDetails(0)("@inBarcodeType").ToString]</InArgument>
+                      <InArgument x:TypeArguments="x:String" x:Key="@inConsecDigits">[in_dt_ProductDetails(0)("@inConsecDigits").ToString]</InArgument>
+                      <InArgument x:TypeArguments="x:String" x:Key="@inStartingNum">[in_dt_ProductDetails(0)("@inStartingNum").ToString]</InArgument>
+                      <InArgument x:TypeArguments="x:String" x:Key="@inEndingNum">[in_dt_ProductDetails(0)("@inEndingNum").ToString]</InArgument>
+                      <InArgument x:TypeArguments="x:Int32" x:Key="@inNumResets">[CInt(in_dt_ProductDetails(0)("@inNumResets").ToString)]</InArgument>
+                      <InArgument x:TypeArguments="x:Int32" x:Key="@inOrientation">[CInt(in_dt_ProductDetails(0)("@inOrientation").ToString)]</InArgument>
+                      <InArgument x:TypeArguments="x:String" x:Key="@inInsideWindow">[in_dt_ProductDetails(0)("@inInsideWindow").ToString]</InArgument>
+                      <InArgument x:TypeArguments="x:Int32" x:Key="@inQtyRollBest">[CInt(in_dt_ProductDetails(0)("@inQtyRollBest").ToString)]</InArgument>
+                      <InArgument x:TypeArguments="x:Int32" x:Key="@inQtyPerRoll">[CInt(in_dt_ProductDetails(0)("@inQtyPerRoll").ToString)]</InArgument>
+                      <InArgument x:TypeArguments="x:Int32" x:Key="@inUnitM">[CInt(in_dt_ProductDetails(0)("@inUnitM").ToString)]</InArgument>
+                      <InArgument x:TypeArguments="x:String" x:Key="@inFLOC">[in_dt_ProductDetails(0)("@inFLOC").ToString]</InArgument>
+                      <InArgument x:TypeArguments="x:Double" x:Key="@inCoresSize">[CDbl(in_dt_ProductDetails(0)("@inCoresSize").ToString)]</InArgument>
+                      <InArgument x:TypeArguments="x:String" x:Key="@inCoresMachine">[in_dt_ProductDetails(0)("@inCoresMachine").ToString]</InArgument>
+                      <InArgument x:TypeArguments="x:String" x:Key="@inHowProduced">[in_dt_ProductDetails(0)("@inHowProduced").ToString]</InArgument>
+                      <InArgument x:TypeArguments="x:Int32" x:Key="@inWhereProduced">[Cint(in_dt_ProductDetails(0)("@inWhereProduced").ToString)]</InArgument>
+                      <InArgument x:TypeArguments="x:String" x:Key="@inTACode">[in_dt_ProductDetails(0)("@inTACode").ToString]</InArgument>
+                      <InArgument x:TypeArguments="x:String" x:Key="@inFreightZip">[in_dt_ProductDetails(0)("@inFreightZip").ToString]</InArgument>
+                      <InArgument x:TypeArguments="x:String" x:Key="@inPriceDisplay">[in_dt_ProductDetails(0)("@inPriceDisplay").ToString]</InArgument>
+                      <InArgument x:TypeArguments="x:String" x:Key="@inDescription">[in_dt_ProductDetails(0)("@inDescription").ToString]</InArgument>
+                      <InArgument x:TypeArguments="x:String" x:Key="@inPriceSource">[in_dt_ProductDetails(0)("@inPriceSource").ToString]</InArgument>
+                      <InArgument x:TypeArguments="x:String" x:Key="@inShipVia">[in_dt_ProductDetails(0)("@inShipVia").ToString]</InArgument>
+                      <InArgument x:TypeArguments="x:String" x:Key="@inApplication">[in_dt_ProductDetails(0)("@inApplication").ToString]</InArgument>
+                      <InArgument x:TypeArguments="x:Int32" x:Key="@inMultiStocks">[Cint(in_dt_ProductDetails(0)("inMultiStocks").ToString)]</InArgument>
+                      <InArgument x:TypeArguments="x:String" x:Key="@inSetId">[in_Config("Setid").ToString]</InArgument>
+                      <InArgument x:TypeArguments="x:String" x:Key="@inStockNum">[in_dt_ProductDetails(0)("@inStockNum").ToString]</InArgument>
+                      <InArgument x:TypeArguments="x:String" x:Key="@inTintColor">[in_dt_ProductDetails(0)("@inTintColor").ToString]</InArgument>
+                      <InArgument x:TypeArguments="x:String" x:Key="@inStockNum2">[in_dt_ProductDetails(0)("@inStockNum2").ToString]</InArgument>
+                      <InArgument x:TypeArguments="x:String" x:Key="@inPaperType2">[in_dt_ProductDetails(0)("@inPaperType2").ToString]</InArgument>
+                      <InArgument x:TypeArguments="x:String" x:Key="@inPaperSubtype2">[in_dt_ProductDetails(0)("@inPaperSubtype2").ToString]</InArgument>
+                      <InArgument x:TypeArguments="x:String" x:Key="@inStockColor2">[in_dt_ProductDetails(0)("@inStockColor2").ToString]</InArgument>
+                      <InArgument x:TypeArguments="x:String" x:Key="@inTintColor2">[in_dt_ProductDetails(0)("@inTintColor2").ToString]</InArgument>
+                      <InArgument x:TypeArguments="x:String" x:Key="@inShipFromZip">[in_dt_ProductDetails(0)("@inShipFromZip").ToString]</InArgument>
+                    </ui:ExecuteQuery.Parameters>
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                  </ui:ExecuteQuery>
+                  <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="338,52" sap2010:WorkflowViewState.IdRef="CommentOut_6">
+                    <ui:CommentOut.Body>
+                      <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="496,193" sap2010:WorkflowViewState.IdRef="Sequence_12">
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                        <Assign sap:VirtualizedContainerService.HintSize="434,82" sap2010:WorkflowViewState.IdRef="Assign_6">
+                          <Assign.To>
+                            <OutArgument x:TypeArguments="x:Int32">[out_Count]</OutArgument>
+                          </Assign.To>
+                          <Assign.Value>
+                            <InArgument x:TypeArguments="x:Int32">[out_dt_CustomerInfo.RowCount]</InArgument>
+                          </Assign.Value>
+                        </Assign>
+                      </Sequence>
+                    </ui:CommentOut.Body>
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                  </ui:CommentOut>
+                </Sequence>
+              </If.Then>
+              <If.Else>
+                <Throw DisplayName="Throw_Databse_Credentials_Error" Exception="[new BusinessRuleException(&quot;Check sybase database credentials.&quot;)]" sap:VirtualizedContainerService.HintSize="334,90" sap2010:WorkflowViewState.IdRef="Throw_3" />
+              </If.Else>
+            </If>
+          </Sequence>
         </FlowStep>
       </FlowStep.Next>
     </FlowStep>
+    <FlowStep>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <av:Point x:Key="ShapeLocation">0,224</av:Point>
+          <av:Size x:Key="ShapeSize">200,52</av:Size>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+      <If Condition="[in_int_Count=1]" sap:VirtualizedContainerService.HintSize="200,52" sap2010:WorkflowViewState.IdRef="If_1">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+        <If.Then>
+          <Sequence DisplayName="SspQTStoreLabelItem" sap:VirtualizedContainerService.HintSize="400,81" sap2010:WorkflowViewState.IdRef="Sequence_1">
+            <Sequence.Variables>
+              <Variable x:TypeArguments="ui:DatabaseConnection" Name="sybConStatus" />
+            </Sequence.Variables>
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Workflows\Connect_Sybase.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="672,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_4" UnSafe="False" WorkflowFileName="Workflows\Connect_Sybase.xaml">
+              <ui:InvokeWorkflowFile.Arguments>
+                <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[in_Config]</InArgument>
+                <OutArgument x:TypeArguments="ui:DatabaseConnection" x:Key="sybConStatus">[sybConStatus]</OutArgument>
+              </ui:InvokeWorkflowFile.Arguments>
+            </ui:InvokeWorkflowFile>
+            <If sap2010:Annotation.AnnotationText="Combine the previous product details with new details(shiptozip, shipvia, application...) from request and&#xA;   store the updated product details using the “workflow_quote..sspQTStoreLabelItem”." Condition="[sybConStatus.State.ToString.ToLower=&quot;open&quot;]" sap:VirtualizedContainerService.HintSize="672,1212" sap2010:WorkflowViewState.IdRef="If_2">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <If.Then>
+                <Sequence sap:VirtualizedContainerService.HintSize="594,894" sap2010:WorkflowViewState.IdRef="Sequence_4">
+                  <Sequence.Variables>
+                    <Variable x:TypeArguments="sd:DataTable" Name="out_dt_CustomerInfo" />
+                  </Sequence.Variables>
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="532,92" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;If workflow_quote..sspValidateItemReorderNum stored procedure returns the value/count 1 means that it was a quote&quot;]" />
+                  <ui:ReadRange Range="{x:Null}" AddHeaders="True" DataTable="[in_dt_ProductDetails]" DisplayName="Read Range Workbook" sap:VirtualizedContainerService.HintSize="532,88" sap2010:WorkflowViewState.IdRef="ReadRange_1" SheetName="Final" WorkbookPath="Mapping.xlsx" />
+                  <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="532,271" sap2010:WorkflowViewState.IdRef="CommentOut_1">
+                    <ui:CommentOut.Body>
+                      <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="496,192" sap2010:WorkflowViewState.IdRef="Sequence_3">
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                        <Assign DisplayName="Assigning Barcode" sap:VirtualizedContainerService.HintSize="434,81" sap2010:WorkflowViewState.IdRef="Assign_1">
+                          <Assign.To>
+                            <OutArgument x:TypeArguments="x:String">[io_str_PreviousBarcode]</OutArgument>
+                          </Assign.To>
+                          <Assign.Value>
+                            <InArgument x:TypeArguments="x:String">[out_dt_CustomerInfo.Rows(0).Item("barcode").ToString]</InArgument>
+                          </Assign.Value>
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                        </Assign>
+                      </Sequence>
+                    </ui:CommentOut.Body>
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                  </ui:CommentOut>
+                  <ui:ExecuteQuery ContinueOnError="{x:Null}" TimeoutMS="{x:Null}" sap2010:Annotation.AnnotationText="Find SSPValidate Item Reorder" CommandType="StoredProcedure" DataTable="[out_dt_CustomerInfo]" DisplayName="Run query_SspValidateItemReorderNum" ExistingDbConnection="[sybConStatus]" sap:VirtualizedContainerService.HintSize="532,120" sap2010:WorkflowViewState.IdRef="ExecuteQuery_1" Sql="[in_Config(&quot;SspQTStoreLabelItem&quot;).ToString]">
+                    <ui:ExecuteQuery.Parameters>
+                      <InArgument x:TypeArguments="x:Int32" x:Key="@inBarcode">
+                        <VisualBasicValue x:TypeArguments="x:Int32" ExpressionText="Cint(in_barcode)" />
+                      </InArgument>
+                      <InArgument x:TypeArguments="x:Int32" x:Key="@inRevision">
+                        <VisualBasicValue x:TypeArguments="x:Int32" ExpressionText="CInt(in_Config(&quot;SspQTStoreLabelItemRevisionNum&quot;).ToString)" />
+                      </InArgument>
+                      <InArgument x:TypeArguments="x:String" x:Key="@inProdCountry">
+                        <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_dt_ProductDetails(0)(&quot;@inProdCountry&quot;).ToString" />
+                      </InArgument>
+                      <InArgument x:TypeArguments="x:String" x:Key="@inProdCode">
+                        <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_dt_ProductDetails(0)(&quot;@inProdCode&quot;).ToString" />
+                      </InArgument>
+                      <InArgument x:TypeArguments="x:String" x:Key="@inProdClass">
+                        <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_dt_ProductDetails(0)(&quot;@inProdClass&quot;).ToString" />
+                      </InArgument>
+                      <InArgument x:TypeArguments="x:String" x:Key="@inLabelType">
+                        <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_dt_ProductDetails(0)(&quot;@inLabelType&quot;).ToString" />
+                      </InArgument>
+                      <InArgument x:TypeArguments="x:String" x:Key="@inLabelSubtype">
+                        <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_dt_ProductDetails(0)(&quot;@inLabelSubtype&quot;).ToString" />
+                      </InArgument>
+                      <InArgument x:TypeArguments="x:String" x:Key="@inShape">
+                        <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_dt_ProductDetails(0)(&quot;@inShape&quot;).ToString" />
+                      </InArgument>
+                      <InArgument x:TypeArguments="x:String" x:Key="@inSubshape">
+                        <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_dt_ProductDetails(0)(&quot;@inSubshape&quot;).ToString" />
+                      </InArgument>
+                      <InArgument x:TypeArguments="x:Double" x:Key="@inHeight">
+                        <VisualBasicValue x:TypeArguments="x:Double" ExpressionText="CDbl(in_dt_ProductDetails(0)(&quot;@inHeight&quot;).ToString)" />
+                      </InArgument>
+                      <InArgument x:TypeArguments="x:Double" x:Key="@inWidth">
+                        <VisualBasicValue x:TypeArguments="x:Double" ExpressionText="CDbl(in_dt_ProductDetails(0)(&quot;@inWidth&quot;).ToString)" />
+                      </InArgument>
+                      <InArgument x:TypeArguments="x:Double" x:Key="@inDiameter">
+                        <VisualBasicValue x:TypeArguments="x:Double" ExpressionText="CDbl(in_dt_ProductDetails(0)(&quot;@inDiameter&quot;).ToString)" />
+                      </InArgument>
+                      <InArgument x:TypeArguments="x:String" x:Key="@inPaperType">
+                        <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_dt_ProductDetails(0)(&quot;@inPaperType&quot;).ToString" />
+                      </InArgument>
+                      <InArgument x:TypeArguments="x:String" x:Key="@inPaperSubtype">
+                        <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_dt_ProductDetails(0)(&quot;@inPaperSubtype&quot;).ToString" />
+                      </InArgument>
+                      <InArgument x:TypeArguments="x:String" x:Key="@inStockColor">
+                        <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_dt_ProductDetails(0)(&quot;@inStockColor&quot;).ToString" />
+                      </InArgument>
+                      <InArgument x:TypeArguments="x:String" x:Key="@inBarcodeType">
+                        <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_dt_ProductDetails(0)(&quot;@inBarcodeType&quot;).ToString" />
+                      </InArgument>
+                      <InArgument x:TypeArguments="x:String" x:Key="@inConsecDigits">
+                        <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_dt_ProductDetails(0)(&quot;@inConsecDigits&quot;).ToString" />
+                      </InArgument>
+                      <InArgument x:TypeArguments="x:String" x:Key="@inStartingNum">
+                        <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_dt_ProductDetails(0)(&quot;@inStartingNum&quot;).ToString" />
+                      </InArgument>
+                      <InArgument x:TypeArguments="x:String" x:Key="@inEndingNum">
+                        <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_dt_ProductDetails(0)(&quot;@inEndingNum&quot;).ToString" />
+                      </InArgument>
+                      <InArgument x:TypeArguments="x:Int32" x:Key="@inNumResets">
+                        <VisualBasicValue x:TypeArguments="x:Int32" ExpressionText="CInt(in_dt_ProductDetails(0)(&quot;@inNumResets&quot;).ToString)" />
+                      </InArgument>
+                      <InArgument x:TypeArguments="x:Int32" x:Key="@inOrientation">
+                        <VisualBasicValue x:TypeArguments="x:Int32" ExpressionText="CInt(in_dt_ProductDetails(0)(&quot;@inOrientation&quot;).ToString)" />
+                      </InArgument>
+                      <InArgument x:TypeArguments="x:String" x:Key="@inInsideWindow">
+                        <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_dt_ProductDetails(0)(&quot;@inInsideWindow&quot;).ToString" />
+                      </InArgument>
+                      <InArgument x:TypeArguments="x:Int32" x:Key="@inQtyRollBest">
+                        <VisualBasicValue x:TypeArguments="x:Int32" ExpressionText="CInt(in_dt_ProductDetails(0)(&quot;@inQtyRollBest&quot;).ToString)" />
+                      </InArgument>
+                      <InArgument x:TypeArguments="x:Int32" x:Key="@inQtyPerRoll">
+                        <VisualBasicValue x:TypeArguments="x:Int32" ExpressionText="CInt(in_dt_ProductDetails(0)(&quot;@inQtyPerRoll&quot;).ToString)" />
+                      </InArgument>
+                      <InArgument x:TypeArguments="x:Int32" x:Key="@inUnitM">
+                        <VisualBasicValue x:TypeArguments="x:Int32" ExpressionText="CInt(in_dt_ProductDetails(0)(&quot;@inUnitM&quot;).ToString)" />
+                      </InArgument>
+                      <InArgument x:TypeArguments="x:String" x:Key="@inFLOC">
+                        <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_dt_ProductDetails(0)(&quot;@inFLOC&quot;).ToString" />
+                      </InArgument>
+                      <InArgument x:TypeArguments="x:Double" x:Key="@inCoresSize">
+                        <VisualBasicValue x:TypeArguments="x:Double" ExpressionText="CDbl(in_dt_ProductDetails(0)(&quot;@inCoresSize&quot;).ToString)" />
+                      </InArgument>
+                      <InArgument x:TypeArguments="x:String" x:Key="@inCoresMachine">
+                        <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_dt_ProductDetails(0)(&quot;@inCoresMachine&quot;).ToString" />
+                      </InArgument>
+                      <InArgument x:TypeArguments="x:String" x:Key="@inHowProduced">
+                        <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_dt_ProductDetails(0)(&quot;@inHowProduced&quot;).ToString" />
+                      </InArgument>
+                      <InArgument x:TypeArguments="x:Int32" x:Key="@inWhereProduced">
+                        <VisualBasicValue x:TypeArguments="x:Int32" ExpressionText="Cint(in_dt_ProductDetails(0)(&quot;@inWhereProduced&quot;).ToString)" />
+                      </InArgument>
+                      <InArgument x:TypeArguments="x:String" x:Key="@inTACode">
+                        <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_dt_ProductDetails(0)(&quot;@inTACode&quot;).ToString" />
+                      </InArgument>
+                      <InArgument x:TypeArguments="x:String" x:Key="@inFreightZip">
+                        <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_dt_ProductDetails(0)(&quot;@inFreightZip&quot;).ToString" />
+                      </InArgument>
+                      <InArgument x:TypeArguments="x:String" x:Key="@inPriceDisplay">
+                        <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_dt_ProductDetails(0)(&quot;@inPriceDisplay&quot;).ToString" />
+                      </InArgument>
+                      <InArgument x:TypeArguments="x:String" x:Key="@inDescription">
+                        <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_dt_ProductDetails(0)(&quot;@inDescription&quot;).ToString" />
+                      </InArgument>
+                      <InArgument x:TypeArguments="x:String" x:Key="@inPriceSource">
+                        <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_dt_ProductDetails(0)(&quot;@inPriceSource&quot;).ToString" />
+                      </InArgument>
+                      <InArgument x:TypeArguments="x:String" x:Key="@inShipVia">
+                        <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_dt_ProductDetails(0)(&quot;@inShipVia&quot;).ToString" />
+                      </InArgument>
+                      <InArgument x:TypeArguments="x:String" x:Key="@inApplication">
+                        <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_dt_ProductDetails(0)(&quot;@inApplication&quot;).ToString" />
+                      </InArgument>
+                      <InArgument x:TypeArguments="x:Int32" x:Key="@inMultiStocks">
+                        <VisualBasicValue x:TypeArguments="x:Int32" ExpressionText="Cint(in_dt_ProductDetails(0)(&quot;inMultiStocks&quot;).ToString)" />
+                      </InArgument>
+                      <InArgument x:TypeArguments="x:String" x:Key="@inSetId">
+                        <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_Config(&quot;Setid&quot;).ToString" />
+                      </InArgument>
+                      <InArgument x:TypeArguments="x:String" x:Key="@inStockNum">
+                        <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_dt_ProductDetails(0)(&quot;@inStockNum&quot;).ToString" />
+                      </InArgument>
+                      <InArgument x:TypeArguments="x:String" x:Key="@inTintColor">
+                        <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_dt_ProductDetails(0)(&quot;@inTintColor&quot;).ToString" />
+                      </InArgument>
+                      <InArgument x:TypeArguments="x:String" x:Key="@inStockNum2">
+                        <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_dt_ProductDetails(0)(&quot;@inStockNum2&quot;).ToString" />
+                      </InArgument>
+                      <InArgument x:TypeArguments="x:String" x:Key="@inPaperType2">
+                        <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_dt_ProductDetails(0)(&quot;@inPaperType2&quot;).ToString" />
+                      </InArgument>
+                      <InArgument x:TypeArguments="x:String" x:Key="@inPaperSubtype2">
+                        <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_dt_ProductDetails(0)(&quot;@inPaperSubtype2&quot;).ToString" />
+                      </InArgument>
+                      <InArgument x:TypeArguments="x:String" x:Key="@inStockColor2">
+                        <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_dt_ProductDetails(0)(&quot;@inStockColor2&quot;).ToString" />
+                      </InArgument>
+                      <InArgument x:TypeArguments="x:String" x:Key="@inTintColor2">
+                        <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_dt_ProductDetails(0)(&quot;@inTintColor2&quot;).ToString" />
+                      </InArgument>
+                      <InArgument x:TypeArguments="x:String" x:Key="@inShipFromZip">
+                        <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_dt_ProductDetails(0)(&quot;@inShipFromZip&quot;).ToString" />
+                      </InArgument>
+                    </ui:ExecuteQuery.Parameters>
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                  </ui:ExecuteQuery>
+                  <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="532,52" sap2010:WorkflowViewState.IdRef="CommentOut_2">
+                    <ui:CommentOut.Body>
+                      <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="496,193" sap2010:WorkflowViewState.IdRef="Sequence_5">
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                        <Assign sap:VirtualizedContainerService.HintSize="434,82" sap2010:WorkflowViewState.IdRef="Assign_2">
+                          <Assign.To>
+                            <OutArgument x:TypeArguments="x:Int32">[out_Count]</OutArgument>
+                          </Assign.To>
+                          <Assign.Value>
+                            <InArgument x:TypeArguments="x:Int32">[out_dt_CustomerInfo.RowCount]</InArgument>
+                          </Assign.Value>
+                        </Assign>
+                      </Sequence>
+                    </ui:CommentOut.Body>
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                  </ui:CommentOut>
+                </Sequence>
+              </If.Then>
+              <If.Else>
+                <Throw DisplayName="Throw_Databse_Credentials_Error" Exception="[new BusinessRuleException(&quot;Check sybase database credentials.&quot;)]" sap:VirtualizedContainerService.HintSize="334,90" sap2010:WorkflowViewState.IdRef="Throw_1" />
+              </If.Else>
+            </If>
+          </Sequence>
+        </If.Then>
+        <If.Else>
+          <Sequence sap:VirtualizedContainerService.HintSize="400,103" sap2010:WorkflowViewState.IdRef="Sequence_2">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+          </Sequence>
+        </If.Else>
+      </If>
+    </FlowStep>
+    <FlowStep>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <av:Point x:Key="ShapeLocation">0,324</av:Point>
+          <av:Size x:Key="ShapeSize">200,52</av:Size>
+          <av:PointCollection x:Key="ConnectorLocation">310,291.5 310,341.5</av:PointCollection>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+      <If Condition="[in_int_Count=2]" sap:VirtualizedContainerService.HintSize="200,52" sap2010:WorkflowViewState.IdRef="If_4">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+        <If.Then>
+          <Sequence DisplayName="SspQTStoreLabelItem" sap:VirtualizedContainerService.HintSize="540,1163" sap2010:WorkflowViewState.IdRef="Sequence_9">
+            <Sequence.Variables>
+              <Variable x:TypeArguments="ui:DatabaseConnection" Name="sybConStatus" />
+            </Sequence.Variables>
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Workflows\Connect_Sybase.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="478,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_5" UnSafe="False" WorkflowFileName="Workflows\Connect_Sybase.xaml">
+              <ui:InvokeWorkflowFile.Arguments>
+                <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[in_Config]</InArgument>
+                <OutArgument x:TypeArguments="ui:DatabaseConnection" x:Key="sybConStatus">[sybConStatus]</OutArgument>
+              </ui:InvokeWorkflowFile.Arguments>
+            </ui:InvokeWorkflowFile>
+            <If sap2010:Annotation.AnnotationText="Combine the previous product details with new details(shiptozip, shipvia, application...) from request and&#xA;   store the updated product details using the “workflow_quote..sspQTStoreLabelItem”." Condition="[sybConStatus.State.ToString.ToLower=&quot;open&quot;]" sap:VirtualizedContainerService.HintSize="478,899" sap2010:WorkflowViewState.IdRef="If_5">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <If.Then>
+                <Sequence sap:VirtualizedContainerService.HintSize="400,551" sap2010:WorkflowViewState.IdRef="Sequence_8">
+                  <Sequence.Variables>
+                    <Variable x:TypeArguments="sd:DataTable" Name="out_dt_CustomerInfo" />
+                  </Sequence.Variables>
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="338,94" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[&quot;If workflow_quote..sspValidateItemReorderNum stored procedure returns the value/count 1 means that it was a quote&quot;]" />
+                  <ui:ExecuteQuery ContinueOnError="{x:Null}" TimeoutMS="{x:Null}" sap2010:Annotation.AnnotationText="Find SSPValidate Item Reorder" CommandType="StoredProcedure" DataTable="[out_dt_CustomerInfo]" DisplayName="Run query_SspValidateItemReorderNum" ExistingDbConnection="[sybConStatus]" sap:VirtualizedContainerService.HintSize="338,120" sap2010:WorkflowViewState.IdRef="ExecuteQuery_2" Sql="[in_Config(&quot;SspQTStoreLabelItem&quot;).ToString]">
+                    <ui:ExecuteQuery.Parameters>
+                      <InArgument x:TypeArguments="x:Int32" x:Key="@inBarcode">[Cint(in_barcode)]</InArgument>
+                      <InArgument x:TypeArguments="x:Int32" x:Key="@inRevision">[CInt(in_Config("SspQTStoreLabelItemRevisionNum").ToString)]</InArgument>
+                      <InArgument x:TypeArguments="x:String" x:Key="@inProdCountry">[in_dt_ProductDetails(0)("").ToString]</InArgument>
+                      <InArgument x:TypeArguments="x:String" x:Key="@inProdCode">[in_dt_ProductDetails(0)("").ToString]</InArgument>
+                      <InArgument x:TypeArguments="x:String" x:Key="@inProdClass">[in_dt_ProductDetails(0)("").ToString]</InArgument>
+                      <InArgument x:TypeArguments="x:String" x:Key="@inLabelType">[in_dt_ProductDetails(0)("").ToString]</InArgument>
+                      <InArgument x:TypeArguments="x:String" x:Key="@inLabelSubtype">[in_dt_ProductDetails(0)("").ToString]</InArgument>
+                      <InArgument x:TypeArguments="x:String" x:Key="@inShape">[in_dt_ProductDetails(0)("").ToString]</InArgument>
+                      <InArgument x:TypeArguments="x:String" x:Key="@inSubshape">[in_dt_ProductDetails(0)("").ToString]</InArgument>
+                      <InArgument x:TypeArguments="x:Double" x:Key="@inHeight">[CDbl(in_dt_ProductDetails(0)("").ToString)]</InArgument>
+                      <InArgument x:TypeArguments="x:Double" x:Key="@inWidth">[CDbl(in_dt_ProductDetails(0)("").ToString)]</InArgument>
+                      <InArgument x:TypeArguments="x:Double" x:Key="@inDiameter">[CDbl(in_dt_ProductDetails(0)("").ToString)]</InArgument>
+                      <InArgument x:TypeArguments="x:String" x:Key="@inPaperType">[in_dt_ProductDetails(0)("").ToString]</InArgument>
+                      <InArgument x:TypeArguments="x:String" x:Key="@inPaperSubtype">[in_dt_ProductDetails(0)("").ToString]</InArgument>
+                      <InArgument x:TypeArguments="x:String" x:Key="@inStockColor">[in_dt_ProductDetails(0)("").ToString]</InArgument>
+                      <InArgument x:TypeArguments="x:String" x:Key="@inBarcodeType">[in_dt_ProductDetails(0)("").ToString]</InArgument>
+                      <InArgument x:TypeArguments="x:String" x:Key="@inConsecDigits">[in_dt_ProductDetails(0)("").ToString]</InArgument>
+                      <InArgument x:TypeArguments="x:String" x:Key="@inStartingNum">[in_dt_ProductDetails(0)("").ToString]</InArgument>
+                      <InArgument x:TypeArguments="x:String" x:Key="@inEndingNum">[in_dt_ProductDetails(0)("").ToString]</InArgument>
+                      <InArgument x:TypeArguments="x:Int32" x:Key="@inNumResets">[CInt(in_dt_ProductDetails(0)("").ToString)]</InArgument>
+                      <InArgument x:TypeArguments="x:Int32" x:Key="@inOrientation">[CInt(in_dt_ProductDetails(0)("").ToString)]</InArgument>
+                      <InArgument x:TypeArguments="x:String" x:Key="@inInsideWindow">[in_dt_ProductDetails(0)("").ToString]</InArgument>
+                      <InArgument x:TypeArguments="x:Int32" x:Key="@inQtyRollBest">[CInt(in_dt_ProductDetails(0)("").ToString)]</InArgument>
+                      <InArgument x:TypeArguments="x:Int32" x:Key="@inQtyPerRoll">[CInt(in_dt_ProductDetails(0)("").ToString)]</InArgument>
+                      <InArgument x:TypeArguments="x:Int32" x:Key="@inUnitM">[CInt(in_dt_ProductDetails(0)("").ToString)]</InArgument>
+                      <InArgument x:TypeArguments="x:String" x:Key="@inFLOC">[in_dt_ProductDetails(0)("").ToString]</InArgument>
+                      <InArgument x:TypeArguments="x:Double" x:Key="@inCoresSize">[CDbl(in_dt_ProductDetails(0)("").ToString)]</InArgument>
+                      <InArgument x:TypeArguments="x:String" x:Key="@inCoresMachine">[in_dt_ProductDetails(0)("").ToString]</InArgument>
+                      <InArgument x:TypeArguments="x:String" x:Key="@inHowProduced">[in_dt_ProductDetails(0)("").ToString]</InArgument>
+                      <InArgument x:TypeArguments="x:Int32" x:Key="@inWhereProduced">[Cint(in_dt_ProductDetails(0)("").ToString)]</InArgument>
+                      <InArgument x:TypeArguments="x:String" x:Key="@inTACode">[in_dt_ProductDetails(0)("").ToString]</InArgument>
+                      <InArgument x:TypeArguments="x:String" x:Key="@inFreightZip">[in_dt_ProductDetails(0)("").ToString]</InArgument>
+                      <InArgument x:TypeArguments="x:String" x:Key="@inPriceDisplay">[in_dt_ProductDetails(0)("").ToString]</InArgument>
+                      <InArgument x:TypeArguments="x:String" x:Key="@inDescription">[in_dt_ProductDetails(0)("").ToString]</InArgument>
+                      <InArgument x:TypeArguments="x:String" x:Key="@inPriceSource">[in_dt_ProductDetails(0)("").ToString]</InArgument>
+                      <InArgument x:TypeArguments="x:String" x:Key="@inShipVia">[in_dt_ProductDetails(0)("").ToString]</InArgument>
+                      <InArgument x:TypeArguments="x:String" x:Key="@inApplication">[in_dt_ProductDetails(0)("").ToString]</InArgument>
+                      <InArgument x:TypeArguments="x:Int32" x:Key="@inMultiStocks">[Cint(in_dt_ProductDetails(0)("").ToString)]</InArgument>
+                      <InArgument x:TypeArguments="x:String" x:Key="@inSetId">[in_Config("Setid").ToString]</InArgument>
+                      <InArgument x:TypeArguments="x:String" x:Key="@inStockNum">[in_dt_ProductDetails(0)("").ToString]</InArgument>
+                      <InArgument x:TypeArguments="x:String" x:Key="@inTintColor">[in_dt_ProductDetails(0)("").ToString]</InArgument>
+                      <InArgument x:TypeArguments="x:String" x:Key="@inStockNum2">[in_dt_ProductDetails(0)("").ToString]</InArgument>
+                      <InArgument x:TypeArguments="x:String" x:Key="@inPaperType2">[in_dt_ProductDetails(0)("").ToString]</InArgument>
+                      <InArgument x:TypeArguments="x:String" x:Key="@inPaperSubtype2">[in_dt_ProductDetails(0)("").ToString]</InArgument>
+                      <InArgument x:TypeArguments="x:String" x:Key="@inStockColor2">[in_dt_ProductDetails(0)("").ToString]</InArgument>
+                      <InArgument x:TypeArguments="x:String" x:Key="@inTintColor2">[in_dt_ProductDetails(0)("").ToString]</InArgument>
+                      <InArgument x:TypeArguments="x:String" x:Key="@inShipFromZip">[in_dt_ProductDetails(0)("").ToString]</InArgument>
+                    </ui:ExecuteQuery.Parameters>
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                  </ui:ExecuteQuery>
+                  <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="338,53" sap2010:WorkflowViewState.IdRef="CommentOut_3">
+                    <ui:CommentOut.Body>
+                      <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="496,192" sap2010:WorkflowViewState.IdRef="Sequence_6">
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                        <Assign DisplayName="Assigning Barcode" sap:VirtualizedContainerService.HintSize="434,82" sap2010:WorkflowViewState.IdRef="Assign_3">
+                          <Assign.To>
+                            <OutArgument x:TypeArguments="x:String">[io_str_PreviousBarcode]</OutArgument>
+                          </Assign.To>
+                          <Assign.Value>
+                            <InArgument x:TypeArguments="x:String">[out_dt_CustomerInfo.Rows(0).Item("barcode").ToString]</InArgument>
+                          </Assign.Value>
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                        </Assign>
+                      </Sequence>
+                    </ui:CommentOut.Body>
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                  </ui:CommentOut>
+                  <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="338,53" sap2010:WorkflowViewState.IdRef="CommentOut_4">
+                    <ui:CommentOut.Body>
+                      <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="496,194" sap2010:WorkflowViewState.IdRef="Sequence_7">
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                        <Assign sap:VirtualizedContainerService.HintSize="434,83" sap2010:WorkflowViewState.IdRef="Assign_4">
+                          <Assign.To>
+                            <OutArgument x:TypeArguments="x:Int32">[out_Count]</OutArgument>
+                          </Assign.To>
+                          <Assign.Value>
+                            <InArgument x:TypeArguments="x:Int32">[out_dt_CustomerInfo.RowCount]</InArgument>
+                          </Assign.Value>
+                        </Assign>
+                      </Sequence>
+                    </ui:CommentOut.Body>
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                  </ui:CommentOut>
+                </Sequence>
+              </If.Then>
+              <If.Else>
+                <Throw DisplayName="Throw_Databse_Credentials_Error" Exception="[new BusinessRuleException(&quot;Check sybase database credentials.&quot;)]" sap:VirtualizedContainerService.HintSize="334,91" sap2010:WorkflowViewState.IdRef="Throw_2" />
+              </If.Else>
+            </If>
+          </Sequence>
+        </If.Then>
+        <If.Else>
+          <Sequence sap:VirtualizedContainerService.HintSize="400,104" sap2010:WorkflowViewState.IdRef="Sequence_10">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+          </Sequence>
+        </If.Else>
+      </If>
+    </FlowStep>
     <x:Reference>__ReferenceID0</x:Reference>
-    <x:Reference>__ReferenceID1</x:Reference>
   </Flowchart>
 </Activity>

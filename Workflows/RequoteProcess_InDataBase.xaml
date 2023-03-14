@@ -16,10 +16,10 @@
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>897,1346</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>847,1346</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>RequoteProcess_InDataBase_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
-    <scg:List x:TypeArguments="x:String" Capacity="31">
+    <scg:List x:TypeArguments="x:String" Capacity="34">
       <x:String>System.Activities</x:String>
       <x:String>System.Activities.Statements</x:String>
       <x:String>System.Activities.Expressions</x:String>
@@ -51,10 +51,13 @@
       <x:String>UiPath.DataTableUtilities</x:String>
       <x:String>Microsoft.VisualBasic.CompilerServices</x:String>
       <x:String>System.Text.RegularExpressions</x:String>
+      <x:String>UiPath.Database</x:String>
+      <x:String>System.Security</x:String>
+      <x:String>UiPath.Database.Activities</x:String>
     </scg:List>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
-    <scg:List x:TypeArguments="AssemblyReference" Capacity="45">
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="48">
       <AssemblyReference>System.Activities</AssemblyReference>
       <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
       <AssemblyReference>System.Private.CoreLib</AssemblyReference>
@@ -99,6 +102,9 @@
       <AssemblyReference>System.Collections</AssemblyReference>
       <AssemblyReference>Microsoft.VisualBasic.Forms</AssemblyReference>
       <AssemblyReference>System.Text.RegularExpressions</AssemblyReference>
+      <AssemblyReference>UiPath.Database</AssemblyReference>
+      <AssemblyReference>UiPath.Database.Activities</AssemblyReference>
+      <AssemblyReference>System.Runtime.InteropServices</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
   <Flowchart DisplayName="RequoteProcess_InDataBase" sap:VirtualizedContainerService.HintSize="857,1281" sap2010:WorkflowViewState.IdRef="Flowchart_1">
@@ -107,6 +113,7 @@
       <Variable x:TypeArguments="sd:DataTable" Name="dt_ProductDetails" />
       <Variable x:TypeArguments="x:String" Name="str_Quantity" />
       <Variable x:TypeArguments="x:Int32" Name="int_Count" />
+      <Variable x:TypeArguments="sd:DataTable" Name="dt_SSPQTStoreLabelOutput" />
     </Flowchart.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -278,23 +285,23 @@
                         <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
                       </scg:Dictionary>
                     </sap:WorkflowViewStateService.ViewState>
-                    <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" sap2010:Annotation.AnnotationText="Extracting Quantity from maildata if it exists" DataTable="[in_dt_MLextractedData]" DisplayName="For Each Row in Data Table" sap:VirtualizedContainerService.HintSize="708,1159" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
+                    <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" sap2010:Annotation.AnnotationText="Extracting Quantity from maildata if it exists" DataTable="[in_dt_MLextractedData]" DisplayName="For Each Row in Data Table" sap:VirtualizedContainerService.HintSize="434,311" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
                       <ui:ForEachRow.Body>
                         <ActivityAction x:TypeArguments="sd:DataRow">
                           <ActivityAction.Argument>
                             <DelegateInArgument x:TypeArguments="sd:DataRow" Name="row" />
                           </ActivityAction.Argument>
-                          <Sequence DisplayName="Get_Quantity" sap:VirtualizedContainerService.HintSize="674,1011" sap2010:WorkflowViewState.IdRef="Sequence_16">
+                          <Sequence DisplayName="Get_Quantity" sap:VirtualizedContainerService.HintSize="400,163" sap2010:WorkflowViewState.IdRef="Sequence_16">
                             <sap:WorkflowViewStateService.ViewState>
                               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                 <x:Boolean x:Key="IsPinned">False</x:Boolean>
                               </scg:Dictionary>
                             </sap:WorkflowViewStateService.ViewState>
-                            <If Condition="[row(&quot;entity&quot;).ToString.ToLower=&quot;quantity&quot; And (CDbl(row(&quot;confidence&quot;).ToString)&gt;CDbl(in_Config(&quot;ClassifierConfidence&quot;).ToString))]" DisplayName="if-Quantity" sap:VirtualizedContainerService.HintSize="612,900" sap2010:WorkflowViewState.IdRef="If_5">
+                            <If Condition="[row(&quot;entity&quot;).ToString.ToLower=&quot;quantity&quot; And (CDbl(row(&quot;confidence&quot;).ToString)&gt;CDbl(in_Config(&quot;ClassifierConfidence&quot;).ToString))]" DisplayName="if-Quantity" sap:VirtualizedContainerService.HintSize="338,52" sap2010:WorkflowViewState.IdRef="If_5">
                               <sap:WorkflowViewStateService.ViewState>
                                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
                                   <x:Boolean x:Key="IsPinned">False</x:Boolean>
                                 </scg:Dictionary>
                               </sap:WorkflowViewStateService.ViewState>
@@ -428,7 +435,7 @@
                                   <av:PointCollection x:Key="ConnectorLocation">550,1049 550,1083.5</av:PointCollection>
                                 </scg:Dictionary>
                               </sap:WorkflowViewStateService.ViewState>
-                              <Sequence sap2010:Annotation.AnnotationText="Combine the previous product details with new details from request and store the updated&#xA;product details using the “workflow_quote..sspQTStoreLabelItem”." DisplayName="StoreUpdated_ProductDetails" sap:VirtualizedContainerService.HintSize="431,281" sap2010:WorkflowViewState.IdRef="Sequence_3">
+                              <Sequence sap2010:Annotation.AnnotationText="Combine the previous product details with new details from request and store the updated&#xA;product details using the “workflow_quote..sspQTStoreLabelItem”." DisplayName="StoreUpdated_ProductDetails" sap:VirtualizedContainerService.HintSize="200,198" sap2010:WorkflowViewState.IdRef="Sequence_3">
                                 <sap:WorkflowViewStateService.ViewState>
                                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -437,36 +444,17 @@
                                 </sap:WorkflowViewStateService.ViewState>
                                 <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Workflows\SspQTStoreLabelItem.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="369,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_9" UnSafe="False" WorkflowFileName="Workflows\SspQTStoreLabelItem.xaml">
                                   <ui:InvokeWorkflowFile.Arguments>
-                                    <InArgument x:TypeArguments="sd:DataTable" x:Key="in_dt_MLextractedData">
-                                      <VisualBasicValue x:TypeArguments="sd:DataTable" ExpressionText="in_dt_MLextractedData" />
-                                    </InArgument>
-                                    <InArgument x:TypeArguments="sd:DataTable" x:Key="in_dt_MandatoryFields">
-                                      <VisualBasicValue x:TypeArguments="sd:DataTable" ExpressionText="in_dt_MandatoryFields" />
-                                    </InArgument>
-                                    <InArgument x:TypeArguments="ui:QueueItem" x:Key="in_TransactionItem">
-                                      <VisualBasicValue x:TypeArguments="ui:QueueItem" ExpressionText="in_TransactionItem" />
-                                    </InArgument>
-                                    <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">
-                                      <VisualBasicValue x:TypeArguments="scg:Dictionary(x:String, x:Object)" ExpressionText="in_Config" />
-                                    </InArgument>
-                                    <InArgument x:TypeArguments="x:String" x:Key="in_barcode">
-                                      <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_barcode" />
-                                    </InArgument>
-                                    <InOutArgument x:TypeArguments="sd:DataTable" x:Key="in_dt_ProductDetails">
-                                      <VisualBasicReference x:TypeArguments="sd:DataTable" ExpressionText="dt_ProductDetails" />
-                                    </InOutArgument>
-                                    <InArgument x:TypeArguments="x:Int32" x:Key="in_int_Count">
-                                      <VisualBasicValue x:TypeArguments="x:Int32" ExpressionText="int_Count" />
-                                    </InArgument>
-                                    <InArgument x:TypeArguments="x:String" x:Key="in_ShipVia">
-                                      <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_ShipVia" />
-                                    </InArgument>
-                                    <InArgument x:TypeArguments="x:String" x:Key="in_Application">
-                                      <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_Application" />
-                                    </InArgument>
-                                    <InArgument x:TypeArguments="x:String" x:Key="in_ShipToZip">
-                                      <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_ShipToZip" />
-                                    </InArgument>
+                                    <InArgument x:TypeArguments="sd:DataTable" x:Key="in_dt_MLextractedData">[in_dt_MLextractedData]</InArgument>
+                                    <InArgument x:TypeArguments="sd:DataTable" x:Key="in_dt_MandatoryFields">[in_dt_MandatoryFields]</InArgument>
+                                    <InArgument x:TypeArguments="ui:QueueItem" x:Key="in_TransactionItem">[in_TransactionItem]</InArgument>
+                                    <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[in_Config]</InArgument>
+                                    <InArgument x:TypeArguments="x:String" x:Key="in_barcode">[in_barcode]</InArgument>
+                                    <InOutArgument x:TypeArguments="sd:DataTable" x:Key="in_dt_ProductDetails">[dt_ProductDetails]</InOutArgument>
+                                    <InArgument x:TypeArguments="x:Int32" x:Key="in_int_Count">[int_Count]</InArgument>
+                                    <InArgument x:TypeArguments="x:String" x:Key="in_ShipVia">[in_ShipVia]</InArgument>
+                                    <InArgument x:TypeArguments="x:String" x:Key="in_Application">[in_Application]</InArgument>
+                                    <InArgument x:TypeArguments="x:String" x:Key="in_ShipToZip">[in_ShipToZip]</InArgument>
+                                    <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_SspQTStorelabelOUTPUT">[dt_SSPQTStoreLabelOutput]</OutArgument>
                                   </ui:InvokeWorkflowFile.Arguments>
                                 </ui:InvokeWorkflowFile>
                               </Sequence>
@@ -478,13 +466,100 @@
                                       <av:Size x:Key="ShapeSize">200,153</av:Size>
                                     </scg:Dictionary>
                                   </sap:WorkflowViewStateService.ViewState>
-                                  <Sequence sap2010:Annotation.AnnotationText="Store the quantities for quote using the “workflow_quote..sspStoreQuotePricing”." DisplayName="sspStoreQuotePricing" sap:VirtualizedContainerService.HintSize="200,153" sap2010:WorkflowViewState.IdRef="Sequence_4">
+                                  <Sequence sap2010:Annotation.AnnotationText="Store the quantities for quote using the “workflow_quote..sspStoreQuotePricing”." DisplayName="sspStoreQuotePricing" sap:VirtualizedContainerService.HintSize="540,1035" sap2010:WorkflowViewState.IdRef="Sequence_4">
+                                    <Sequence.Variables>
+                                      <Variable x:TypeArguments="ui:DatabaseConnection" Name="sybConStatus" />
+                                    </Sequence.Variables>
                                     <sap:WorkflowViewStateService.ViewState>
                                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                         <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
                                       </scg:Dictionary>
                                     </sap:WorkflowViewStateService.ViewState>
+                                    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Workflows\Connect_Sybase.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="478,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_10" UnSafe="False" WorkflowFileName="Workflows\Connect_Sybase.xaml">
+                                      <ui:InvokeWorkflowFile.Arguments>
+                                        <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[in_Config]</InArgument>
+                                        <OutArgument x:TypeArguments="ui:DatabaseConnection" x:Key="sybConStatus">[sybConStatus]</OutArgument>
+                                      </ui:InvokeWorkflowFile.Arguments>
+                                    </ui:InvokeWorkflowFile>
+                                    <If sap2010:Annotation.AnnotationText="" Condition="[sybConStatus.State.ToString.ToLower=&quot;open&quot; And Not(String.IsNullOrEmpty(in_barcode))]" sap:VirtualizedContainerService.HintSize="478,740" sap2010:WorkflowViewState.IdRef="If_6">
+                                      <sap:WorkflowViewStateService.ViewState>
+                                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                        </scg:Dictionary>
+                                      </sap:WorkflowViewStateService.ViewState>
+                                      <If.Then>
+                                        <Sequence DisplayName="sspQTStoreQuotePricing" sap:VirtualizedContainerService.HintSize="400,332" sap2010:WorkflowViewState.IdRef="Sequence_18">
+                                          <Sequence.Variables>
+                                            <Variable x:TypeArguments="x:String" Name="out_str_Quantity" />
+                                          </Sequence.Variables>
+                                          <sap:WorkflowViewStateService.ViewState>
+                                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                            </scg:Dictionary>
+                                          </sap:WorkflowViewStateService.ViewState>
+                                          <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="338,92" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Extracting Quantity using SspLoadQuotePricing..&quot;]" />
+                                          <ui:ExecuteQuery ContinueOnError="{x:Null}" DataTable="{x:Null}" ExistingDbConnection="{x:Null}" TimeoutMS="{x:Null}" CommandType="Text" DisplayName="Run query" sap:VirtualizedContainerService.HintSize="338,89" sap2010:WorkflowViewState.IdRef="ExecuteQuery_2" Sql="[in_Config(&quot;SspStoreQuotePricing&quot;).ToString]">
+                                            <ui:ExecuteQuery.Parameters>
+                                              <InArgument x:TypeArguments="x:Int32" x:Key="@aBarcode">
+                                                <VisualBasicValue x:TypeArguments="x:Int32" ExpressionText="CInt(in_barcode)" />
+                                              </InArgument>
+                                              <InArgument x:TypeArguments="x:String" x:Key="@aSetID">
+                                                <Literal x:TypeArguments="x:String">LABEL</Literal>
+                                              </InArgument>
+                                              <InArgument x:TypeArguments="x:Int32" x:Key="@aRevision">
+                                                <Literal x:TypeArguments="x:Int32" />
+                                              </InArgument>
+                                              <InArgument x:TypeArguments="x:Int32" x:Key="@aQuantity">
+                                                <VisualBasicValue x:TypeArguments="x:Int32" ExpressionText="CInt(str_Quantity)" />
+                                              </InArgument>
+                                              <InArgument x:TypeArguments="x:Double" x:Key="@aBasePrice">
+                                                <Literal x:TypeArguments="x:Double" />
+                                              </InArgument>
+                                              <InArgument x:TypeArguments="x:Double" x:Key="@aFreightPrice">
+                                                <Literal x:TypeArguments="x:Double" />
+                                              </InArgument>
+                                              <InArgument x:TypeArguments="x:Double" x:Key="@anOtherPrice">
+                                                <Literal x:TypeArguments="x:Double" />
+                                              </InArgument>
+                                              <InArgument x:TypeArguments="x:Double" x:Key="@aTotalPrice">
+                                                <Literal x:TypeArguments="x:Double" />
+                                              </InArgument>
+                                              <InArgument x:TypeArguments="x:Double" x:Key="@aUnitPrice">
+                                                <Literal x:TypeArguments="x:Double" />
+                                              </InArgument>
+                                              <InArgument x:TypeArguments="x:Double" x:Key="@aPerMPrice">
+                                                <Literal x:TypeArguments="x:Double" />
+                                              </InArgument>
+                                              <InArgument x:TypeArguments="x:String" x:Key="@anOverride">
+                                                <Literal x:TypeArguments="x:String">N</Literal>
+                                              </InArgument>
+                                              <InArgument x:TypeArguments="x:String" x:Key="@anEstFrtOverride">
+                                                <Literal x:TypeArguments="x:String">N</Literal>
+                                              </InArgument>
+                                              <InArgument x:TypeArguments="x:Double" x:Key="@anEstWeight">
+                                                <Literal x:TypeArguments="x:Double" />
+                                              </InArgument>
+                                              <InArgument x:TypeArguments="x:String" x:Key="@anEstWeightOverride">
+                                                <Literal x:TypeArguments="x:String">N</Literal>
+                                              </InArgument>
+                                            </ui:ExecuteQuery.Parameters>
+                                          </ui:ExecuteQuery>
+                                        </Sequence>
+                                      </If.Then>
+                                      <If.Else>
+                                        <Sequence sap:VirtualizedContainerService.HintSize="400,201" sap2010:WorkflowViewState.IdRef="Sequence_19">
+                                          <sap:WorkflowViewStateService.ViewState>
+                                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                            </scg:Dictionary>
+                                          </sap:WorkflowViewStateService.ViewState>
+                                          <Throw DisplayName="Throw_Databse_Credentials_Error" Exception="[new BusinessRuleException(&quot;Check sybase database credentials.&quot;)]" sap:VirtualizedContainerService.HintSize="338,90" sap2010:WorkflowViewState.IdRef="Throw_5" />
+                                        </Sequence>
+                                      </If.Else>
+                                    </If>
                                   </Sequence>
                                 </FlowStep>
                               </FlowStep.Next>
