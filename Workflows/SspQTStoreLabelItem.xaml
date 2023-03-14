@@ -7,6 +7,9 @@
     <x:Property Name="in_barcode" Type="InArgument(x:String)" />
     <x:Property Name="in_dt_ProductDetails" Type="InOutArgument(sd:DataTable)" />
     <x:Property Name="in_int_Count" Type="InArgument(x:Int32)" />
+    <x:Property Name="in_ShipVia" Type="InArgument(x:String)" />
+    <x:Property Name="in_Application" Type="InArgument(x:String)" />
+    <x:Property Name="in_ShipToZip" Type="InArgument(x:String)" />
   </x:Members>
   <VisualBasic.Settings>
     <x:Null />
@@ -119,7 +122,7 @@
           <av:PointCollection x:Key="ConnectorLocation">300,179.5 300,229.5</av:PointCollection>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
-      <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Update_MLextracteddate_To_ProductData.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="200,52" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_3" UnSafe="False" WorkflowFileName="Workflows\Update_MLextracteddate_To_ProductData.xaml">
+      <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Update_MLextracteddate_To_ProductData.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="379,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_3" UnSafe="False" WorkflowFileName="Workflows\Update_MLextracteddate_To_ProductData.xaml">
         <ui:InvokeWorkflowFile.Arguments>
           <InArgument x:TypeArguments="sd:DataTable" x:Key="in_dt_MandatoryFields">[in_dt_MandatoryFields]</InArgument>
           <InArgument x:TypeArguments="sd:DataTable" x:Key="in_dt_MLextractedData">[in_dt_MLextractedData]</InArgument>
@@ -150,7 +153,7 @@
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
             <If.Then>
-              <Sequence DisplayName="SspQTStoreLabelItem" sap:VirtualizedContainerService.HintSize="540,1171" sap2010:WorkflowViewState.IdRef="Sequence_1">
+              <Sequence DisplayName="SspQTStoreLabelItem" sap:VirtualizedContainerService.HintSize="540,1159" sap2010:WorkflowViewState.IdRef="Sequence_1">
                 <Sequence.Variables>
                   <Variable x:TypeArguments="ui:DatabaseConnection" Name="sybConStatus" />
                 </Sequence.Variables>
@@ -159,13 +162,13 @@
                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
-                <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Workflows\Connect_Sybase.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="478,114" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_4" UnSafe="False" WorkflowFileName="Workflows\Connect_Sybase.xaml">
+                <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Workflows\Connect_Sybase.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="478,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_4" UnSafe="False" WorkflowFileName="Workflows\Connect_Sybase.xaml">
                   <ui:InvokeWorkflowFile.Arguments>
                     <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[in_Config]</InArgument>
                     <OutArgument x:TypeArguments="ui:DatabaseConnection" x:Key="sybConStatus">[sybConStatus]</OutArgument>
                   </ui:InvokeWorkflowFile.Arguments>
                 </ui:InvokeWorkflowFile>
-                <If sap2010:Annotation.AnnotationText="Combine the previous product details with new details(shiptozip, shipvia, application...) from request and&#xA;   store the updated product details using the “workflow_quote..sspQTStoreLabelItem”." Condition="[sybConStatus.State.ToString.ToLower=&quot;open&quot;]" sap:VirtualizedContainerService.HintSize="478,906" sap2010:WorkflowViewState.IdRef="If_2">
+                <If sap2010:Annotation.AnnotationText="Combine the previous product details with new details(shiptozip, shipvia, application...) from request and&#xA;   store the updated product details using the “workflow_quote..sspQTStoreLabelItem”." Condition="[sybConStatus.State.ToString.ToLower=&quot;open&quot;]" sap:VirtualizedContainerService.HintSize="478,895" sap2010:WorkflowViewState.IdRef="If_2">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
@@ -174,7 +177,7 @@
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
                   <If.Then>
-                    <Sequence sap:VirtualizedContainerService.HintSize="400,551" sap2010:WorkflowViewState.IdRef="Sequence_4">
+                    <Sequence sap:VirtualizedContainerService.HintSize="400,547" sap2010:WorkflowViewState.IdRef="Sequence_4">
                       <Sequence.Variables>
                         <Variable x:TypeArguments="sd:DataTable" Name="out_dt_CustomerInfo" />
                       </Sequence.Variables>
@@ -183,7 +186,7 @@
                           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                         </scg:Dictionary>
                       </sap:WorkflowViewStateService.ViewState>
-                      <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="338,94" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;If workflow_quote..sspValidateItemReorderNum stored procedure returns the value/count 1 means that it was a quote&quot;]" />
+                      <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="338,92" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;If workflow_quote..sspValidateItemReorderNum stored procedure returns the value/count 1 means that it was a quote&quot;]" />
                       <ui:ExecuteQuery ContinueOnError="{x:Null}" TimeoutMS="{x:Null}" sap2010:Annotation.AnnotationText="Find SSPValidate Item Reorder" CommandType="StoredProcedure" DataTable="[out_dt_CustomerInfo]" DisplayName="Run query_SspValidateItemReorderNum" ExistingDbConnection="[sybConStatus]" sap:VirtualizedContainerService.HintSize="338,120" sap2010:WorkflowViewState.IdRef="ExecuteQuery_1" Sql="[in_Config(&quot;SspQTStoreLabelItem&quot;).ToString]">
                         <ui:ExecuteQuery.Parameters>
                           <InArgument x:TypeArguments="x:Int32" x:Key="@inBarcode">[Cint(in_barcode)]</InArgument>
@@ -240,9 +243,9 @@
                           </scg:Dictionary>
                         </sap:WorkflowViewStateService.ViewState>
                       </ui:ExecuteQuery>
-                      <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="338,53" sap2010:WorkflowViewState.IdRef="CommentOut_1">
+                      <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="338,52" sap2010:WorkflowViewState.IdRef="CommentOut_1">
                         <ui:CommentOut.Body>
-                          <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="496,192" sap2010:WorkflowViewState.IdRef="Sequence_3">
+                          <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="496,193" sap2010:WorkflowViewState.IdRef="Sequence_3">
                             <sap:WorkflowViewStateService.ViewState>
                               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -270,7 +273,7 @@
                           </scg:Dictionary>
                         </sap:WorkflowViewStateService.ViewState>
                       </ui:CommentOut>
-                      <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="338,53" sap2010:WorkflowViewState.IdRef="CommentOut_2">
+                      <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="338,52" sap2010:WorkflowViewState.IdRef="CommentOut_2">
                         <ui:CommentOut.Body>
                           <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="496,194" sap2010:WorkflowViewState.IdRef="Sequence_5">
                             <sap:WorkflowViewStateService.ViewState>
@@ -322,7 +325,7 @@
                   <av:PointCollection x:Key="ConnectorLocation">310,291.5 310,341.5</av:PointCollection>
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
-              <If Condition="[in_int_Count=2]" sap:VirtualizedContainerService.HintSize="618,1443" sap2010:WorkflowViewState.IdRef="If_4">
+              <If Condition="[in_int_Count=2]" sap:VirtualizedContainerService.HintSize="200,52" sap2010:WorkflowViewState.IdRef="If_4">
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>

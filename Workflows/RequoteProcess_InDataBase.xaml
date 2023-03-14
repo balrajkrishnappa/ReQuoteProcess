@@ -9,11 +9,14 @@
     <x:Property sap2010:Annotation.AnnotationText="Dictionary structure to store configuration data of the process (settings, constants and assets)." Name="in_Config" Type="InArgument(scg:Dictionary(x:String, x:Object))" />
     <x:Property sap2010:Annotation.AnnotationText="Transaction item to be processed." Name="in_TransactionItem" Type="InArgument(ui:QueueItem)" />
     <x:Property Name="in_barcode" Type="InArgument(x:String)" />
+    <x:Property Name="in_ShipVia" Type="InArgument(x:String)" />
+    <x:Property Name="in_Application" Type="InArgument(x:String)" />
+    <x:Property Name="in_ShipToZip" Type="InArgument(x:String)" />
   </x:Members>
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1000,1346</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>897,1346</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>RequoteProcess_InDataBase_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="31">
@@ -454,6 +457,15 @@
                                     </InOutArgument>
                                     <InArgument x:TypeArguments="x:Int32" x:Key="in_int_Count">
                                       <VisualBasicValue x:TypeArguments="x:Int32" ExpressionText="int_Count" />
+                                    </InArgument>
+                                    <InArgument x:TypeArguments="x:String" x:Key="in_ShipVia">
+                                      <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_ShipVia" />
+                                    </InArgument>
+                                    <InArgument x:TypeArguments="x:String" x:Key="in_Application">
+                                      <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_Application" />
+                                    </InArgument>
+                                    <InArgument x:TypeArguments="x:String" x:Key="in_ShipToZip">
+                                      <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_ShipToZip" />
                                     </InArgument>
                                   </ui:InvokeWorkflowFile.Arguments>
                                 </ui:InvokeWorkflowFile>
