@@ -53,7 +53,7 @@
     </scg:List>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
-    <scg:List x:TypeArguments="AssemblyReference" Capacity="74">
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="44">
       <AssemblyReference>System.Activities</AssemblyReference>
       <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
       <AssemblyReference>System.Private.CoreLib</AssemblyReference>
@@ -119,6 +119,7 @@
       <Flowchart.Variables>
         <Variable x:TypeArguments="sd:DataTable" Name="findEmailBarcode_DT" />
         <Variable x:TypeArguments="sd:DataTable" Name="dt_SSPstoreNotesOutput" />
+        <Variable x:TypeArguments="x:Int32" Name="aftedrecords" />
       </Flowchart.Variables>
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -132,7 +133,7 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
       <Flowchart.StartNode>
-        <x:Reference>__ReferenceID5</x:Reference>
+        <x:Reference>__ReferenceID3</x:Reference>
       </Flowchart.StartNode>
       <FlowStep>
         <sap:WorkflowViewStateService.ViewState>
@@ -153,7 +154,7 @@
           </ui:ExecuteQuery.Parameters>
         </ui:ExecuteQuery>
       </FlowStep>
-      <FlowDecision x:Name="__ReferenceID5" Condition="[sybConStatus.State.ToString.ToLower.Equals(&quot;open&quot;)]" DisplayName="Connection Open?" sap:VirtualizedContainerService.HintSize="105,87" sap2010:WorkflowViewState.IdRef="FlowDecision_2">
+      <FlowDecision x:Name="__ReferenceID3" Condition="[sybConStatus.State.ToString.ToLower.Equals(&quot;open&quot;)]" DisplayName="Connection Open?" sap:VirtualizedContainerService.HintSize="105,87" sap2010:WorkflowViewState.IdRef="FlowDecision_2">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -164,7 +165,7 @@
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
         <FlowDecision.True>
-          <FlowStep x:Name="__ReferenceID4">
+          <FlowStep x:Name="__ReferenceID2">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <av:Point x:Key="ShapeLocation">60,119.5</av:Point>
@@ -172,37 +173,15 @@
                 <av:PointCollection x:Key="ConnectorLocation">160,180.5 160,362 200,362</av:PointCollection>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <ui:ExecuteNonQuery AffectedRecords="{x:Null}" CommandType="Text" ConnectionSecureString="{x:Null}" ConnectionString="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Run command" ExistingDbConnection="[sybConStatus]" sap:VirtualizedContainerService.HintSize="334,98" sap2010:WorkflowViewState.IdRef="ExecuteNonQuery_1" ProviderName="{x:Null}" Sql="[in_Config(&quot;workflow_data..SspStoreNote&quot;).ToString]" TimeoutMS="{x:Null}">
+            <ui:ExecuteNonQuery ContinueOnError="{x:Null}" TimeoutMS="{x:Null}" AffectedRecords="[aftedrecords]" CommandType="Text" DisplayName="Run command" ExistingDbConnection="[sybConStatus]" sap:VirtualizedContainerService.HintSize="200,61" sap2010:WorkflowViewState.IdRef="ExecuteNonQuery_1" Sql="[in_Config(&quot;workflow_data..SspStoreNote&quot;).ToString]">
               <ui:ExecuteNonQuery.Parameters>
-                <InArgument x:TypeArguments="x:Double" x:Key="@aBarcode">
-                  <VisualBasicValue x:TypeArguments="x:Double" ExpressionText="CLng(in_barcode)" />
-                </InArgument>
-                <InArgument x:TypeArguments="x:String" x:Key="@aComment">
-                  <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_Comment">
-                    <VisualBasicValue.Result>
-                      <OutArgument x:TypeArguments="x:String" />
-                    </VisualBasicValue.Result>
-                  </VisualBasicValue>
-                </InArgument>
-                <InArgument x:TypeArguments="x:String" x:Key="@aType">
-                  <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_Type">
-                    <VisualBasicValue.Result>
-                      <OutArgument x:TypeArguments="x:String" />
-                    </VisualBasicValue.Result>
-                  </VisualBasicValue>
-                </InArgument>
-                <InArgument x:TypeArguments="x:Int32" x:Key="@anAgentID">
-                  <VisualBasicValue x:TypeArguments="x:Int32" ExpressionText="CInt(in_AgentID)" />
-                </InArgument>
-                <InArgument x:TypeArguments="x:Int32" x:Key="@aRevisionNum">
-                  <VisualBasicValue x:TypeArguments="x:Int32" ExpressionText="CInt(in_RevisionNum)" />
-                </InArgument>
-                <InArgument x:TypeArguments="x:Int32" x:Key="@aPartNum">
-                  <VisualBasicValue x:TypeArguments="x:Int32" ExpressionText="CInt(in_PartNum)" />
-                </InArgument>
-                <InArgument x:TypeArguments="x:Int32" x:Key="@aNoteNum">
-                  <VisualBasicValue x:TypeArguments="x:Int32" ExpressionText="CInt(in_NoteNum)" />
-                </InArgument>
+                <InArgument x:TypeArguments="x:Double" x:Key="@aBarcode">[CLng(in_barcode)]</InArgument>
+                <InArgument x:TypeArguments="x:String" x:Key="@aComment">[in_Comment]</InArgument>
+                <InArgument x:TypeArguments="x:String" x:Key="@aType">[in_Type]</InArgument>
+                <InArgument x:TypeArguments="x:Int32" x:Key="@anAgentID">[CInt(in_AgentID)]</InArgument>
+                <InArgument x:TypeArguments="x:Int32" x:Key="@aRevisionNum">[CInt(in_RevisionNum)]</InArgument>
+                <InArgument x:TypeArguments="x:Int32" x:Key="@aPartNum">[CInt(in_PartNum)]</InArgument>
+                <InArgument x:TypeArguments="x:Int32" x:Key="@aNoteNum">[CInt(in_NoteNum)]</InArgument>
               </ui:ExecuteNonQuery.Parameters>
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -211,12 +190,11 @@
               </sap:WorkflowViewStateService.ViewState>
             </ui:ExecuteNonQuery>
             <FlowStep.Next>
-              <FlowStep x:Name="__ReferenceID3">
+              <FlowStep x:Name="__ReferenceID1">
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                     <av:Point x:Key="ShapeLocation">200,346</av:Point>
                     <av:Size x:Key="ShapeSize">200,32</av:Size>
-                    <av:PointCollection x:Key="ConnectorLocation">300,378 300,408 319,408 319,426.5</av:PointCollection>
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
                 <ui:DatabaseDisconnect DatabaseConnection="[sybConStatus]" DisplayName="Disconnect from database" sap:VirtualizedContainerService.HintSize="200,32" sap2010:WorkflowViewState.IdRef="DatabaseDisconnect_1">
@@ -226,35 +204,6 @@
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
                 </ui:DatabaseDisconnect>
-                <FlowStep.Next>
-                  <FlowDecision x:Name="__ReferenceID1" Condition="[dt_SSPstoreNotesOutput.RowCount=1]" DisplayName="Note Posted?" sap:VirtualizedContainerService.HintSize="76,87" sap2010:WorkflowViewState.IdRef="FlowDecision_1">
-                    <sap:WorkflowViewStateService.ViewState>
-                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                        <av:Point x:Key="ShapeLocation">262,426.5</av:Point>
-                        <av:Size x:Key="ShapeSize">76,87</av:Size>
-                        <av:PointCollection x:Key="FalseConnector">338,470 368,470 368,474.5 520,474.5</av:PointCollection>
-                      </scg:Dictionary>
-                    </sap:WorkflowViewStateService.ViewState>
-                    <FlowDecision.False>
-                      <FlowStep x:Name="__ReferenceID2">
-                        <sap:WorkflowViewStateService.ViewState>
-                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                            <av:Point x:Key="ShapeLocation">520,444</av:Point>
-                            <av:Size x:Key="ShapeSize">200,61</av:Size>
-                          </scg:Dictionary>
-                        </sap:WorkflowViewStateService.ViewState>
-                        <Throw DisplayName="Throw-NoBarcodeNumber" Exception="[New BusinessRuleException(&quot;No Barcode found for this Email&quot;)]" sap:VirtualizedContainerService.HintSize="200,61" sap2010:WorkflowViewState.IdRef="Throw_2">
-                          <sap:WorkflowViewStateService.ViewState>
-                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                            </scg:Dictionary>
-                          </sap:WorkflowViewStateService.ViewState>
-                        </Throw>
-                      </FlowStep>
-                    </FlowDecision.False>
-                  </FlowDecision>
-                </FlowStep.Next>
               </FlowStep>
             </FlowStep.Next>
           </FlowStep>
@@ -272,10 +221,29 @@
         </FlowDecision.False>
       </FlowDecision>
       <x:Reference>__ReferenceID0</x:Reference>
+      <FlowStep>
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <av:Point x:Key="ShapeLocation">520,444</av:Point>
+            <av:Size x:Key="ShapeSize">200,61</av:Size>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+        <ui:CommentOut sap:VirtualizedContainerService.HintSize="200,61" sap2010:WorkflowViewState.IdRef="CommentOut_1">
+          <ui:CommentOut.Body>
+            <Sequence DisplayName="Ignored Activities" sap2010:WorkflowViewState.IdRef="Sequence_2">
+              <Throw DisplayName="Throw-NoBarcodeNumber" Exception="[New BusinessRuleException(&quot;No Barcode found for this Email&quot;)]" sap:VirtualizedContainerService.HintSize="200,61" sap2010:WorkflowViewState.IdRef="Throw_2">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+              </Throw>
+            </Sequence>
+          </ui:CommentOut.Body>
+        </ui:CommentOut>
+      </FlowStep>
       <x:Reference>__ReferenceID1</x:Reference>
       <x:Reference>__ReferenceID2</x:Reference>
-      <x:Reference>__ReferenceID3</x:Reference>
-      <x:Reference>__ReferenceID4</x:Reference>
     </Flowchart>
   </Sequence>
 </Activity>
