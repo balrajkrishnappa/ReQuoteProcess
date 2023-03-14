@@ -169,19 +169,27 @@
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <av:Point x:Key="ShapeLocation">60,119.5</av:Point>
                 <av:Size x:Key="ShapeSize">200,61</av:Size>
-                <av:PointCollection x:Key="ConnectorLocation">160,180.5 160,210.5 300,210.5 300,346</av:PointCollection>
+                <av:PointCollection x:Key="ConnectorLocation">160,180.5 160,362 200,362</av:PointCollection>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <ui:ExecuteNonQuery AffectedRecords="{x:Null}" ContinueOnError="{x:Null}" ExistingDbConnection="{x:Null}" TimeoutMS="{x:Null}" CommandType="Text" DisplayName="Run command" sap:VirtualizedContainerService.HintSize="200,61" sap2010:WorkflowViewState.IdRef="ExecuteNonQuery_1" Sql="[in_Config(&quot;workflow_data..SspStoreNote&quot;).ToString]">
+            <ui:ExecuteNonQuery AffectedRecords="{x:Null}" CommandType="Text" ConnectionSecureString="{x:Null}" ConnectionString="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Run command" ExistingDbConnection="[sybConStatus]" sap:VirtualizedContainerService.HintSize="334,98" sap2010:WorkflowViewState.IdRef="ExecuteNonQuery_1" ProviderName="{x:Null}" Sql="[in_Config(&quot;workflow_data..SspStoreNote&quot;).ToString]" TimeoutMS="{x:Null}">
               <ui:ExecuteNonQuery.Parameters>
-                <InArgument x:TypeArguments="x:Int32" x:Key="@aBarcode">
-                  <VisualBasicValue x:TypeArguments="x:Int32" ExpressionText="CInt(in_barcode)" />
+                <InArgument x:TypeArguments="x:Double" x:Key="@aBarcode">
+                  <VisualBasicValue x:TypeArguments="x:Double" ExpressionText="CLng(in_barcode)" />
                 </InArgument>
                 <InArgument x:TypeArguments="x:String" x:Key="@aComment">
-                  <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_Comment" />
+                  <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_Comment">
+                    <VisualBasicValue.Result>
+                      <OutArgument x:TypeArguments="x:String" />
+                    </VisualBasicValue.Result>
+                  </VisualBasicValue>
                 </InArgument>
                 <InArgument x:TypeArguments="x:String" x:Key="@aType">
-                  <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_Type" />
+                  <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_Type">
+                    <VisualBasicValue.Result>
+                      <OutArgument x:TypeArguments="x:String" />
+                    </VisualBasicValue.Result>
+                  </VisualBasicValue>
                 </InArgument>
                 <InArgument x:TypeArguments="x:Int32" x:Key="@anAgentID">
                   <VisualBasicValue x:TypeArguments="x:Int32" ExpressionText="CInt(in_AgentID)" />
@@ -208,7 +216,7 @@
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                     <av:Point x:Key="ShapeLocation">200,346</av:Point>
                     <av:Size x:Key="ShapeSize">200,32</av:Size>
-                    <av:PointCollection x:Key="ConnectorLocation">300,378 300,426.5</av:PointCollection>
+                    <av:PointCollection x:Key="ConnectorLocation">300,378 300,408 319,408 319,426.5</av:PointCollection>
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
                 <ui:DatabaseDisconnect DatabaseConnection="[sybConStatus]" DisplayName="Disconnect from database" sap:VirtualizedContainerService.HintSize="200,32" sap2010:WorkflowViewState.IdRef="DatabaseDisconnect_1">
