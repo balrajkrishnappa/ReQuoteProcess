@@ -10,7 +10,7 @@
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1000,2404</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1000,3067</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>Output_QTLoadReOrderItem_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="33">
@@ -99,11 +99,15 @@
       <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="Output_QTLoadReOrderItem" sap:VirtualizedContainerService.HintSize="830,2339" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="Output_QTLoadReOrderItem" sap:VirtualizedContainerService.HintSize="830,3002" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:Int32" Name="index" />
       <Variable x:TypeArguments="x:String" Name="item" />
       <Variable x:TypeArguments="scg:List(x:String)" Name="list_mandatoryItems" />
+      <Variable x:TypeArguments="scg:Dictionary(x:String, x:Object)" Name="MLData_withParameter" />
+      <Variable x:TypeArguments="sd:DataTable" Name="dt_Mapping" />
+      <Variable x:TypeArguments="scg:Dictionary(x:String, x:Object)" Name="Quotewith_Parameter" />
+      <Variable x:TypeArguments="scg:Dictionary(x:String, x:Object)" Name="Reorderwith_Parameter" />
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -130,15 +134,118 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:CommentOut>
-    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="768,92" sap2010:WorkflowViewState.IdRef="LogMessage_5" Message="[in_dt_MLextractedData.RowCount]" />
-    <Sequence sap2010:Annotation.AnnotationText="Create 2 dictionary" DisplayName="Mapping" sap:VirtualizedContainerService.HintSize="768,134" sap2010:WorkflowViewState.IdRef="Sequence_15">
+    <Sequence DisplayName="MappingColumns" sap:VirtualizedContainerService.HintSize="768,81" sap2010:WorkflowViewState.IdRef="Sequence_18">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
-          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
+      <Assign DisplayName="Assing out_Config (initialization)" sap:VirtualizedContainerService.HintSize="608,82" sap2010:WorkflowViewState.IdRef="Assign_6">
+        <Assign.To>
+          <OutArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)">[MLData_withParameter]</OutArgument>
+        </Assign.To>
+        <Assign.Value>
+          <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)">[New Dictionary(of String, Object)]</InArgument>
+        </Assign.Value>
+      </Assign>
+      <Assign DisplayName="Assing out_Config (initialization)" sap:VirtualizedContainerService.HintSize="608,82" sap2010:WorkflowViewState.IdRef="Assign_12">
+        <Assign.To>
+          <OutArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)">[Reorderwith_Parameter]</OutArgument>
+        </Assign.To>
+        <Assign.Value>
+          <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)">[New Dictionary(of String, Object)]</InArgument>
+        </Assign.Value>
+      </Assign>
+      <Assign DisplayName="Assing out_Config (initialization)" sap:VirtualizedContainerService.HintSize="608,82" sap2010:WorkflowViewState.IdRef="Assign_7">
+        <Assign.To>
+          <OutArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)">[Quotewith_Parameter]</OutArgument>
+        </Assign.To>
+        <Assign.Value>
+          <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)">[New Dictionary(of String, Object)]</InArgument>
+        </Assign.Value>
+      </Assign>
+      <ui:ReadRange Range="{x:Null}" AddHeaders="True" DataTable="[dt_Mapping]" DisplayName="Read Range Workbook" sap:VirtualizedContainerService.HintSize="608,88" sap2010:WorkflowViewState.IdRef="ReadRange_3" SheetName="Sheet1" WorkbookPath="Mapping.xlsx" />
+      <ui:ReadRange Range="{x:Null}" AddHeaders="True" DataTable="[dt_Mapping]" DisplayName="Read Range Workbook" sap:VirtualizedContainerService.HintSize="608,88" sap2010:WorkflowViewState.IdRef="ReadRange_4" SheetName="Layout" WorkbookPath="Mapping.xlsx" />
+      <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[dt_Mapping]" DisplayName="For each configuration row" sap:VirtualizedContainerService.HintSize="608,861" sap2010:WorkflowViewState.IdRef="ForEachRow_3">
+        <ui:ForEachRow.Body>
+          <ActivityAction x:TypeArguments="sd:DataRow">
+            <ActivityAction.Argument>
+              <DelegateInArgument x:TypeArguments="sd:DataRow" Name="Row" />
+            </ActivityAction.Argument>
+            <If sap2010:Annotation.AnnotationText="Read non-empty rows in the sheet." Condition="[Not String.IsNullOrWhiteSpace(row(&quot;Parameters&quot;).ToString.Trim)]" DisplayName="If configuration row is not empty" sap:VirtualizedContainerService.HintSize="574,744" sap2010:WorkflowViewState.IdRef="If_4">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <If.Then>
+                <Sequence DisplayName="Assigning_Dictionary" sap:VirtualizedContainerService.HintSize="496,437" sap2010:WorkflowViewState.IdRef="Sequence_16">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <Assign DisplayName="Add Config key/value pair" sap:VirtualizedContainerService.HintSize="434,82" sap2010:WorkflowViewState.IdRef="Assign_9">
+                    <Assign.To>
+                      <OutArgument x:TypeArguments="x:Object">[Quotewith_Parameter(Row("Parameters").ToString.Trim)]</OutArgument>
+                    </Assign.To>
+                    <Assign.Value>
+                      <InArgument x:TypeArguments="x:Object">[Row("Quote")]</InArgument>
+                    </Assign.Value>
+                  </Assign>
+                  <Assign sap:VirtualizedContainerService.HintSize="434,82" sap2010:WorkflowViewState.IdRef="Assign_10">
+                    <Assign.To>
+                      <OutArgument x:TypeArguments="x:Object">[Reorderwith_Parameter(Row("Parameters").ToString.Trim)]</OutArgument>
+                    </Assign.To>
+                    <Assign.Value>
+                      <InArgument x:TypeArguments="x:Object">[Row("Reorder")]</InArgument>
+                    </Assign.Value>
+                  </Assign>
+                  <Assign sap:VirtualizedContainerService.HintSize="434,82" sap2010:WorkflowViewState.IdRef="Assign_11">
+                    <Assign.To>
+                      <OutArgument x:TypeArguments="x:Object">[MLData_withParameter(Row("Parameters").ToString.Trim)]</OutArgument>
+                    </Assign.To>
+                    <Assign.Value>
+                      <InArgument x:TypeArguments="x:Object">[Row("ML")]</InArgument>
+                    </Assign.Value>
+                  </Assign>
+                </Sequence>
+              </If.Then>
+            </If>
+          </ActivityAction>
+        </ui:ForEachRow.Body>
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </ui:ForEachRow>
     </Sequence>
+    <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="768,52" sap2010:WorkflowViewState.IdRef="CommentOut_4">
+      <ui:CommentOut.Body>
+        <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="400,203" sap2010:WorkflowViewState.IdRef="Sequence_17">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="338,92" sap2010:WorkflowViewState.IdRef="LogMessage_5" Message="[in_dt_MLextractedData.RowCount]" />
+        </Sequence>
+      </ui:CommentOut.Body>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:CommentOut>
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="768,92" sap2010:WorkflowViewState.IdRef="LogMessage_6" Message="[MLData_withParameter]" />
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="768,92" sap2010:WorkflowViewState.IdRef="LogMessage_7" Message="[Reorderwith_Parameter]" />
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="768,92" sap2010:WorkflowViewState.IdRef="LogMessage_8" Message="[Quotewith_Parameter]" />
     <ui:FilterDataTable DataTable="[in_dt_MLextractedData]" DisplayName="Filter Data Table" FilterRowsMode="Remove" sap:VirtualizedContainerService.HintSize="768,161" sap2010:WorkflowViewState.IdRef="FilterDataTable_2" OutputDataTable="[in_dt_MLextractedData]" SelectColumnsMode="Keep">
       <ui:FilterDataTable.Filters>
         <scg:List x:TypeArguments="ui:FilterOperationArgument" Capacity="4">
@@ -182,6 +289,9 @@
         </scg:List>
       </ui:FilterDataTable.SelectColumns>
     </ui:FilterDataTable>
+    <ui:OutputDataTable Text="{x:Null}" DataTable="[in_dt_ProductDetails]" DisplayName="Output Data Table" sap:VirtualizedContainerService.HintSize="768,80" sap2010:WorkflowViewState.IdRef="OutputDataTable_1" />
+    <ui:OutputDataTable Text="{x:Null}" DataTable="[in_dt_MLextractedData]" DisplayName="Output Data Table" sap:VirtualizedContainerService.HintSize="768,80" sap2010:WorkflowViewState.IdRef="OutputDataTable_3" />
+    <ui:OutputDataTable Text="{x:Null}" DataTable="[in_dt_ProductDetails]" DisplayName="Output Data Table" sap:VirtualizedContainerService.HintSize="768,80" sap2010:WorkflowViewState.IdRef="OutputDataTable_2" />
     <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="768,92" sap2010:WorkflowViewState.IdRef="LogMessage_4" Message="[in_dt_MLextractedData.RowCount]" />
     <ui:ForEach x:TypeArguments="sd:DataColumn" CurrentIndex="[index]" DisplayName="For Each" sap:VirtualizedContainerService.HintSize="768,1405" sap2010:WorkflowViewState.IdRef="ForEach`1_2" Values="[in_dt_ProductDetails.Columns]">
       <ui:ForEach.Body>
