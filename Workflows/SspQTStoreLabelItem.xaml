@@ -15,7 +15,7 @@
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>670,711</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>668,711</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>SspQTStoreLabelItem_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="34">
@@ -160,7 +160,7 @@
               <av:Size x:Key="ShapeSize">200,90</av:Size>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <Sequence DisplayName="SspQTStoreLabelItem" sap:VirtualizedContainerService.HintSize="200,90" sap2010:WorkflowViewState.IdRef="Sequence_14">
+          <Sequence DisplayName="SspQTStoreLabelItem" sap:VirtualizedContainerService.HintSize="544,1314" sap2010:WorkflowViewState.IdRef="Sequence_14">
             <Sequence.Variables>
               <Variable x:TypeArguments="ui:DatabaseConnection" Name="sybConStatus" />
             </Sequence.Variables>
@@ -248,55 +248,149 @@
                       </scg:Dictionary>
                     </sap:WorkflowViewStateService.ViewState>
                   </ui:CommentOut>
-                  <ui:ExecuteQuery ContinueOnError="{x:Null}" TimeoutMS="{x:Null}" sap2010:Annotation.AnnotationText="Find SSPValidate Item Reorder" CommandType="StoredProcedure" DataTable="[out_SspQTStorelabelOUTPUT]" DisplayName="Run query_SspValidateItemReorderNum" ExistingDbConnection="[sybConStatus]" sap:VirtualizedContainerService.HintSize="338,129" sap2010:WorkflowViewState.IdRef="ExecuteQuery_4" Sql="[in_Config(&quot;SspQTStoreLabelItem&quot;).ToString]">
+                  <ui:ExecuteQuery ContinueOnError="{x:Null}" TimeoutMS="{x:Null}" sap2010:Annotation.AnnotationText="Find SspQTStoreLabelItemItem Reorder" CommandType="StoredProcedure" DataTable="[out_SspQTStorelabelOUTPUT]" DisplayName="Run query_SspQTStoreLabelItem" ExistingDbConnection="[sybConStatus]" sap:VirtualizedContainerService.HintSize="338,129" sap2010:WorkflowViewState.IdRef="ExecuteQuery_4" Sql="[in_Config(&quot;SspQTStoreLabelItem&quot;).ToString]">
                     <ui:ExecuteQuery.Parameters>
-                      <InArgument x:TypeArguments="x:Int32" x:Key="@inBarcode">[Cint(in_barcode)]</InArgument>
-                      <InArgument x:TypeArguments="x:Int32" x:Key="@inRevision">[CInt(in_Config("SspQTStoreLabelItemRevisionNum").ToString)]</InArgument>
-                      <InArgument x:TypeArguments="x:String" x:Key="@inProdCountry">[in_dt_ProductDetails(0)("@inProdCountry").ToString]</InArgument>
-                      <InArgument x:TypeArguments="x:String" x:Key="@inProdCode">[in_dt_ProductDetails(0)("@inProdCode").ToString]</InArgument>
-                      <InArgument x:TypeArguments="x:String" x:Key="@inProdClass">[in_dt_ProductDetails(0)("@inProdClass").ToString]</InArgument>
-                      <InArgument x:TypeArguments="x:String" x:Key="@inLabelType">[in_dt_ProductDetails(0)("@inLabelType").ToString]</InArgument>
-                      <InArgument x:TypeArguments="x:String" x:Key="@inLabelSubtype">[in_dt_ProductDetails(0)("@inLabelSubtype").ToString]</InArgument>
-                      <InArgument x:TypeArguments="x:String" x:Key="@inShape">[in_dt_ProductDetails(0)("@inShape").ToString]</InArgument>
-                      <InArgument x:TypeArguments="x:String" x:Key="@inSubshape">[in_dt_ProductDetails(0)("@inSubshape").ToString]</InArgument>
-                      <InArgument x:TypeArguments="x:Double" x:Key="@inHeight">[CDbl(in_dt_ProductDetails(0)("@inHeight").ToString)]</InArgument>
-                      <InArgument x:TypeArguments="x:Double" x:Key="@inWidth">[CDbl(in_dt_ProductDetails(0)("@inWidth").ToString)]</InArgument>
-                      <InArgument x:TypeArguments="x:Double" x:Key="@inDiameter">[CDbl(in_dt_ProductDetails(0)("@inDiameter").ToString)]</InArgument>
-                      <InArgument x:TypeArguments="x:String" x:Key="@inPaperType">[in_dt_ProductDetails(0)("@inPaperType").ToString]</InArgument>
-                      <InArgument x:TypeArguments="x:String" x:Key="@inPaperSubtype">[in_dt_ProductDetails(0)("@inPaperSubtype").ToString]</InArgument>
-                      <InArgument x:TypeArguments="x:String" x:Key="@inStockColor">[in_dt_ProductDetails(0)("@inStockColor").ToString]</InArgument>
-                      <InArgument x:TypeArguments="x:String" x:Key="@inBarcodeType">[in_dt_ProductDetails(0)("@inBarcodeType").ToString]</InArgument>
-                      <InArgument x:TypeArguments="x:String" x:Key="@inConsecDigits">[in_dt_ProductDetails(0)("@inConsecDigits").ToString]</InArgument>
-                      <InArgument x:TypeArguments="x:String" x:Key="@inStartingNum">[in_dt_ProductDetails(0)("@inStartingNum").ToString]</InArgument>
-                      <InArgument x:TypeArguments="x:String" x:Key="@inEndingNum">[in_dt_ProductDetails(0)("@inEndingNum").ToString]</InArgument>
-                      <InArgument x:TypeArguments="x:Int32" x:Key="@inNumResets">[CInt(in_dt_ProductDetails(0)("@inNumResets").ToString)]</InArgument>
-                      <InArgument x:TypeArguments="x:Int32" x:Key="@inOrientation">[CInt(in_dt_ProductDetails(0)("@inOrientation").ToString)]</InArgument>
-                      <InArgument x:TypeArguments="x:String" x:Key="@inInsideWindow">[in_dt_ProductDetails(0)("@inInsideWindow").ToString]</InArgument>
-                      <InArgument x:TypeArguments="x:Int32" x:Key="@inQtyRollBest">[CInt(in_dt_ProductDetails(0)("@inQtyRollBest").ToString)]</InArgument>
-                      <InArgument x:TypeArguments="x:Int32" x:Key="@inQtyPerRoll">[CInt(in_dt_ProductDetails(0)("@inQtyPerRoll").ToString)]</InArgument>
-                      <InArgument x:TypeArguments="x:Int32" x:Key="@inUnitM">[CInt(in_dt_ProductDetails(0)("@inUnitM").ToString)]</InArgument>
-                      <InArgument x:TypeArguments="x:String" x:Key="@inFLOC">[in_dt_ProductDetails(0)("@inFLOC").ToString]</InArgument>
-                      <InArgument x:TypeArguments="x:Double" x:Key="@inCoresSize">[CDbl(in_dt_ProductDetails(0)("@inCoresSize").ToString)]</InArgument>
-                      <InArgument x:TypeArguments="x:String" x:Key="@inCoresMachine">[in_dt_ProductDetails(0)("@inCoresMachine").ToString]</InArgument>
-                      <InArgument x:TypeArguments="x:String" x:Key="@inHowProduced">[in_dt_ProductDetails(0)("@inHowProduced").ToString]</InArgument>
-                      <InArgument x:TypeArguments="x:Int32" x:Key="@inWhereProduced">[Cint(in_dt_ProductDetails(0)("@inWhereProduced").ToString)]</InArgument>
-                      <InArgument x:TypeArguments="x:String" x:Key="@inTACode">[in_dt_ProductDetails(0)("@inTACode").ToString]</InArgument>
-                      <InArgument x:TypeArguments="x:String" x:Key="@inFreightZip">[in_dt_ProductDetails(0)("@inFreightZip").ToString]</InArgument>
-                      <InArgument x:TypeArguments="x:String" x:Key="@inPriceDisplay">[in_dt_ProductDetails(0)("@inPriceDisplay").ToString]</InArgument>
-                      <InArgument x:TypeArguments="x:String" x:Key="@inDescription">[in_dt_ProductDetails(0)("@inDescription").ToString]</InArgument>
-                      <InArgument x:TypeArguments="x:String" x:Key="@inPriceSource">[in_dt_ProductDetails(0)("@inPriceSource").ToString]</InArgument>
-                      <InArgument x:TypeArguments="x:String" x:Key="@inShipVia">[in_dt_ProductDetails(0)("@inShipVia").ToString]</InArgument>
-                      <InArgument x:TypeArguments="x:String" x:Key="@inApplication">[in_dt_ProductDetails(0)("@inApplication").ToString]</InArgument>
-                      <InArgument x:TypeArguments="x:Int32" x:Key="@inMultiStocks">[Cint(in_dt_ProductDetails(0)("inMultiStocks").ToString)]</InArgument>
-                      <InArgument x:TypeArguments="x:String" x:Key="@inSetId">[in_Config("Setid").ToString]</InArgument>
-                      <InArgument x:TypeArguments="x:String" x:Key="@inStockNum">[in_dt_ProductDetails(0)("@inStockNum").ToString]</InArgument>
-                      <InArgument x:TypeArguments="x:String" x:Key="@inTintColor">[in_dt_ProductDetails(0)("@inTintColor").ToString]</InArgument>
-                      <InArgument x:TypeArguments="x:String" x:Key="@inStockNum2">[in_dt_ProductDetails(0)("@inStockNum2").ToString]</InArgument>
-                      <InArgument x:TypeArguments="x:String" x:Key="@inPaperType2">[in_dt_ProductDetails(0)("@inPaperType2").ToString]</InArgument>
-                      <InArgument x:TypeArguments="x:String" x:Key="@inPaperSubtype2">[in_dt_ProductDetails(0)("@inPaperSubtype2").ToString]</InArgument>
-                      <InArgument x:TypeArguments="x:String" x:Key="@inStockColor2">[in_dt_ProductDetails(0)("@inStockColor2").ToString]</InArgument>
-                      <InArgument x:TypeArguments="x:String" x:Key="@inTintColor2">[in_dt_ProductDetails(0)("@inTintColor2").ToString]</InArgument>
-                      <InArgument x:TypeArguments="x:String" x:Key="@inShipFromZip">[in_dt_ProductDetails(0)("@inShipFromZip").ToString]</InArgument>
+                      <InArgument x:TypeArguments="x:Double" x:Key="@inBarcode">
+                        <VisualBasicValue x:TypeArguments="x:Double" ExpressionText="clng(in_barcode)" />
+                      </InArgument>
+                      <InArgument x:TypeArguments="x:Int32" x:Key="@inRevision">
+                        <VisualBasicValue x:TypeArguments="x:Int32" ExpressionText="CInt(in_Config(&quot;SspQTStoreLabelItemRevisionNum&quot;).ToString)" />
+                      </InArgument>
+                      <InArgument x:TypeArguments="x:String" x:Key="@inProdCountry">
+                        <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_dt_ProductDetails(0)(&quot;@inProdCountry&quot;).ToString" />
+                      </InArgument>
+                      <InArgument x:TypeArguments="x:String" x:Key="@inProdCode">
+                        <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_dt_ProductDetails(0)(&quot;@inProdCode&quot;).ToString" />
+                      </InArgument>
+                      <InArgument x:TypeArguments="x:String" x:Key="@inProdClass">
+                        <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_dt_ProductDetails(0)(&quot;@inProdClass&quot;).ToString" />
+                      </InArgument>
+                      <InArgument x:TypeArguments="x:String" x:Key="@inLabelType">
+                        <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_dt_ProductDetails(0)(&quot;@inLabelType&quot;).ToString" />
+                      </InArgument>
+                      <InArgument x:TypeArguments="x:String" x:Key="@inLabelSubtype">
+                        <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_dt_ProductDetails(0)(&quot;@inLabelSubtype&quot;).ToString" />
+                      </InArgument>
+                      <InArgument x:TypeArguments="x:String" x:Key="@inShape">
+                        <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_dt_ProductDetails(0)(&quot;@inShape&quot;).ToString" />
+                      </InArgument>
+                      <InArgument x:TypeArguments="x:String" x:Key="@inSubshape">
+                        <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_dt_ProductDetails(0)(&quot;@inSubshape&quot;).ToString" />
+                      </InArgument>
+                      <InArgument x:TypeArguments="x:Double" x:Key="@inHeight">
+                        <VisualBasicValue x:TypeArguments="x:Double" ExpressionText="CDbl(in_dt_ProductDetails(0)(&quot;@inHeight&quot;).ToString)" />
+                      </InArgument>
+                      <InArgument x:TypeArguments="x:Double" x:Key="@inWidth">
+                        <VisualBasicValue x:TypeArguments="x:Double" ExpressionText="CDbl(in_dt_ProductDetails(0)(&quot;@inWidth&quot;).ToString)" />
+                      </InArgument>
+                      <InArgument x:TypeArguments="x:Double" x:Key="@inDiameter">
+                        <VisualBasicValue x:TypeArguments="x:Double" ExpressionText="CDbl(in_dt_ProductDetails(0)(&quot;@inDiameter&quot;).ToString)" />
+                      </InArgument>
+                      <InArgument x:TypeArguments="x:String" x:Key="@inPaperType">
+                        <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_dt_ProductDetails(0)(&quot;@inPaperType&quot;).ToString" />
+                      </InArgument>
+                      <InArgument x:TypeArguments="x:String" x:Key="@inPaperSubtype">
+                        <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_dt_ProductDetails(0)(&quot;@inPaperSubtype&quot;).ToString" />
+                      </InArgument>
+                      <InArgument x:TypeArguments="x:String" x:Key="@inStockColor">
+                        <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_dt_ProductDetails(0)(&quot;@inStockColor&quot;).ToString" />
+                      </InArgument>
+                      <InArgument x:TypeArguments="x:String" x:Key="@inBarcodeType">
+                        <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_dt_ProductDetails(0)(&quot;@inBarcodeType&quot;).ToString" />
+                      </InArgument>
+                      <InArgument x:TypeArguments="x:String" x:Key="@inConsecDigits">
+                        <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_dt_ProductDetails(0)(&quot;@inConsecDigits&quot;).ToString" />
+                      </InArgument>
+                      <InArgument x:TypeArguments="x:String" x:Key="@inStartingNum">
+                        <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_dt_ProductDetails(0)(&quot;@inStartingNum&quot;).ToString" />
+                      </InArgument>
+                      <InArgument x:TypeArguments="x:String" x:Key="@inEndingNum">
+                        <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_dt_ProductDetails(0)(&quot;@inEndingNum&quot;).ToString" />
+                      </InArgument>
+                      <InArgument x:TypeArguments="x:Int32" x:Key="@inNumResets">
+                        <VisualBasicValue x:TypeArguments="x:Int32" ExpressionText="CInt(in_dt_ProductDetails(0)(&quot;@inNumResets&quot;).ToString)" />
+                      </InArgument>
+                      <InArgument x:TypeArguments="x:Int32" x:Key="@inOrientation">
+                        <VisualBasicValue x:TypeArguments="x:Int32" ExpressionText="CInt(in_dt_ProductDetails(0)(&quot;@inOrientation&quot;).ToString)" />
+                      </InArgument>
+                      <InArgument x:TypeArguments="x:String" x:Key="@inInsideWindow">
+                        <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_dt_ProductDetails(0)(&quot;@inInsideWindow&quot;).ToString" />
+                      </InArgument>
+                      <InArgument x:TypeArguments="x:Int32" x:Key="@inQtyRollBest">
+                        <VisualBasicValue x:TypeArguments="x:Int32" ExpressionText="CInt(in_dt_ProductDetails(0)(&quot;@inQtyRollBest&quot;).ToString)" />
+                      </InArgument>
+                      <InArgument x:TypeArguments="x:Int32" x:Key="@inQtyPerRoll">
+                        <VisualBasicValue x:TypeArguments="x:Int32" ExpressionText="CInt(in_dt_ProductDetails(0)(&quot;@inQtyPerRoll&quot;).ToString)" />
+                      </InArgument>
+                      <InArgument x:TypeArguments="x:Int32" x:Key="@inUnitM">
+                        <VisualBasicValue x:TypeArguments="x:Int32" ExpressionText="CInt(in_dt_ProductDetails(0)(&quot;@inUnitM&quot;).ToString)" />
+                      </InArgument>
+                      <InArgument x:TypeArguments="x:String" x:Key="@inFLOC">
+                        <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_dt_ProductDetails(0)(&quot;@inFLOC&quot;).ToString" />
+                      </InArgument>
+                      <InArgument x:TypeArguments="x:Double" x:Key="@inCoresSize">
+                        <VisualBasicValue x:TypeArguments="x:Double" ExpressionText="CDbl(in_dt_ProductDetails(0)(&quot;@inCoresSize&quot;).ToString)" />
+                      </InArgument>
+                      <InArgument x:TypeArguments="x:String" x:Key="@inCoresMachine">
+                        <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_dt_ProductDetails(0)(&quot;@inCoresMachine&quot;).ToString" />
+                      </InArgument>
+                      <InArgument x:TypeArguments="x:String" x:Key="@inHowProduced">
+                        <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_dt_ProductDetails(0)(&quot;@inHowProduced&quot;).ToString" />
+                      </InArgument>
+                      <InArgument x:TypeArguments="x:Int32" x:Key="@inWhereProduced">
+                        <VisualBasicValue x:TypeArguments="x:Int32" ExpressionText="Cint(in_dt_ProductDetails(0)(&quot;@inWhereProduced&quot;).ToString)" />
+                      </InArgument>
+                      <InArgument x:TypeArguments="x:String" x:Key="@inTACode">
+                        <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_dt_ProductDetails(0)(&quot;@inTACode&quot;).ToString" />
+                      </InArgument>
+                      <InArgument x:TypeArguments="x:String" x:Key="@inFreightZip">
+                        <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_dt_ProductDetails(0)(&quot;@inFreightZip&quot;).ToString" />
+                      </InArgument>
+                      <InArgument x:TypeArguments="x:String" x:Key="@inPriceDisplay">
+                        <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_dt_ProductDetails(0)(&quot;@inPriceDisplay&quot;).ToString" />
+                      </InArgument>
+                      <InArgument x:TypeArguments="x:String" x:Key="@inDescription">
+                        <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_dt_ProductDetails(0)(&quot;@inDescription&quot;).ToString" />
+                      </InArgument>
+                      <InArgument x:TypeArguments="x:String" x:Key="@inPriceSource">
+                        <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_dt_ProductDetails(0)(&quot;@inPriceSource&quot;).ToString" />
+                      </InArgument>
+                      <InArgument x:TypeArguments="x:String" x:Key="@inShipVia">
+                        <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_dt_ProductDetails(0)(&quot;@inShipVia&quot;).ToString" />
+                      </InArgument>
+                      <InArgument x:TypeArguments="x:String" x:Key="@inApplication">
+                        <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_dt_ProductDetails(0)(&quot;@inApplication&quot;).ToString" />
+                      </InArgument>
+                      <InArgument x:TypeArguments="x:Int32" x:Key="@inMultiStocks">
+                        <VisualBasicValue x:TypeArguments="x:Int32" ExpressionText="Cint(in_dt_ProductDetails(0)(&quot;@inMultiStocks&quot;).ToString)" />
+                      </InArgument>
+                      <InArgument x:TypeArguments="x:String" x:Key="@inSetId">
+                        <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_Config(&quot;Setid&quot;).ToString" />
+                      </InArgument>
+                      <InArgument x:TypeArguments="x:String" x:Key="@inStockNum">
+                        <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_dt_ProductDetails(0)(&quot;@inStockNum&quot;).ToString" />
+                      </InArgument>
+                      <InArgument x:TypeArguments="x:String" x:Key="@inTintColor">
+                        <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_dt_ProductDetails(0)(&quot;@inTintColor&quot;).ToString" />
+                      </InArgument>
+                      <InArgument x:TypeArguments="x:String" x:Key="@inStockNum2">
+                        <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_dt_ProductDetails(0)(&quot;@inStockNum2&quot;).ToString" />
+                      </InArgument>
+                      <InArgument x:TypeArguments="x:String" x:Key="@inPaperType2">
+                        <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_dt_ProductDetails(0)(&quot;@inPaperType2&quot;).ToString" />
+                      </InArgument>
+                      <InArgument x:TypeArguments="x:String" x:Key="@inPaperSubtype2">
+                        <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_dt_ProductDetails(0)(&quot;@inPaperSubtype2&quot;).ToString" />
+                      </InArgument>
+                      <InArgument x:TypeArguments="x:String" x:Key="@inStockColor2">
+                        <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_dt_ProductDetails(0)(&quot;@inStockColor2&quot;).ToString" />
+                      </InArgument>
+                      <InArgument x:TypeArguments="x:String" x:Key="@inTintColor2">
+                        <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_dt_ProductDetails(0)(&quot;@inTintColor2&quot;).ToString" />
+                      </InArgument>
+                      <InArgument x:TypeArguments="x:String" x:Key="@inShipFromZip">
+                        <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_dt_ProductDetails(0)(&quot;@inShipFromZip&quot;).ToString" />
+                      </InArgument>
                     </ui:ExecuteQuery.Parameters>
                     <sap:WorkflowViewStateService.ViewState>
                       <scg:Dictionary x:TypeArguments="x:String, x:Object">

@@ -14,7 +14,7 @@
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>806,1592</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>799,1592</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>Extracting_PreviousBarcode_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="28">
@@ -138,10 +138,7 @@
         </sap:WorkflowViewStateService.ViewState>
       </ui:InvokeWorkflowFile>
       <FlowStep.Next>
-        <FlowDecision x:Name="__ReferenceID1" DisplayName="Not Extracted previousbarcode?" sap:VirtualizedContainerService.HintSize="160,87" sap2010:WorkflowViewState.IdRef="FlowDecision_2">
-          <FlowDecision.Condition>
-            <VisualBasicValue x:TypeArguments="x:Boolean" ExpressionText="(String.IsNullOrEmpty(io_str_PreviousBarcode))" />
-          </FlowDecision.Condition>
+        <FlowDecision x:Name="__ReferenceID1" Condition="[(String.IsNullOrEmpty(io_str_PreviousBarcode))]" DisplayName="Not Extracted previousbarcode?" sap:VirtualizedContainerService.HintSize="160,87" sap2010:WorkflowViewState.IdRef="FlowDecision_2">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -180,10 +177,7 @@
                 </sap:WorkflowViewStateService.ViewState>
               </ui:InvokeWorkflowFile>
               <FlowStep.Next>
-                <FlowDecision x:Name="__ReferenceID3" DisplayName="Not Extracted previousbarcode?" sap:VirtualizedContainerService.HintSize="160,87" sap2010:WorkflowViewState.IdRef="FlowDecision_3">
-                  <FlowDecision.Condition>
-                    <VisualBasicValue x:TypeArguments="x:Boolean" ExpressionText="(String.IsNullOrEmpty(io_str_PreviousBarcode))" />
-                  </FlowDecision.Condition>
+                <FlowDecision x:Name="__ReferenceID3" Condition="[(String.IsNullOrEmpty(io_str_PreviousBarcode))]" DisplayName="Not Extracted previousbarcode?" sap:VirtualizedContainerService.HintSize="160,87" sap2010:WorkflowViewState.IdRef="FlowDecision_3">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -202,35 +196,17 @@
                           <av:PointCollection x:Key="ConnectorLocation">260,1056 259.5,1056 259.5,1076.5</av:PointCollection>
                         </scg:Dictionary>
                       </sap:WorkflowViewStateService.ViewState>
-                      <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="Data Extraction Using Quote Number" DisplayName="Workflows\ExtractData_UsingQuoteNumber.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="374,153" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_3" UnSafe="False" WorkflowFileName="Workflows\ExtractData_UsingQuoteNumber.xaml">
+                      <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="Data Extraction Using Quote Number" DisplayName="Workflows\ExtractData_UsingQuoteNumber.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="200,103" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_3" UnSafe="False" WorkflowFileName="Workflows\ExtractData_UsingQuoteNumber.xaml">
                         <ui:InvokeWorkflowFile.Arguments>
-                          <InArgument x:TypeArguments="sd:DataTable" x:Key="in_dt_MandatoryFields">
-                            <VisualBasicValue x:TypeArguments="sd:DataTable" ExpressionText="in_dt_MandatoryFields" />
-                          </InArgument>
-                          <InArgument x:TypeArguments="x:String" x:Key="in_str_InvoiceNumber">
-                            <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_str_InvoiceNumber" />
-                          </InArgument>
-                          <InArgument x:TypeArguments="sd:DataTable" x:Key="in_dt_MLextractedData">
-                            <VisualBasicValue x:TypeArguments="sd:DataTable" ExpressionText="in_dt_MLextractedData" />
-                          </InArgument>
-                          <InArgument x:TypeArguments="x:String" x:Key="in_str_QuoteNumber">
-                            <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_str_QuoteNumber" />
-                          </InArgument>
-                          <InArgument x:TypeArguments="x:String" x:Key="in_str_POnumber">
-                            <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_str_POnumber" />
-                          </InArgument>
-                          <InOutArgument x:TypeArguments="x:String" x:Key="io_str_PreviousBarcode">
-                            <VisualBasicReference x:TypeArguments="x:String" ExpressionText="io_str_PreviousBarcode" />
-                          </InOutArgument>
-                          <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">
-                            <VisualBasicValue x:TypeArguments="scg:Dictionary(x:String, x:Object)" ExpressionText="in_Config" />
-                          </InArgument>
-                          <InArgument x:TypeArguments="ui:QueueItem" x:Key="in_TransactionItem">
-                            <VisualBasicValue x:TypeArguments="ui:QueueItem" ExpressionText="in_TransactionItem" />
-                          </InArgument>
-                          <InArgument x:TypeArguments="x:String" x:Key="in_barcode">
-                            <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_barcode" />
-                          </InArgument>
+                          <InArgument x:TypeArguments="sd:DataTable" x:Key="in_dt_MandatoryFields">[in_dt_MandatoryFields]</InArgument>
+                          <InArgument x:TypeArguments="x:String" x:Key="in_str_InvoiceNumber">[in_str_InvoiceNumber]</InArgument>
+                          <InArgument x:TypeArguments="sd:DataTable" x:Key="in_dt_MLextractedData">[in_dt_MLextractedData]</InArgument>
+                          <InArgument x:TypeArguments="x:String" x:Key="in_str_QuoteNumber">[in_str_QuoteNumber]</InArgument>
+                          <InArgument x:TypeArguments="x:String" x:Key="in_str_POnumber">[in_str_POnumber]</InArgument>
+                          <InOutArgument x:TypeArguments="x:String" x:Key="io_str_PreviousBarcode">[io_str_PreviousBarcode]</InOutArgument>
+                          <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[in_Config]</InArgument>
+                          <InArgument x:TypeArguments="ui:QueueItem" x:Key="in_TransactionItem">[in_TransactionItem]</InArgument>
+                          <InArgument x:TypeArguments="x:String" x:Key="in_barcode">[in_barcode]</InArgument>
                         </ui:InvokeWorkflowFile.Arguments>
                         <sap:WorkflowViewStateService.ViewState>
                           <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -240,10 +216,7 @@
                         </sap:WorkflowViewStateService.ViewState>
                       </ui:InvokeWorkflowFile>
                       <FlowStep.Next>
-                        <FlowDecision x:Name="__ReferenceID5" DisplayName="Not Extracted previousbarcode?" sap:VirtualizedContainerService.HintSize="160,87" sap2010:WorkflowViewState.IdRef="FlowDecision_4">
-                          <FlowDecision.Condition>
-                            <VisualBasicValue x:TypeArguments="x:Boolean" ExpressionText="(String.IsNullOrEmpty(io_str_PreviousBarcode))" />
-                          </FlowDecision.Condition>
+                        <FlowDecision x:Name="__ReferenceID5" Condition="[(String.IsNullOrEmpty(io_str_PreviousBarcode))]" DisplayName="Not Extracted previousbarcode?" sap:VirtualizedContainerService.HintSize="160,87" sap2010:WorkflowViewState.IdRef="FlowDecision_4">
                           <sap:WorkflowViewStateService.ViewState>
                             <scg:Dictionary x:TypeArguments="x:String, x:Object">
                               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -278,16 +251,32 @@
                                       <av:PointCollection x:Key="ConnectorLocation">100,1335 100,1348</av:PointCollection>
                                     </scg:Dictionary>
                                   </sap:WorkflowViewStateService.ViewState>
-                                  <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Workflows\SSP_StoreNote.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="200,61" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_4" UnSafe="False" WorkflowFileName="Workflows\SSP_StoreNote.xaml">
+                                  <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Workflows\SSP_StoreNote.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="334,122" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_4" UnSafe="False" WorkflowFileName="Workflows\SSP_StoreNote.xaml">
                                     <ui:InvokeWorkflowFile.Arguments>
-                                      <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[in_Config]</InArgument>
-                                      <InArgument x:TypeArguments="x:String" x:Key="in_barcode">[in_barcode]</InArgument>
-                                      <InArgument x:TypeArguments="x:String" x:Key="in_Comment">Failed to extract previous barcode using PO Number, Invoice Number and Quote Number</InArgument>
-                                      <InArgument x:TypeArguments="x:String" x:Key="in_Type">Perm</InArgument>
-                                      <InArgument x:TypeArguments="x:String" x:Key="in_AgentID">9463</InArgument>
-                                      <InArgument x:TypeArguments="x:String" x:Key="in_RevisionNum">1</InArgument>
-                                      <InArgument x:TypeArguments="x:String" x:Key="in_PartNum">1</InArgument>
-                                      <InArgument x:TypeArguments="x:String" x:Key="in_NoteNum">1</InArgument>
+                                      <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">
+                                        <VisualBasicValue x:TypeArguments="scg:Dictionary(x:String, x:Object)" ExpressionText="in_Config" />
+                                      </InArgument>
+                                      <InArgument x:TypeArguments="x:String" x:Key="in_barcode">
+                                        <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_barcode" />
+                                      </InArgument>
+                                      <InArgument x:TypeArguments="x:String" x:Key="in_Comment">
+                                        <Literal x:TypeArguments="x:String">Failed to extract previous barcode using PO Number, Invoice Number and Quote Number</Literal>
+                                      </InArgument>
+                                      <InArgument x:TypeArguments="x:String" x:Key="in_Type">
+                                        <Literal x:TypeArguments="x:String">Perm</Literal>
+                                      </InArgument>
+                                      <InArgument x:TypeArguments="x:Int32" x:Key="in_AgentID">
+                                        <Literal x:TypeArguments="x:Int32" Value="9463" />
+                                      </InArgument>
+                                      <InArgument x:TypeArguments="x:Int32" x:Key="in_RevisionNum">
+                                        <Literal x:TypeArguments="x:Int32" Value="1" />
+                                      </InArgument>
+                                      <InArgument x:TypeArguments="x:Int32" x:Key="in_PartNum">
+                                        <Literal x:TypeArguments="x:Int32" Value="1" />
+                                      </InArgument>
+                                      <InArgument x:TypeArguments="x:Int32" x:Key="in_NoteNum">
+                                        <Literal x:TypeArguments="x:Int32" Value="1" />
+                                      </InArgument>
                                     </ui:InvokeWorkflowFile.Arguments>
                                     <sap:WorkflowViewStateService.ViewState>
                                       <scg:Dictionary x:TypeArguments="x:String, x:Object">

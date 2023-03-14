@@ -1,0 +1,1 @@
+{"response": [{"entity": "Barcode", "value": "2201093509000", "confidence": 0.6047410368919373, "start_index": 9, "end_index": 22}, {"entity": "Quantity", "value": "5000", "confidence": 0.9653514623641968, "start_index": 62, "end_index": 66}]}

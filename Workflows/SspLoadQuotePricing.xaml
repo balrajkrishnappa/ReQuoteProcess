@@ -10,7 +10,7 @@
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1000,702</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>668,711</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>SspLoadQuotePricing_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="29">
@@ -85,7 +85,7 @@
       <AssemblyReference>UiPath.Workflow</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Flowchart DisplayName="SspLoadQuotePricing" sap:VirtualizedContainerService.HintSize="634,637" sap2010:WorkflowViewState.IdRef="Flowchart_1">
+  <Flowchart DisplayName="SspLoadQuotePricing" sap:VirtualizedContainerService.HintSize="634,646" sap2010:WorkflowViewState.IdRef="Flowchart_1">
     <Flowchart.Variables>
       <Variable x:TypeArguments="ui:DatabaseConnection" Name="sybConStatus" />
       <Variable x:TypeArguments="sd:DataTable" Name="dt_QuantityDetails" />
@@ -105,11 +105,11 @@
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <av:Point x:Key="ShapeLocation">200,127.5</av:Point>
-          <av:Size x:Key="ShapeSize">200,52</av:Size>
-          <av:PointCollection x:Key="ConnectorLocation">300,179.5 300,229.5</av:PointCollection>
+          <av:Size x:Key="ShapeSize">200,61</av:Size>
+          <av:PointCollection x:Key="ConnectorLocation">300,188.5 300,229.5</av:PointCollection>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
-      <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Workflows\Connect_Sybase.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="200,52" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="Workflows\Connect_Sybase.xaml">
+      <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Workflows\Connect_Sybase.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="200,61" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="Workflows\Connect_Sybase.xaml">
         <ui:InvokeWorkflowFile.Arguments>
           <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[in_Config]</InArgument>
           <OutArgument x:TypeArguments="ui:DatabaseConnection" x:Key="sybConStatus">[sybConStatus]</OutArgument>
@@ -125,11 +125,11 @@
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <av:Point x:Key="ShapeLocation">200,229.5</av:Point>
-              <av:Size x:Key="ShapeSize">200,83</av:Size>
-              <av:PointCollection x:Key="ConnectorLocation">300,312.5 300,362.5</av:PointCollection>
+              <av:Size x:Key="ShapeSize">200,92</av:Size>
+              <av:PointCollection x:Key="ConnectorLocation">300,321.5 300,362.5</av:PointCollection>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <If sap2010:Annotation.AnnotationText="" Condition="[sybConStatus.State.ToString.ToLower=&quot;open&quot; And Not(String.IsNullOrEmpty(io_str_PreviousBarcode))]" sap:VirtualizedContainerService.HintSize="580,1555" sap2010:WorkflowViewState.IdRef="If_1">
+          <If sap2010:Annotation.AnnotationText="" Condition="[sybConStatus.State.ToString.ToLower=&quot;open&quot; And Not(String.IsNullOrEmpty(io_str_PreviousBarcode))]" sap:VirtualizedContainerService.HintSize="578,1046" sap2010:WorkflowViewState.IdRef="If_1">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
@@ -138,7 +138,7 @@
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
             <If.Then>
-              <Sequence DisplayName="sspQTLoadQuotePricing" sap:VirtualizedContainerService.HintSize="502,1147" sap2010:WorkflowViewState.IdRef="Sequence_1">
+              <Sequence DisplayName="sspQTLoadQuotePricing" sap:VirtualizedContainerService.HintSize="496,651" sap2010:WorkflowViewState.IdRef="Sequence_1">
                 <Sequence.Variables>
                   <Variable x:TypeArguments="x:String" Name="out_str_Quantity" />
                 </Sequence.Variables>
@@ -147,12 +147,18 @@
                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
-                <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="440,92" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Extracting Quantity using SspLoadQuotePricing..&quot;]" />
-                <ui:ExecuteQuery ContinueOnError="{x:Null}" TimeoutMS="{x:Null}" sap2010:Annotation.AnnotationText="“workflow_quote..sspValidateItemReorderNum”. If this stored procedure returns the value/count 1 which means that it was an Quote" CommandType="StoredProcedure" DataTable="[dt_QuantityDetails]" DisplayName="Run query_SspQTLoadQuotePricing" ExistingDbConnection="[sybConStatus]" sap:VirtualizedContainerService.HintSize="440,146" sap2010:WorkflowViewState.IdRef="ExecuteQuery_1" Sql="[in_Config(&quot;SspLoadQuotePricing&quot;).ToString]">
+                <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="434,101" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Extracting Quantity using SspLoadQuotePricing..&quot;]" />
+                <ui:ExecuteQuery ContinueOnError="{x:Null}" TimeoutMS="{x:Null}" sap2010:Annotation.AnnotationText="“workflow_quote..sspValidateItemReorderNum”. If this stored procedure returns the value/count 1 which means that it was an Quote" CommandType="StoredProcedure" DataTable="[dt_QuantityDetails]" DisplayName="Run query_SspQTLoadQuotePricing" ExistingDbConnection="[sybConStatus]" sap:VirtualizedContainerService.HintSize="434,155" sap2010:WorkflowViewState.IdRef="ExecuteQuery_1" Sql="[in_Config(&quot;SspLoadQuotePricing&quot;).ToString]">
                   <ui:ExecuteQuery.Parameters>
-                    <InArgument x:TypeArguments="x:String" x:Key="@aSetID">[in_Config("Setid").ToString]</InArgument>
-                    <InArgument x:TypeArguments="x:Int32" x:Key="@aRevision">[CInt(in_Config("SspLoadQuotePricingRevisionNum"))]</InArgument>
-                    <InArgument x:TypeArguments="x:Int32" x:Key="@aBarcode">[CInt(io_str_PreviousBarcode)]</InArgument>
+                    <InArgument x:TypeArguments="x:String" x:Key="@aSetID">
+                      <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_Config(&quot;Setid&quot;).ToString" />
+                    </InArgument>
+                    <InArgument x:TypeArguments="x:Int32" x:Key="@aRevision">
+                      <VisualBasicValue x:TypeArguments="x:Int32" ExpressionText="CInt(in_Config(&quot;SspLoadQuotePricingRevisionNum&quot;))" />
+                    </InArgument>
+                    <InArgument x:TypeArguments="x:Double" x:Key="@aBarcode">
+                      <VisualBasicValue x:TypeArguments="x:Double" ExpressionText="CLng(io_str_PreviousBarcode)" />
+                    </InArgument>
                   </ui:ExecuteQuery.Parameters>
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -160,9 +166,9 @@
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
                 </ui:ExecuteQuery>
-                <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="440,718" sap2010:WorkflowViewState.IdRef="TryCatch_1">
+                <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="434,193" sap2010:WorkflowViewState.IdRef="TryCatch_1">
                   <TryCatch.Try>
-                    <Assign sap:VirtualizedContainerService.HintSize="434,82" sap2010:WorkflowViewState.IdRef="Assign_1">
+                    <Assign sap:VirtualizedContainerService.HintSize="262,70" sap2010:WorkflowViewState.IdRef="Assign_1">
                       <Assign.To>
                         <OutArgument x:TypeArguments="x:String">[out_str_Quantity]</OutArgument>
                       </Assign.To>
@@ -172,10 +178,10 @@
                     </Assign>
                   </TryCatch.Try>
                   <TryCatch.Catches>
-                    <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="406,555" sap2010:WorkflowViewState.IdRef="Catch`1_1">
+                    <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="400,21" sap2010:WorkflowViewState.IdRef="Catch`1_1">
                       <sap:WorkflowViewStateService.ViewState>
                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
                           <x:Boolean x:Key="IsPinned">False</x:Boolean>
                         </scg:Dictionary>
                       </sap:WorkflowViewStateService.ViewState>
@@ -183,7 +189,7 @@
                         <ActivityAction.Argument>
                           <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
                         </ActivityAction.Argument>
-                        <Sequence sap:VirtualizedContainerService.HintSize="400,486" sap2010:WorkflowViewState.IdRef="Sequence_3">
+                        <Sequence sap:VirtualizedContainerService.HintSize="400,497" sap2010:WorkflowViewState.IdRef="Sequence_3">
                           <sap:WorkflowViewStateService.ViewState>
                             <scg:Dictionary x:TypeArguments="x:String, x:Object">
                               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -192,30 +198,14 @@
                           <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="338,92" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[&quot;Couldn't fetch Quantity from Sybase&quot;]" />
                           <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Workflows\SSP_StoreNote.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="338,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" UnSafe="False" WorkflowFileName="Workflows\SSP_StoreNote.xaml">
                             <ui:InvokeWorkflowFile.Arguments>
-                              <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">
-                                <VisualBasicValue x:TypeArguments="scg:Dictionary(x:String, x:Object)" ExpressionText="in_Config" />
-                              </InArgument>
-                              <InArgument x:TypeArguments="x:String" x:Key="in_barcode">
-                                <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_barcode" />
-                              </InArgument>
-                              <InArgument x:TypeArguments="x:String" x:Key="in_Comment">
-                                <Literal x:TypeArguments="x:String">Couldn't fetch Quantity from Sybase</Literal>
-                              </InArgument>
-                              <InArgument x:TypeArguments="x:String" x:Key="in_Type">
-                                <Literal x:TypeArguments="x:String">Perm</Literal>
-                              </InArgument>
-                              <InArgument x:TypeArguments="x:Int32" x:Key="in_AgentID">
-                                <Literal x:TypeArguments="x:Int32" Value="9463" />
-                              </InArgument>
-                              <InArgument x:TypeArguments="x:Int32" x:Key="in_RevisionNum">
-                                <Literal x:TypeArguments="x:Int32" Value="1" />
-                              </InArgument>
-                              <InArgument x:TypeArguments="x:Int32" x:Key="in_PartNum">
-                                <Literal x:TypeArguments="x:Int32" Value="1" />
-                              </InArgument>
-                              <InArgument x:TypeArguments="x:Int32" x:Key="in_NoteNum">
-                                <Literal x:TypeArguments="x:Int32" Value="1" />
-                              </InArgument>
+                              <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[in_Config]</InArgument>
+                              <InArgument x:TypeArguments="x:String" x:Key="in_barcode">[in_barcode]</InArgument>
+                              <InArgument x:TypeArguments="x:String" x:Key="in_Comment">Couldn't fetch Quantity from Sybase</InArgument>
+                              <InArgument x:TypeArguments="x:String" x:Key="in_Type">Perm</InArgument>
+                              <InArgument x:TypeArguments="x:Int32" x:Key="in_AgentID">9463</InArgument>
+                              <InArgument x:TypeArguments="x:Int32" x:Key="in_RevisionNum">1</InArgument>
+                              <InArgument x:TypeArguments="x:Int32" x:Key="in_PartNum">1</InArgument>
+                              <InArgument x:TypeArguments="x:Int32" x:Key="in_NoteNum">1</InArgument>
                             </ui:InvokeWorkflowFile.Arguments>
                           </ui:InvokeWorkflowFile>
                           <Throw Exception="[New BusinessRuleException(&quot;Couldn't fetch Quantity from Sybase&quot;)]" sap:VirtualizedContainerService.HintSize="338,90" sap2010:WorkflowViewState.IdRef="Throw_2" />
@@ -242,10 +232,10 @@
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <av:Point x:Key="ShapeLocation">200,362.5</av:Point>
-                  <av:Size x:Key="ShapeSize">200,25</av:Size>
+                  <av:Size x:Key="ShapeSize">200,32</av:Size>
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
-              <ui:DatabaseDisconnect DatabaseConnection="[sybConStatus]" DisplayName="Disconnect from database" sap:VirtualizedContainerService.HintSize="200,25" sap2010:WorkflowViewState.IdRef="DatabaseDisconnect_1">
+              <ui:DatabaseDisconnect DatabaseConnection="[sybConStatus]" DisplayName="Disconnect from database" sap:VirtualizedContainerService.HintSize="200,32" sap2010:WorkflowViewState.IdRef="DatabaseDisconnect_1">
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
