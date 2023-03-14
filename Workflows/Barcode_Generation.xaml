@@ -105,13 +105,13 @@
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Connect_Sybase.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="885,122" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="Workflows\Connect_Sybase.xaml">
+    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Connect_Sybase.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="885,122" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" Level="{x:Null}" LogEntry="{x:Null}" LogExit="{x:Null}" Timeout="{x:Null}" UnSafe="False" WorkflowFileName="Workflows\Connect_Sybase.xaml">
       <ui:InvokeWorkflowFile.Arguments>
         <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[in_Config]</InArgument>
         <OutArgument x:TypeArguments="ui:DatabaseConnection" x:Key="sybConStatus">[sybConStatus]</OutArgument>
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>
-    <ui:LogMessage DisplayName="Log Message SampleText" sap:VirtualizedContainerService.HintSize="885,101" sap2010:WorkflowViewState.IdRef="LogMessage_1" Message="[&quot; '7/19/2022 11:30AM', 'james@mediawelldone.org', 'Order for Quote # 020516-22271008 r 0'&quot;]" />
+    <ui:LogMessage DisplayName="Log Message SampleText" sap:VirtualizedContainerService.HintSize="885,101" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="{x:Null}" Message="[&quot; '7/19/2022 11:30AM', 'james@mediawelldone.org', 'Order for Quote # 020516-22271008 r 0'&quot;]" />
     <Flowchart DisplayName="BarcodeNumberGeneration" sap:VirtualizedContainerService.HintSize="885,804" sap2010:WorkflowViewState.IdRef="Flowchart_1">
       <Flowchart.Variables>
         <Variable x:TypeArguments="sd:DataTable" Name="findEmailBarcode_DT" />
@@ -128,17 +128,17 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
       <Flowchart.StartNode>
-        <x:Reference>__ReferenceID7</x:Reference>
+        <x:Reference>__ReferenceID8</x:Reference>
       </Flowchart.StartNode>
       <FlowStep x:Name="__ReferenceID0">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
-            <av:Point x:Key="ShapeLocation">190,254</av:Point>
+            <av:Point x:Key="ShapeLocation">190,244</av:Point>
             <av:Size x:Key="ShapeSize">200,92</av:Size>
-            <av:PointCollection x:Key="ConnectorLocation">290,346 290,356.5</av:PointCollection>
+            <av:PointCollection x:Key="ConnectorLocation">290,336 290,356.5</av:PointCollection>
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
-        <ui:ExecuteQuery ContinueOnError="{x:Null}" TimeoutMS="{x:Null}" sap2010:Annotation.AnnotationText="Find Barcode " CommandType="StoredProcedure" DataTable="[findEmailBarcode_DT]" DisplayName="Run query_Find_Email_Barcode" ExistingDbConnection="[sybConStatus]" sap:VirtualizedContainerService.HintSize="200,92" sap2010:WorkflowViewState.IdRef="ExecuteQuery_1" Sql="[in_Config(&quot;FindEmailBarcode&quot;).ToString]">
+        <ui:ExecuteQuery sap2010:Annotation.AnnotationText="Find Barcode " CommandType="StoredProcedure" ConnectionSecureString="{x:Null}" ConnectionString="{x:Null}" ContinueOnError="{x:Null}" DataTable="[findEmailBarcode_DT]" DisplayName="Run query_Find_Email_Barcode" ExistingDbConnection="[sybConStatus]" sap:VirtualizedContainerService.HintSize="200,92" sap2010:WorkflowViewState.IdRef="ExecuteQuery_1" ProviderName="{x:Null}" Sql="[in_Config(&quot;FindEmailBarcode&quot;).ToString]" TimeoutMS="{x:Null}">
           <ui:ExecuteQuery.Parameters>
             <InArgument x:TypeArguments="x:String" x:Key="@aEmailDate">[in_EmailDate]</InArgument>
             <InArgument x:TypeArguments="x:String" x:Key="@aEmailFrom">[in_EmailFrom]</InArgument>
@@ -192,32 +192,16 @@
                         <av:PointCollection x:Key="ConnectorLocation">220,716 220,726</av:PointCollection>
                       </scg:Dictionary>
                     </sap:WorkflowViewStateService.ViewState>
-                    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="Adding Note in the db" DisplayName="Workflows\SSP_StoreNote.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="334,153" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" UnSafe="False" WorkflowFileName="Workflows\SSP_StoreNote.xaml">
+                    <ui:InvokeWorkflowFile sap2010:Annotation.AnnotationText="Adding Note in the db" ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Workflows\SSP_StoreNote.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="200,92" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" Level="{x:Null}" LogEntry="{x:Null}" LogExit="{x:Null}" Timeout="{x:Null}" UnSafe="False" WorkflowFileName="Workflows\SSP_StoreNote.xaml">
                       <ui:InvokeWorkflowFile.Arguments>
-                        <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">
-                          <VisualBasicValue x:TypeArguments="scg:Dictionary(x:String, x:Object)" ExpressionText="in_Config" />
-                        </InArgument>
-                        <InArgument x:TypeArguments="x:String" x:Key="in_barcode">
-                          <VisualBasicValue x:TypeArguments="x:String" ExpressionText="out_BarcodeNumber" />
-                        </InArgument>
-                        <InArgument x:TypeArguments="x:String" x:Key="in_Comment">
-                          <Literal x:TypeArguments="x:String">Item picked for processing</Literal>
-                        </InArgument>
-                        <InArgument x:TypeArguments="x:String" x:Key="in_Type">
-                          <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_Config(&quot;StoreNotesType&quot;).ToString" />
-                        </InArgument>
-                        <InArgument x:TypeArguments="x:Int32" x:Key="in_AgentID">
-                          <Literal x:TypeArguments="x:Int32" Value="9463" />
-                        </InArgument>
-                        <InArgument x:TypeArguments="x:Int32" x:Key="in_RevisionNum">
-                          <Literal x:TypeArguments="x:Int32" Value="1" />
-                        </InArgument>
-                        <InArgument x:TypeArguments="x:Int32" x:Key="in_PartNum">
-                          <Literal x:TypeArguments="x:Int32" Value="1" />
-                        </InArgument>
-                        <InArgument x:TypeArguments="x:Int32" x:Key="in_NoteNum">
-                          <Literal x:TypeArguments="x:Int32" Value="1" />
-                        </InArgument>
+                        <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[in_Config]</InArgument>
+                        <InArgument x:TypeArguments="x:String" x:Key="in_barcode">[out_BarcodeNumber]</InArgument>
+                        <InArgument x:TypeArguments="x:String" x:Key="in_Comment">Item picked for processing</InArgument>
+                        <InArgument x:TypeArguments="x:String" x:Key="in_Type">[in_Config("StoreNotesType").ToString]</InArgument>
+                        <InArgument x:TypeArguments="x:Int32" x:Key="in_AgentID">9463</InArgument>
+                        <InArgument x:TypeArguments="x:Int32" x:Key="in_RevisionNum">1</InArgument>
+                        <InArgument x:TypeArguments="x:Int32" x:Key="in_PartNum">1</InArgument>
+                        <InArgument x:TypeArguments="x:Int32" x:Key="in_NoteNum">1</InArgument>
                       </ui:InvokeWorkflowFile.Arguments>
                       <sap:WorkflowViewStateService.ViewState>
                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -267,16 +251,37 @@
           </FlowDecision>
         </FlowStep.Next>
       </FlowStep>
-      <FlowDecision x:Name="__ReferenceID7" Condition="[sybConStatus.State.ToString.ToLower.Equals(&quot;open&quot;)]" DisplayName="Connection Open?" sap:VirtualizedContainerService.HintSize="105,87" sap2010:WorkflowViewState.IdRef="FlowDecision_1" True="{x:Reference __ReferenceID0}">
+      <FlowDecision x:Name="__ReferenceID8" Condition="[sybConStatus.State.ToString.ToLower.Equals(&quot;open&quot;)]" DisplayName="Connection Open?" sap:VirtualizedContainerService.HintSize="105,87" sap2010:WorkflowViewState.IdRef="FlowDecision_1">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
             <av:Point x:Key="ShapeLocation">337.5,116.5</av:Point>
             <av:Size x:Key="ShapeSize">105,87</av:Size>
-            <av:PointCollection x:Key="TrueConnector">337.5,160 290,160 290,254</av:PointCollection>
+            <av:PointCollection x:Key="TrueConnector">337.5,160 307.5,160 307.5,159.52 287.5,159.52</av:PointCollection>
             <av:PointCollection x:Key="FalseConnector">442.5,160 472.5,160 472.5,164.5 550,164.5</av:PointCollection>
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
+        <FlowDecision.True>
+          <FlowStep x:Name="__ReferenceID7">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <av:Point x:Key="ShapeLocation">87.5,129.02</av:Point>
+                <av:Size x:Key="ShapeSize">200,61</av:Size>
+                <av:PointCollection x:Key="ConnectorLocation">187.5,190.02 187.5,220.02 290,220.02 290,244</av:PointCollection>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="200,61" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[in_EmailDate+in_EmailFrom+in_EmailSubject]">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+            </ui:LogMessage>
+            <FlowStep.Next>
+              <x:Reference>__ReferenceID0</x:Reference>
+            </FlowStep.Next>
+          </FlowStep>
+        </FlowDecision.True>
         <FlowDecision.False>
           <FlowStep x:Name="__ReferenceID1">
             <sap:WorkflowViewStateService.ViewState>
@@ -295,6 +300,7 @@
       <x:Reference>__ReferenceID4</x:Reference>
       <x:Reference>__ReferenceID5</x:Reference>
       <x:Reference>__ReferenceID6</x:Reference>
+      <x:Reference>__ReferenceID7</x:Reference>
     </Flowchart>
   </Sequence>
 </Activity>
